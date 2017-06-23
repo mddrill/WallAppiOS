@@ -1,0 +1,6 @@
+framework module Pods_WallAppiOS {
+  umbrella header "Pods-WallAppiOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
