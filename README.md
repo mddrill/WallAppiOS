@@ -12,3 +12,4 @@ Next download this repository
 Then open WallAppiOS in finder and open WallAppiOS.xcworkspace in xcode
 
 You can now run the app in the iOS simulator by clicking the build then run button on the top left corner of xcode. You can also run the unit tests by clicking the diamond shape in the gutter after opening `WallAppiOSTests.swift` like so:
+https://github.com/mddrill/WallAppiOS/blob/master/unittestingexample.png
