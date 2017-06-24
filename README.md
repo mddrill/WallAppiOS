@@ -3,9 +3,12 @@
 Front end for TSL Hiring assignment
 
 To run this you must first run the backend on localhost by running `python manage.py runsslserver` in the top level directory
-of the backend repo.
+of the backend repo. For more details, please see the README for WallAppBackend
 
-Then you can run the unit tests in xcode and run the app in iOS simulator.
+Next download this repository
 
-Please note that while a user can begin to write a post without logging in, they cannot submit that post without logging in.
-This is intentional on my part and I feel it still meets the requirements.
+`git clone https://github.com/mddrill/WallAppiOS/`
+
+Then open WallAppiOS in finder and open WallAppiOS.xcworkspace in xcode
+
+You can now run the app in the iOS simulator by clicking the build then run button on the top left corner of xcode. You can also run the unit tests by clicking the diamond shape in the gutter after opening `WallAppiOSTests.swift` like so:
