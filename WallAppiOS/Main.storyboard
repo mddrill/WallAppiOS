@@ -324,17 +324,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="THy-UD-Jvw">
-                                <rect key="frame" x="16" y="28" width="343" height="566"/>
+                                <rect key="frame" x="16" y="80" width="343" height="579"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddr-eO-c9r">
-                                <rect key="frame" x="112" y="602" width="150" height="50"/>
+                                <rect key="frame" x="112" y="22" width="150" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="WvA-29-cng"/>
                                     <constraint firstAttribute="width" constant="150" id="lF1-gc-kNL"/>
+                                    <constraint firstAttribute="height" constant="50" id="sD0-Q7-c2d"/>
                                 </constraints>
                                 <state key="normal" title="Post To Wall">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -346,12 +346,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="THy-UD-Jvw" firstAttribute="top" secondItem="9WY-et-laP" secondAttribute="bottom" constant="8" id="0dj-UM-w6v"/>
-                            <constraint firstItem="ddr-eO-c9r" firstAttribute="centerX" secondItem="THy-UD-Jvw" secondAttribute="centerX" id="0v4-q0-Y8z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="THy-UD-Jvw" secondAttribute="trailing" id="ISF-8n-yTY"/>
-                            <constraint firstItem="ddr-eO-c9r" firstAttribute="top" secondItem="THy-UD-Jvw" secondAttribute="bottom" constant="8" id="IkE-0t-BK9"/>
-                            <constraint firstItem="KjW-9s-9wq" firstAttribute="top" secondItem="ddr-eO-c9r" secondAttribute="bottom" constant="15" id="YhM-Ua-ngb"/>
-                            <constraint firstItem="THy-UD-Jvw" firstAttribute="leading" secondItem="l5V-79-ayP" secondAttribute="leadingMargin" id="ukt-eN-OJ0"/>
+                            <constraint firstItem="THy-UD-Jvw" firstAttribute="trailing" secondItem="l5V-79-ayP" secondAttribute="trailingMargin" id="3gz-lx-hDh"/>
+                            <constraint firstItem="ddr-eO-c9r" firstAttribute="top" secondItem="9WY-et-laP" secondAttribute="bottom" constant="2" id="bDt-pg-hFh"/>
+                            <constraint firstItem="KjW-9s-9wq" firstAttribute="top" secondItem="THy-UD-Jvw" secondAttribute="bottom" constant="8" id="efp-k9-ep7"/>
+                            <constraint firstItem="THy-UD-Jvw" firstAttribute="leading" secondItem="l5V-79-ayP" secondAttribute="leadingMargin" id="ge3-Hz-lck"/>
+                            <constraint firstItem="ddr-eO-c9r" firstAttribute="centerX" secondItem="l5V-79-ayP" secondAttribute="centerX" id="j1r-YB-R50"/>
+                            <constraint firstItem="THy-UD-Jvw" firstAttribute="top" secondItem="ddr-eO-c9r" secondAttribute="bottom" constant="8" id="jvt-Gv-nkE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Write Something" id="ny2-qY-Bcj"/>
@@ -385,8 +385,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6u1-wI-3ME"/>
-        <segue reference="FuK-r2-N1N"/>
         <segue reference="Dsu-gR-XCn"/>
+        <segue reference="ksk-Xe-cNm"/>
+        <segue reference="FuK-r2-N1N"/>
     </inferredMetricsTieBreakers>
 </document>
