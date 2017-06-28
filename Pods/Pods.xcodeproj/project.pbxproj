@@ -8,34 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87882A1F5A92C8138D54545E51D51E6F /* Timeline.swift */; };
-		14875765927C5917D039628F29280F62 /* Pods-WallAppiOS-WallAppiOSUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C15E2956747FE4EC906D3D5DCDE710D8 /* Pods-WallAppiOS-WallAppiOSUITests-dummy.m */; };
 		1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B44A27EFBB0DA84D738057B77F3413B1 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01C037B4034EDA3D7955BC5E4E9D9D6 /* TaskDelegate.swift */; };
 		5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E230A0448B394DE26E688DAC8E6201E /* Request.swift */; };
 		54A1F03B72EAF1A2BDCA38B823AE4041 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		5DA0754836FFD4764F7290476FBB88E5 /* Pods-WallAppiOS-WallAppiOSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D10AE10957F77EAE55EBDA65719D6F94 /* Pods-WallAppiOS-WallAppiOSTests-dummy.m */; };
+		5DA0754836FFD4764F7290476FBB88E5 /* Pods-WallAppiOS-WallAppiOSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 517ADE24A14A2506A6DDA885586E10B6 /* Pods-WallAppiOS-WallAppiOSTests-dummy.m */; };
 		61200D01A1855D7920CEF835C8BE00B0 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBF1EED873F61C6D46CE37FA5C39D3 /* DispatchQueue+Alamofire.swift */; };
 		62F65AD8DC4F0F9610F4B8B4738EC094 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B030D27CAC730C5EB0F22390645310 /* ServerTrustPolicy.swift */; };
-		69D3B6CC39FEE581838EFB569AC7F561 /* Pods-WallAppiOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D2B4FA775FF33C8B19E72BE7F5D1F9A /* Pods-WallAppiOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		69D3B6CC39FEE581838EFB569AC7F561 /* Pods-WallAppiOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0575A430A5F63783D887EF545026CBF /* Pods-WallAppiOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73B9C996AED49ED7CF8EC2A6F1738059 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		7B5FE28C7EA4122B0598738E54DBEBD8 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195D73DD9EF275A3C56569E2B1CA8026 /* SessionDelegate.swift */; };
 		7D8CC01E8C9EFFF9F4D65406CDE0AB66 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60BC9955B4F7FFA62D7440CB385C11 /* Result.swift */; };
 		846577C887D2B6F1D1F25B29DEFC6409 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		852565660A14A301287FDC0E554D218A /* Pods-WallAppiOS-WallAppiOSTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 38E25B70833A1DD30B29B97DDE02BFA0 /* Pods-WallAppiOS-WallAppiOSTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		852565660A14A301287FDC0E554D218A /* Pods-WallAppiOS-WallAppiOSTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C2F8F82692DAFFCE190F9CCA5B25CFBF /* Pods-WallAppiOS-WallAppiOSTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9ED2BB2981896E0A39EFA365503F58CE /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF006B0AD5765D1BFA8253C2DCBB126 /* AFError.swift */; };
 		A2A6F71B727312BD45CC7A4AAD7B0AB7 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A8AA5F9EDED0A0BDDE7E830BF4AEE0 /* NetworkReachabilityManager.swift */; };
 		A9EEEA7477981DEEBC72432DE9990A4B /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C1C119BCE81C53F76CAC2BE27C38E0 /* Alamofire-dummy.m */; };
 		AE1EF48399533730D0066E04B22CA2D6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDAC6C1187C5467E576980E1062C8B /* SessionManager.swift */; };
 		B65FCF589DA398C3EFE0128064E510EC /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155538D91ACEEEDF82069ACF6C1A02E7 /* MultipartFormData.swift */; };
 		BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029DBC43E49A740F12B5E4D2E6DD452 /* Validation.swift */; };
-		BC4C6752835D1ECF772ACA5BA52737C3 /* Pods-WallAppiOS-WallAppiOSUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 385E7D546FA31C99FA89F83F6C2AFFD8 /* Pods-WallAppiOS-WallAppiOSUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE5C67A07E289FE1F9BE27335B159997 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6639346628280A0D0FAD35196BF56108 /* ParameterEncoding.swift */; };
 		CB6D60925223897FFA2662667DF83E8A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F47F5C9CDB035C5AFADEBA5BF44F1C /* Response.swift */; };
-		E8015628AFDCC4F600DA65E27D2B93F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		EFD264FC408EBF3BA2528E70B08DDD94 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A46F517F0AF7E85A16D723F6406896 /* Notifications.swift */; };
 		F6BECD98B97CBFEBE2C96F0E9E72A6C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9510473F6FFD7AA66524DB16C2263 /* ResponseSerialization.swift */; };
 		F8B3D3092ED0417E8CDF32033F6122F5 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB8C44DE758E906C0BCDA455937B85 /* Alamofire.swift */; };
-		FB6D75FD8183D7BD730EE059C4F19489 /* Pods-WallAppiOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5404E7B1BE0700F7C6738C4C43EA5AB0 /* Pods-WallAppiOS-dummy.m */; };
+		FB6D75FD8183D7BD730EE059C4F19489 /* Pods-WallAppiOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7109AE947887778B6747F9E860DCB3E0 /* Pods-WallAppiOS-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,75 +50,57 @@
 			remoteGlobalIDString = 88E9EC28B8B46C3631E6B242B50F4442;
 			remoteInfo = Alamofire;
 		};
-		53D84B6BFCE272984FD67DC748A3F2D2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 88E9EC28B8B46C3631E6B242B50F4442;
-			remoteInfo = Alamofire;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02808B5E80BCDD7F98074687B9A9A3A9 /* Pods-WallAppiOS-WallAppiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallAppiOS-WallAppiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		04F47F5C9CDB035C5AFADEBA5BF44F1C /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
-		0B140EBBD12E4563897EE6B5FF51689F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09DD38B9CD5D2733DC716D55556DF332 /* Pods-WallAppiOS-WallAppiOSTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WallAppiOS-WallAppiOSTests-frameworks.sh"; sourceTree = "<group>"; };
 		0FCBF1EED873F61C6D46CE37FA5C39D3 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		0FCDF15267B57D3CA457F1C0C10D2B2D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A0A663B36A229C69D5274A83E93F88 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		155538D91ACEEEDF82069ACF6C1A02E7 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		195D73DD9EF275A3C56569E2B1CA8026 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
-		1B3C5BE750F26CFBBC95E640025D0A0B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1BA0D12E97EB69932E1942DFD95ACE44 /* Pods-WallAppiOS-WallAppiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallAppiOS-WallAppiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1E1EB42A902130D67291713ECE039CB7 /* Pods-WallAppiOS-WallAppiOSTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-WallAppiOS-WallAppiOSTests.modulemap"; sourceTree = "<group>"; };
 		1E230A0448B394DE26E688DAC8E6201E /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
-		2001A8ABCEF4825ABC2B0CF86CAD39CD /* Pods-WallAppiOS-WallAppiOSUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallAppiOS-WallAppiOSUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		22C1C119BCE81C53F76CAC2BE27C38E0 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		2A05AA1EC120F1C186C10D952041B04A /* Pods-WallAppiOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WallAppiOS-frameworks.sh"; sourceTree = "<group>"; };
-		2D049A149CF07B91F31D3F530FD5444D /* Pods-WallAppiOS-WallAppiOSTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WallAppiOS-WallAppiOSTests-frameworks.sh"; sourceTree = "<group>"; };
-		2FD7B1B8EC93C5949C9784CD2790995C /* Pods-WallAppiOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallAppiOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		31ED75927C4142BCBA7B06F8F655339A /* Pods-WallAppiOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallAppiOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		32B030D27CAC730C5EB0F22390645310 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		33DE964F31BC0614206884AF52BFF277 /* Pods_WallAppiOS_WallAppiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WallAppiOS_WallAppiOSUITests.framework; path = "Pods-WallAppiOS-WallAppiOSUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		385E7D546FA31C99FA89F83F6C2AFFD8 /* Pods-WallAppiOS-WallAppiOSUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallAppiOS-WallAppiOSUITests-umbrella.h"; sourceTree = "<group>"; };
-		38E25B70833A1DD30B29B97DDE02BFA0 /* Pods-WallAppiOS-WallAppiOSTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallAppiOS-WallAppiOSTests-umbrella.h"; sourceTree = "<group>"; };
-		3C7BAF8D8F53A879DC0829B355B16A38 /* Pods-WallAppiOS-WallAppiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallAppiOS-WallAppiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3C84870B1C6D2DC3558FFA58B04F9360 /* Pods-WallAppiOS-WallAppiOSTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallAppiOS-WallAppiOSTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3D4AFD3619AEBD5BEED2017F686A6461 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D60BC9955B4F7FFA62D7440CB385C11 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
+		3E33B8015B99FF617E933B3C6D453240 /* Pods-WallAppiOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-WallAppiOS.modulemap"; sourceTree = "<group>"; };
 		46CDAC6C1187C5467E576980E1062C8B /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
-		48DE8D3B8C5377B85285A59CEA1922D3 /* Pods-WallAppiOS-WallAppiOSUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WallAppiOS-WallAppiOSUITests-resources.sh"; sourceTree = "<group>"; };
-		498A9B864FECEC860CE3CD49CFBFA8F1 /* Pods-WallAppiOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-WallAppiOS.modulemap"; sourceTree = "<group>"; };
 		4AF006B0AD5765D1BFA8253C2DCBB126 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
-		5404E7B1BE0700F7C6738C4C43EA5AB0 /* Pods-WallAppiOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallAppiOS-dummy.m"; sourceTree = "<group>"; };
+		508B3F49010BB5B236327E6ECBB2FFA6 /* Pods-WallAppiOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallAppiOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		517ADE24A14A2506A6DDA885586E10B6 /* Pods-WallAppiOS-WallAppiOSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallAppiOS-WallAppiOSTests-dummy.m"; sourceTree = "<group>"; };
+		5316C59F33E7166F64EE3B0BFF3B3FD8 /* Pods-WallAppiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallAppiOS.release.xcconfig"; sourceTree = "<group>"; };
+		58C53E59ACCAEC0E6BF3B1CC9C9DF72D /* Pods-WallAppiOS-WallAppiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallAppiOS-WallAppiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5D9AE218DA5CDE006F3046B3D68DAEF4 /* Pods-WallAppiOS-WallAppiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallAppiOS-WallAppiOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6639346628280A0D0FAD35196BF56108 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		66A46F517F0AF7E85A16D723F6406896 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		6BB9154A4B8912AFEE3325E588EF07BB /* Pods-WallAppiOS-WallAppiOSUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallAppiOS-WallAppiOSUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6D2B4FA775FF33C8B19E72BE7F5D1F9A /* Pods-WallAppiOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallAppiOS-umbrella.h"; sourceTree = "<group>"; };
-		6F1343D2E68A257E4C182058B08275B6 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7061883AA7FA5C554534D389C9B80599 /* Pods-WallAppiOS-WallAppiOSUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-WallAppiOS-WallAppiOSUITests.modulemap"; sourceTree = "<group>"; };
-		7563F007F34CC7EFED1308352B0AE871 /* Pods_WallAppiOS_WallAppiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WallAppiOS_WallAppiOSTests.framework; path = "Pods-WallAppiOS-WallAppiOSTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		790A84C4CB4DD125E9B3809B0534B2CE /* Pods-WallAppiOS-WallAppiOSTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallAppiOS-WallAppiOSTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		7958A9901053DC99C6A3B3A8CD34034C /* Pods-WallAppiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallAppiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		7109AE947887778B6747F9E860DCB3E0 /* Pods-WallAppiOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallAppiOS-dummy.m"; sourceTree = "<group>"; };
+		76F4EB4858E0D9592D87F24374C6A893 /* Pods-WallAppiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallAppiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		7C866D6C60B2B09F0E90C4813FF98E2C /* Pods_WallAppiOS_WallAppiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WallAppiOS_WallAppiOSTests.framework; path = "Pods-WallAppiOS-WallAppiOSTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D141D1953E5C6E67E362CE73090E48A /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		87882A1F5A92C8138D54545E51D51E6F /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
-		89276B2A7605063BD6F8D00F7A51A56D /* Pods-WallAppiOS-WallAppiOSTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WallAppiOS-WallAppiOSTests-resources.sh"; sourceTree = "<group>"; };
-		9376ED07AC311B4B3C1C1707DD52D8F7 /* Pods-WallAppiOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallAppiOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8D2D8F4583F26656F10BEA0FCB0B7B01 /* Pods-WallAppiOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WallAppiOS-frameworks.sh"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		99D73E05245D00328A7ED2017F636785 /* Pods-WallAppiOS-WallAppiOSTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallAppiOS-WallAppiOSTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		A01C037B4034EDA3D7955BC5E4E9D9D6 /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
-		A8805D29BF4602089AD032BD0C6EF1DF /* Pods-WallAppiOS-WallAppiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallAppiOS-WallAppiOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		B029DBC43E49A740F12B5E4D2E6DD452 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
-		B3E1E446C00E3E3E7971B4F954E5FAFE /* Pods-WallAppiOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WallAppiOS-resources.sh"; sourceTree = "<group>"; };
 		B44A27EFBB0DA84D738057B77F3413B1 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		B630F8209368B4A1ECAC802DE3E7C166 /* Pods-WallAppiOS-WallAppiOSTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallAppiOS-WallAppiOSTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BCCA9CA7D9C1A2047BB93336C5708DFD /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
-		C15E2956747FE4EC906D3D5DCDE710D8 /* Pods-WallAppiOS-WallAppiOSUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallAppiOS-WallAppiOSUITests-dummy.m"; sourceTree = "<group>"; };
-		C6666D207859CBBEE3EDC1F55906C875 /* Pods-WallAppiOS-WallAppiOSUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WallAppiOS-WallAppiOSUITests-frameworks.sh"; sourceTree = "<group>"; };
-		C9B875453A6FD184222F104D385C37D7 /* Pods_WallAppiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WallAppiOS.framework; path = "Pods-WallAppiOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D10AE10957F77EAE55EBDA65719D6F94 /* Pods-WallAppiOS-WallAppiOSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallAppiOS-WallAppiOSTests-dummy.m"; sourceTree = "<group>"; };
-		DE6B9F12B820785482DF935323CE6277 /* Pods-WallAppiOS-WallAppiOSTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-WallAppiOS-WallAppiOSTests.modulemap"; sourceTree = "<group>"; };
+		C0575A430A5F63783D887EF545026CBF /* Pods-WallAppiOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallAppiOS-umbrella.h"; sourceTree = "<group>"; };
+		C2F8F82692DAFFCE190F9CCA5B25CFBF /* Pods-WallAppiOS-WallAppiOSTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallAppiOS-WallAppiOSTests-umbrella.h"; sourceTree = "<group>"; };
+		CE1F294E257871794ED6612F8DCDA270 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D024A854DCB09FED4999F7AAFE48B5AE /* Pods-WallAppiOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WallAppiOS-resources.sh"; sourceTree = "<group>"; };
+		DFC102F2FDB9613EC5D869050DABAF31 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFCB8C44DE758E906C0BCDA455937B85 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		E22111C2F1671A469E8B2CC28C0003AA /* Pods_WallAppiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WallAppiOS.framework; path = "Pods-WallAppiOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2F9510473F6FFD7AA66524DB16C2263 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		E5A8AA5F9EDED0A0BDDE7E830BF4AEE0 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		E6F34CCF86067ED508C12C676E298C69 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
-		F4640DCF73971D350AFD59BFCB501B53 /* Pods-WallAppiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallAppiOS.release.xcconfig"; sourceTree = "<group>"; };
+		FB927B7315F8688E5BB789A7E07BA9A1 /* Pods-WallAppiOS-WallAppiOSTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WallAppiOS-WallAppiOSTests-resources.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,14 +125,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				73B9C996AED49ED7CF8EC2A6F1738059 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		992A7BD0FB0BAFB0E855C03B988467BD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E8015628AFDCC4F600DA65E27D2B93F7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +165,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		53535321040512280B33A9B1404F00C9 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8CA1B4F594F614E18585F0C8CBD9ED1F /* Pods-WallAppiOS */,
+				871CA4F2F58D60CC5554B57A8EF17CB8 /* Pods-WallAppiOS-WallAppiOSTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
 		55F14F994FE7AB51F028BFE66CEF3106 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,31 +188,12 @@
 			path = "../Target Support Files/Alamofire";
 			sourceTree = "<group>";
 		};
-		565E64AE2DCCCEF6C6120FA78766F229 /* Pods-WallAppiOS */ = {
+		70CA40772ECF41C9B632FA82C795C659 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B3C5BE750F26CFBBC95E640025D0A0B /* Info.plist */,
-				498A9B864FECEC860CE3CD49CFBFA8F1 /* Pods-WallAppiOS.modulemap */,
-				9376ED07AC311B4B3C1C1707DD52D8F7 /* Pods-WallAppiOS-acknowledgements.markdown */,
-				2FD7B1B8EC93C5949C9784CD2790995C /* Pods-WallAppiOS-acknowledgements.plist */,
-				5404E7B1BE0700F7C6738C4C43EA5AB0 /* Pods-WallAppiOS-dummy.m */,
-				2A05AA1EC120F1C186C10D952041B04A /* Pods-WallAppiOS-frameworks.sh */,
-				B3E1E446C00E3E3E7971B4F954E5FAFE /* Pods-WallAppiOS-resources.sh */,
-				6D2B4FA775FF33C8B19E72BE7F5D1F9A /* Pods-WallAppiOS-umbrella.h */,
-				7958A9901053DC99C6A3B3A8CD34034C /* Pods-WallAppiOS.debug.xcconfig */,
-				F4640DCF73971D350AFD59BFCB501B53 /* Pods-WallAppiOS.release.xcconfig */,
-			);
-			name = "Pods-WallAppiOS";
-			path = "Target Support Files/Pods-WallAppiOS";
-			sourceTree = "<group>";
-		};
-		728995C41BE57C1C676A273E0D5CFA40 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6F1343D2E68A257E4C182058B08275B6 /* Alamofire.framework */,
-				C9B875453A6FD184222F104D385C37D7 /* Pods_WallAppiOS.framework */,
-				7563F007F34CC7EFED1308352B0AE871 /* Pods_WallAppiOS_WallAppiOSTests.framework */,
-				33DE964F31BC0614206884AF52BFF277 /* Pods_WallAppiOS_WallAppiOSUITests.framework */,
+				0FCDF15267B57D3CA457F1C0C10D2B2D /* Alamofire.framework */,
+				E22111C2F1671A469E8B2CC28C0003AA /* Pods_WallAppiOS.framework */,
+				7C866D6C60B2B09F0E90C4813FF98E2C /* Pods_WallAppiOS_WallAppiOSTests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -243,37 +204,45 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				35F128EB69B6F7FB7DA93BBF6C130FAE /* Pods */,
-				728995C41BE57C1C676A273E0D5CFA40 /* Products */,
-				892F3977CF20DD540F9A2D9B3C05295E /* Targets Support Files */,
+				70CA40772ECF41C9B632FA82C795C659 /* Products */,
+				53535321040512280B33A9B1404F00C9 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		892F3977CF20DD540F9A2D9B3C05295E /* Targets Support Files */ = {
+		871CA4F2F58D60CC5554B57A8EF17CB8 /* Pods-WallAppiOS-WallAppiOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				565E64AE2DCCCEF6C6120FA78766F229 /* Pods-WallAppiOS */,
-				BB9265405F75699F885F1D950F0DB88B /* Pods-WallAppiOS-WallAppiOSTests */,
-				E248EC95C05E838FB3C4AE5A55C131B0 /* Pods-WallAppiOS-WallAppiOSUITests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		BB9265405F75699F885F1D950F0DB88B /* Pods-WallAppiOS-WallAppiOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				0B140EBBD12E4563897EE6B5FF51689F /* Info.plist */,
-				DE6B9F12B820785482DF935323CE6277 /* Pods-WallAppiOS-WallAppiOSTests.modulemap */,
-				3C84870B1C6D2DC3558FFA58B04F9360 /* Pods-WallAppiOS-WallAppiOSTests-acknowledgements.markdown */,
-				790A84C4CB4DD125E9B3809B0534B2CE /* Pods-WallAppiOS-WallAppiOSTests-acknowledgements.plist */,
-				D10AE10957F77EAE55EBDA65719D6F94 /* Pods-WallAppiOS-WallAppiOSTests-dummy.m */,
-				2D049A149CF07B91F31D3F530FD5444D /* Pods-WallAppiOS-WallAppiOSTests-frameworks.sh */,
-				89276B2A7605063BD6F8D00F7A51A56D /* Pods-WallAppiOS-WallAppiOSTests-resources.sh */,
-				38E25B70833A1DD30B29B97DDE02BFA0 /* Pods-WallAppiOS-WallAppiOSTests-umbrella.h */,
-				3C7BAF8D8F53A879DC0829B355B16A38 /* Pods-WallAppiOS-WallAppiOSTests.debug.xcconfig */,
-				A8805D29BF4602089AD032BD0C6EF1DF /* Pods-WallAppiOS-WallAppiOSTests.release.xcconfig */,
+				DFC102F2FDB9613EC5D869050DABAF31 /* Info.plist */,
+				1E1EB42A902130D67291713ECE039CB7 /* Pods-WallAppiOS-WallAppiOSTests.modulemap */,
+				B630F8209368B4A1ECAC802DE3E7C166 /* Pods-WallAppiOS-WallAppiOSTests-acknowledgements.markdown */,
+				99D73E05245D00328A7ED2017F636785 /* Pods-WallAppiOS-WallAppiOSTests-acknowledgements.plist */,
+				517ADE24A14A2506A6DDA885586E10B6 /* Pods-WallAppiOS-WallAppiOSTests-dummy.m */,
+				09DD38B9CD5D2733DC716D55556DF332 /* Pods-WallAppiOS-WallAppiOSTests-frameworks.sh */,
+				FB927B7315F8688E5BB789A7E07BA9A1 /* Pods-WallAppiOS-WallAppiOSTests-resources.sh */,
+				C2F8F82692DAFFCE190F9CCA5B25CFBF /* Pods-WallAppiOS-WallAppiOSTests-umbrella.h */,
+				58C53E59ACCAEC0E6BF3B1CC9C9DF72D /* Pods-WallAppiOS-WallAppiOSTests.debug.xcconfig */,
+				5D9AE218DA5CDE006F3046B3D68DAEF4 /* Pods-WallAppiOS-WallAppiOSTests.release.xcconfig */,
 			);
 			name = "Pods-WallAppiOS-WallAppiOSTests";
 			path = "Target Support Files/Pods-WallAppiOS-WallAppiOSTests";
+			sourceTree = "<group>";
+		};
+		8CA1B4F594F614E18585F0C8CBD9ED1F /* Pods-WallAppiOS */ = {
+			isa = PBXGroup;
+			children = (
+				CE1F294E257871794ED6612F8DCDA270 /* Info.plist */,
+				3E33B8015B99FF617E933B3C6D453240 /* Pods-WallAppiOS.modulemap */,
+				31ED75927C4142BCBA7B06F8F655339A /* Pods-WallAppiOS-acknowledgements.markdown */,
+				508B3F49010BB5B236327E6ECBB2FFA6 /* Pods-WallAppiOS-acknowledgements.plist */,
+				7109AE947887778B6747F9E860DCB3E0 /* Pods-WallAppiOS-dummy.m */,
+				8D2D8F4583F26656F10BEA0FCB0B7B01 /* Pods-WallAppiOS-frameworks.sh */,
+				D024A854DCB09FED4999F7AAFE48B5AE /* Pods-WallAppiOS-resources.sh */,
+				C0575A430A5F63783D887EF545026CBF /* Pods-WallAppiOS-umbrella.h */,
+				76F4EB4858E0D9592D87F24374C6A893 /* Pods-WallAppiOS.debug.xcconfig */,
+				5316C59F33E7166F64EE3B0BFF3B3FD8 /* Pods-WallAppiOS.release.xcconfig */,
+			);
+			name = "Pods-WallAppiOS";
+			path = "Target Support Files/Pods-WallAppiOS";
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -290,24 +259,6 @@
 				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		E248EC95C05E838FB3C4AE5A55C131B0 /* Pods-WallAppiOS-WallAppiOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3D4AFD3619AEBD5BEED2017F686A6461 /* Info.plist */,
-				7061883AA7FA5C554534D389C9B80599 /* Pods-WallAppiOS-WallAppiOSUITests.modulemap */,
-				6BB9154A4B8912AFEE3325E588EF07BB /* Pods-WallAppiOS-WallAppiOSUITests-acknowledgements.markdown */,
-				2001A8ABCEF4825ABC2B0CF86CAD39CD /* Pods-WallAppiOS-WallAppiOSUITests-acknowledgements.plist */,
-				C15E2956747FE4EC906D3D5DCDE710D8 /* Pods-WallAppiOS-WallAppiOSUITests-dummy.m */,
-				C6666D207859CBBEE3EDC1F55906C875 /* Pods-WallAppiOS-WallAppiOSUITests-frameworks.sh */,
-				48DE8D3B8C5377B85285A59CEA1922D3 /* Pods-WallAppiOS-WallAppiOSUITests-resources.sh */,
-				385E7D546FA31C99FA89F83F6C2AFFD8 /* Pods-WallAppiOS-WallAppiOSUITests-umbrella.h */,
-				02808B5E80BCDD7F98074687B9A9A3A9 /* Pods-WallAppiOS-WallAppiOSUITests.debug.xcconfig */,
-				1BA0D12E97EB69932E1942DFD95ACE44 /* Pods-WallAppiOS-WallAppiOSUITests.release.xcconfig */,
-			);
-			name = "Pods-WallAppiOS-WallAppiOSUITests";
-			path = "Target Support Files/Pods-WallAppiOS-WallAppiOSUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,14 +288,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FB3362F3A6B6B568517E781364959395 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BC4C6752835D1ECF772ACA5BA52737C3 /* Pods-WallAppiOS-WallAppiOSUITests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -363,7 +306,7 @@
 			);
 			name = "Pods-WallAppiOS";
 			productName = "Pods-WallAppiOS";
-			productReference = C9B875453A6FD184222F104D385C37D7 /* Pods_WallAppiOS.framework */;
+			productReference = E22111C2F1671A469E8B2CC28C0003AA /* Pods_WallAppiOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		24178A8B899CBF433467B9BA9108CF7D /* Pods-WallAppiOS-WallAppiOSTests */ = {
@@ -381,7 +324,7 @@
 			);
 			name = "Pods-WallAppiOS-WallAppiOSTests";
 			productName = "Pods-WallAppiOS-WallAppiOSTests";
-			productReference = 7563F007F34CC7EFED1308352B0AE871 /* Pods_WallAppiOS_WallAppiOSTests.framework */;
+			productReference = 7C866D6C60B2B09F0E90C4813FF98E2C /* Pods_WallAppiOS_WallAppiOSTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */ = {
@@ -398,25 +341,7 @@
 			);
 			name = Alamofire;
 			productName = Alamofire;
-			productReference = 6F1343D2E68A257E4C182058B08275B6 /* Alamofire.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		ABE7D56A92B3F90CC19E1F215C3D5471 /* Pods-WallAppiOS-WallAppiOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 07EC9E26098657EB8C9E119267B536B1 /* Build configuration list for PBXNativeTarget "Pods-WallAppiOS-WallAppiOSUITests" */;
-			buildPhases = (
-				F95BFBAFDCE4FFA1B7B5AB47DCFC44F0 /* Sources */,
-				992A7BD0FB0BAFB0E855C03B988467BD /* Frameworks */,
-				FB3362F3A6B6B568517E781364959395 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7EB19681BF9780E904C644D6372E8461 /* PBXTargetDependency */,
-			);
-			name = "Pods-WallAppiOS-WallAppiOSUITests";
-			productName = "Pods-WallAppiOS-WallAppiOSUITests";
-			productReference = 33DE964F31BC0614206884AF52BFF277 /* Pods_WallAppiOS_WallAppiOSUITests.framework */;
+			productReference = 0FCDF15267B57D3CA457F1C0C10D2B2D /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -436,14 +361,13 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 728995C41BE57C1C676A273E0D5CFA40 /* Products */;
+			productRefGroup = 70CA40772ECF41C9B632FA82C795C659 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */,
 				16D2DA545118CAC9DD013DFC7CCCAEC3 /* Pods-WallAppiOS */,
 				24178A8B899CBF433467B9BA9108CF7D /* Pods-WallAppiOS-WallAppiOSTests */,
-				ABE7D56A92B3F90CC19E1F215C3D5471 /* Pods-WallAppiOS-WallAppiOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -490,14 +414,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F95BFBAFDCE4FFA1B7B5AB47DCFC44F0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14875765927C5917D039628F29280F62 /* Pods-WallAppiOS-WallAppiOSUITests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -512,12 +428,6 @@
 			name = Alamofire;
 			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
 			targetProxy = 08B475C51018BCBFFD7DA552FED9E10F /* PBXContainerItemProxy */;
-		};
-		7EB19681BF9780E904C644D6372E8461 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
-			targetProxy = 53D84B6BFCE272984FD67DC748A3F2D2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -559,7 +469,7 @@
 		};
 		1F25B243391D24C585BC9257C9104518 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8805D29BF4602089AD032BD0C6EF1DF /* Pods-WallAppiOS-WallAppiOSTests.release.xcconfig */;
+			baseConfigurationReference = 5D9AE218DA5CDE006F3046B3D68DAEF4 /* Pods-WallAppiOS-WallAppiOSTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -595,86 +505,9 @@
 			};
 			name = Release;
 		};
-		39886D5746BB1A08D8E7B9CA4CC5437A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1BA0D12E97EB69932E1942DFD95ACE44 /* Pods-WallAppiOS-WallAppiOSUITests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-WallAppiOS-WallAppiOSUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WallAppiOS-WallAppiOSUITests/Pods-WallAppiOS-WallAppiOSUITests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_WallAppiOS_WallAppiOSUITests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		547C35D9DB209D3CD5174A3C8ACD4F09 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02808B5E80BCDD7F98074687B9A9A3A9 /* Pods-WallAppiOS-WallAppiOSUITests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-WallAppiOS-WallAppiOSUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WallAppiOS-WallAppiOSUITests/Pods-WallAppiOS-WallAppiOSUITests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_WallAppiOS_WallAppiOSUITests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		6D44E2E10E907A48D2702D39C01600D8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4640DCF73971D350AFD59BFCB501B53 /* Pods-WallAppiOS.release.xcconfig */;
+			baseConfigurationReference = 5316C59F33E7166F64EE3B0BFF3B3FD8 /* Pods-WallAppiOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -756,7 +589,7 @@
 		};
 		7B7AA96A51E11EBF92CC110EC58831CF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7958A9901053DC99C6A3B3A8CD34034C /* Pods-WallAppiOS.debug.xcconfig */;
+			baseConfigurationReference = 76F4EB4858E0D9592D87F24374C6A893 /* Pods-WallAppiOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -795,7 +628,7 @@
 		};
 		BEADBDF8A2D3A93D351CDB17151BB9A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C7BAF8D8F53A879DC0829B355B16A38 /* Pods-WallAppiOS-WallAppiOSTests.debug.xcconfig */;
+			baseConfigurationReference = 58C53E59ACCAEC0E6BF3B1CC9C9DF72D /* Pods-WallAppiOS-WallAppiOSTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -919,15 +752,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07EC9E26098657EB8C9E119267B536B1 /* Build configuration list for PBXNativeTarget "Pods-WallAppiOS-WallAppiOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				547C35D9DB209D3CD5174A3C8ACD4F09 /* Debug */,
-				39886D5746BB1A08D8E7B9CA4CC5437A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		168A2A80B6BA7DF09AFF972B31BB9ED4 /* Build configuration list for PBXNativeTarget "Pods-WallAppiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

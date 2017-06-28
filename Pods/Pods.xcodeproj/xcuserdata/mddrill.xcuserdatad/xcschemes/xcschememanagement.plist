@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-WallAppiOS-WallAppiOSUITests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-WallAppiOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -38,11 +33,6 @@
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>ABE7D56A92B3F90CC19E1F215C3D5471</key>
 		<dict>
 			<key>primary</key>
 			<true/>

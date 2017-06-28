@@ -13,9 +13,4 @@ target 'WallAppiOS' do
         pod 'Alamofire', '~> 4.1.0'
         #pod 'Mockingjay'
     end
-    
-    target 'WallAppiOSUITests' do
-        pod 'Alamofire', '~> 4.1.0'
-        #pod 'Mockingjay'
-    end
 end
