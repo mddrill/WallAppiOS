@@ -13,10 +13,17 @@ class WritePostViewController: UIViewController {
     // Controller for view to write a post
     
     var sendPostNow = false
+    // This is so that login and register views can pass text to this view
+    // When user is forced to login, the textView text is passed to the login and/or register views, then after registering
+    // It is passed back to the write post view to be posted
+    // Since prepareForSegue is called before the views are loaded, the text cannot be passed directly into the textView
     var postText: String!
     
-    
     override func viewDidLoad(){
+        if postText != nil {
+            textView.text = postText
+            postText = nil
+        }
         if sendPostNow {
             self.post()
             sendPostNow = false
@@ -36,18 +43,23 @@ class WritePostViewController: UIViewController {
     let accountsClient = AccountsServiceClient.sharedInstance
     
     @IBAction func sendPost(_ sender: UIButton) {
-        postText = self.textView.text
         self.post()
     }
     
     func post(){
+        guard self.validate(textView: textView) else {
+            let alert = UIAlertController(title: "Couldn't post", message: "You have to enter text first before you can post!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         if BaseServiceClient.token == nil {
             // If the user is not logged in, make them log in
             performSegue(withIdentifier: "WriteToLoginSegue", sender: self)
         }
         else{
             // If they are logged in, post their message and go back to wall
-            self.postClient.createPost(postText!) { response in
+            self.postClient.createPost(textView.text!) { response in
                 if let error = response.result.error {
                     let alert = UIAlertController(title: "Error", message: "Could not post: \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
@@ -61,7 +73,7 @@ class WritePostViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "WriteToLoginSegue" {
             let loginViewController = segue.destination as! LoginViewController
-            loginViewController.writePostText = postText
+            loginViewController.writePostText = textView.text
         }
     }
     
@@ -72,5 +84,17 @@ class WritePostViewController: UIViewController {
     func logOut(){
         accountsClient.logOut()
         self.navigationItem.rightBarButtonItem = nil
+    }
+    
+    func validate(textView: UITextView) -> Bool {
+        guard let text = textView.text,
+            !text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty else {
+                // this will be reached if the text is nil (unlikely)
+                // or if the text only contains white spaces
+                // or no text at all
+                return false
+        }
+        
+        return true
     }
 }

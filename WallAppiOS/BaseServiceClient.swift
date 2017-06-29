@@ -22,12 +22,15 @@ public class BaseServiceClient {
 
     func printResponse(response: DataResponse<Any>){
         print("Success: \(response.result.isSuccess)")
-        print("Response: \(response.result.value)")
-        print("Request was: \(response.request)")
+        if let value = response.result.value {
+            print("Response: \(value)")
+        }
+        if let body = response.request!.httpBody {
+            print("Request was: \(body)")
+        }
         
         let statusCode = response.response?.statusCode
         if let error = response.result.error as? AFError {
-            var privateStatusCode = error._code
             switch error {
             case .invalidURL(let url):
                 print("Invalid URL: \(url) - \(error.localizedDescription)")
@@ -50,20 +53,19 @@ public class BaseServiceClient {
                     print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
                 case .unacceptableStatusCode(let code):
                     print("Response status code was unacceptable: \(code)")
-                    privateStatusCode = code
                 }
             case .responseSerializationFailed(let reason):
                 print("Response serialization failed: \(error.localizedDescription)")
                 print("Failure Reason: \(reason)")
             }
             
-            print("Underlying error: \(error.underlyingError)")
+            print("Underlying error: \(String(describing: error.underlyingError))")
         } else if let error = response.result.error as? URLError {
             print("URLError occurred: \(error)")
         } else {
-            print("Unknown error: \(response.result.error)")
+            print("Unknown error: \(String(describing: response.result.error))")
         }
         
-        print("Status Code: \(statusCode)")
+        print("Status Code: \(String(describing: statusCode))")
     }
 }

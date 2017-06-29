@@ -71,8 +71,6 @@ public class PostServiceClient: BaseServiceClient {
                 "Did not get JSON dictionary in response"))
         }
         
-        print(json)
-        
         // The response is in JSON format, parse it and put it in an array of Post objects
         var wrapper:PostWrapper = PostWrapper()
         wrapper.next = json["next"] as? String

@@ -42,7 +42,8 @@ class AccountsServiceClient: BaseServiceClient {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON {response in
-//                self.printResponse(response: response)
+                print("Response from register user request:")
+                self.printResponse(response: response)
                 completionHandler(response)
         }
     }
@@ -62,14 +63,13 @@ class AccountsServiceClient: BaseServiceClient {
             .responseJSON {response in
                 // make sure we got JSON and turn it into a dictionary
                 if let json = response.result.value as? [String: Any] {
-                    print(json)
-                    print(json["token"] as! String)
                     BaseServiceClient.token = json["token"] as! String
                 }
                 else {
-                    print("Could not login error = \(response.result.error)")
+                    print("Could not login error = \(String(describing: response.result.error))")
                 }
-//                self.printResponse(response: response)
+                print("Response to login request")
+                self.printResponse(response: response)
                 completionHandler(response)
         }
         
