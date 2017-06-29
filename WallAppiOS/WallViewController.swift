@@ -25,6 +25,7 @@ class WallViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var isLoadingPosts = false
     
     let postClient = PostServiceClient.sharedInstance
+    let accountsClient = AccountsServiceClient.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,12 @@ class WallViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // If logged in create log out button
+        if AccountsServiceClient.loggedIn() {
+            let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
+            self.navigationItem.rightBarButtonItem = logOutButton
+        }
         
         self.loadFirstPosts()
     }
@@ -154,6 +161,15 @@ class WallViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func exitApp(action: UIAlertAction){
         UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+    }
+    
+    func logOut(){
+        accountsClient.logOut()
+        self.posts = nil
+        self.postsWrapper = nil
+        self.tableView?.reloadData()
+        self.loadFirstPosts()
+        self.navigationItem.rightBarButtonItem = nil
     }
 }
 

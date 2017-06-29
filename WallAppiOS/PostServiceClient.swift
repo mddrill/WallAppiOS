@@ -26,17 +26,14 @@ public class PostServiceClient: BaseServiceClient {
         let parameters: [String: String] = [
             "text": text,
         ]
-        let user = BaseServiceClient.username
-        let password = BaseServiceClient.password
-        let credentialData = "\(user!):\(password!)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let token = BaseServiceClient.token
+        let headers = ["Authorization": "Token \(token!)"]
         self.sessionManager.request(endpointForPost(), method: .post, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
                 if response.result.error != nil {
-                    self.printResponse(response: response)
+//                    self.printResponse(response: response)
                     completionHandler(response)
                     return
                 }
@@ -61,13 +58,13 @@ public class PostServiceClient: BaseServiceClient {
     }
     
     func postArrayFromResponse(_ response: DataResponse<Any>) -> Result<PostWrapper> {
-        // Now that we've gotten a response from the backend, make sure it is JSON
+        // Now that we've gotten a response from the backend
         guard response.result.error == nil else {
             // got an error in getting the data, need to handle it
             return .failure(response.result.error!)
         }
         
-        // make sure we got JSON and it's a dictionary
+        // make sure we got JSON and turn it into a dictionary
         guard let json = response.result.value as? [String: Any] else {
             print("Didn't get post object as JSON from API")
             return .failure(BackendError.objectSerialization(reason:
@@ -114,7 +111,7 @@ public class PostServiceClient: BaseServiceClient {
             .responseJSON { response in
                 if let error = response.result.error {
                     completionHandler(.failure(error))
-                    self.printResponse(response: response)
+//                    self.printResponse(response: response)
                     return
                 }
                 let postWrapperResult = self.postArrayFromResponse(response)
@@ -126,17 +123,14 @@ public class PostServiceClient: BaseServiceClient {
     
     // Method to delete post
     func deletePost(WithId id: Int, completionHandler: @escaping (DataResponse<Any>) -> Void){
-        let user = BaseServiceClient.username
-        let password = BaseServiceClient.password
-        let credentialData = "\(user!):\(password!)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let token = BaseServiceClient.token
+        let headers = ["Authorization": "Token \(token!)"]
         self.sessionManager.request("\(endpointForPost())/\(id)", method: .delete, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
                 if response.result.error != nil {
-                    self.printResponse(response: response)
+//                    self.printResponse(response: response)
                     completionHandler(response)
                     return
                 }
@@ -149,17 +143,14 @@ public class PostServiceClient: BaseServiceClient {
         let parameters: [String: String] = [
             "text": newText,
             ]
-        let user = BaseServiceClient.username
-        let password = BaseServiceClient.password
-        let credentialData = "\(user!):\(password!)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let token = BaseServiceClient.token
+        let headers = ["Authorization": "Token \(token!)"]
         self.sessionManager.request("\(endpointForPost())/\(id)", method: .patch, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
                 if response.result.error != nil {
-                    self.printResponse(response: response)
+//                    self.printResponse(response: response)
                     completionHandler(response)
                     return
                 }

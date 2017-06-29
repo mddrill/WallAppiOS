@@ -15,8 +15,8 @@ class WallAppiOSTests: XCTestCase {
     let postClient = PostServiceClient.sharedInstance
     let accountsClient = AccountsServiceClient.sharedInstance
     
-    let username = "testuser1"
-    let password = "testpassword1"
+    let username = "testuser235yui34"
+    let password = "testpasswordhbihjin34"
     let email = "test@email.com"
     
     override func setUp() {
@@ -24,9 +24,8 @@ class WallAppiOSTests: XCTestCase {
         //Register a user so that we can test writing  to the wall under that name
         accountsClient.register(User: username, WithPassword: password, AndEmail: email, completionHandler: {_ in })
         
-        // Reset username and password each time so that we only log in to tests where we need to log in
-        BaseServiceClient.username = nil
-        BaseServiceClient.password = nil
+        // Reset token each time so that we only log in to tests where we need to log in
+        BaseServiceClient.token = nil
     }
     
     override func tearDown() {
@@ -48,11 +47,14 @@ class WallAppiOSTests: XCTestCase {
     
     // Test that users can write to the wall after login
     func testCreatePost(){
-        accountsClient.login(WithUsername: username, AndPassword: password)
-        postClient.createPost("Test text") { response in
+        accountsClient.login(WithUsername: username, AndPassword: password){ response in
             let status = response.response?.statusCode
-            //            print("here:\(status)")
-            XCTAssertEqual(status!, 201)
+            XCTAssertEqual(status!, 200)
+            self.postClient.createPost("Test text") { response in
+                let status = response.response?.statusCode
+                // print("here:\(status)")
+                XCTAssertEqual(status!, 201)
+            }
         }
     }
 }

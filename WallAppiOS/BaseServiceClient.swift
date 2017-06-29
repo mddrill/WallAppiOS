@@ -12,9 +12,8 @@ public class BaseServiceClient {
      * Parent class for all service clients
     */
     
-    static var username: String!
-    static var password: String!
-        
+    static var token: String!
+    
     var sessionManager : SessionManager!
     
     init() {

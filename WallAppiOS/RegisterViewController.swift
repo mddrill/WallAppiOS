@@ -25,6 +25,9 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
         // IMPORTANT: This code allows me to test this app on my local machine by turning off certificate
         // checking, I understand that it is not secure and would not put this code in production
         accountsClient.sessionManager.delegate.sessionDidReceiveChallenge = { session, challenge in
@@ -74,20 +77,30 @@ class RegisterViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            self.accountsClient.login(WithUsername: username, AndPassword: password)
-            self.performSegue(withIdentifier: "RegisterToWriteSegue", sender: self)
+            self.accountsClient.login(WithUsername: username, AndPassword: password){response in
+                if let error = response.result.error {
+                    print("Something went really wrong, was unable to log user in immediately after registering")
+                }
+                self.performSegue(withIdentifier: "RegisterToWriteSegue", sender: self)
+            }
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RegisterToWriteSegue" {
+            print("RegisterToWriteSegue")
             let writePostViewController = segue.destination as! WritePostViewController
             writePostViewController.postText = writePostText
             writePostViewController.sendPostNow = true
         }
         if segue.identifier == "RegisterToLoginSegue" {
+            print("RegisterToLoginSegue")
             let loginViewController = segue.destination as! LoginViewController
             loginViewController.writePostText = writePostText
         }
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

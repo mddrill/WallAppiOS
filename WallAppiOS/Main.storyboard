@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J7y-hz-R9K">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="594"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mycell" id="Xha-gs-goA" customClass="PostTableViewCell" customModule="WallAppiOS" customModuleProvider="target">
@@ -69,7 +69,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGv-di-cYc">
-                                <rect key="frame" x="112.5" y="602" width="150" height="50"/>
+                                <rect key="frame" x="112.5" y="558" width="150" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ngZ-uc-YXt"/>
@@ -93,7 +93,9 @@
                             <constraint firstItem="J7y-hz-R9K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sxz-lJ-Wfs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Wall" id="skc-Zh-zVc"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Wall" id="NBz-bl-Agy"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="J7y-hz-R9K" id="Ik8-Yb-DCi"/>
                         <segue destination="K9b-vC-A9o" kind="show" identifier="WallToWriteSegue" id="ksk-Xe-cNm"/>
@@ -128,7 +130,7 @@
                                         <rect key="frame" x="0.0" y="25.5" width="125" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAI-Rt-ile">
                                         <rect key="frame" x="25.5" y="60.5" width="74" height="20.5"/>
@@ -140,7 +142,7 @@
                                         <rect key="frame" x="2" y="86" width="121" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33Z-Yj-AMI">
                                         <rect key="frame" x="0.0" y="121" width="125" height="30"/>
@@ -183,7 +185,9 @@
                             <constraint firstItem="YXB-We-ffa" firstAttribute="centerX" secondItem="rMX-gI-8LS" secondAttribute="centerX" id="EUt-HS-yzM"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Login" id="lN4-XY-ofD"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="passwordField" destination="yvY-aq-dAp" id="0zB-pm-gjD"/>
                         <outlet property="usernameField" destination="0QB-1l-hZe" id="l2I-Fq-D31"/>
@@ -219,7 +223,7 @@
                                         <rect key="frame" x="12.5" y="25.5" width="125" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjV-l9-xlZ">
                                         <rect key="frame" x="38" y="60.5" width="74" height="20.5"/>
@@ -231,7 +235,7 @@
                                         <rect key="frame" x="14.5" y="86" width="121" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Re-enter Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wh-nB-Kax">
                                         <rect key="frame" x="2.5" y="121" width="145.5" height="20.5"/>
@@ -243,7 +247,7 @@
                                         <rect key="frame" x="3" y="146.5" width="144" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dt-Vo-eZu">
                                         <rect key="frame" x="54.5" y="181.5" width="41" height="20.5"/>
@@ -255,7 +259,7 @@
                                         <rect key="frame" x="0.0" y="207" width="150" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FqV-bg-ReN">
                                         <rect key="frame" x="0.0" y="242" width="150" height="30"/>
@@ -298,7 +302,9 @@
                             <constraint firstItem="GJ8-XG-cNw" firstAttribute="top" secondItem="D7x-xd-EsK" secondAttribute="bottom" constant="8" id="x0Y-TG-Igq"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Register" id="qI8-cs-CwJ"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="emailField" destination="OjU-wc-zdR" id="lwv-zR-Ytw"/>
                         <outlet property="passwordField" destination="oOa-uE-Zlk" id="4Jd-Uh-ryV"/>
@@ -324,7 +330,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="THy-UD-Jvw">
-                                <rect key="frame" x="16" y="80" width="343" height="579"/>
+                                <rect key="frame" x="16" y="80" width="343" height="535"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -354,6 +360,7 @@
                             <constraint firstItem="THy-UD-Jvw" firstAttribute="top" secondItem="ddr-eO-c9r" secondAttribute="bottom" constant="8" id="jvt-Gv-nkE"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Write Something" id="ny2-qY-Bcj"/>
                     <connections>
                         <outlet property="textView" destination="THy-UD-Jvw" id="EOr-hB-kTj"/>
@@ -386,7 +393,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Dsu-gR-XCn"/>
-        <segue reference="ksk-Xe-cNm"/>
+        <segue reference="6u1-wI-3ME"/>
         <segue reference="FuK-r2-N1N"/>
     </inferredMetricsTieBreakers>
 </document>

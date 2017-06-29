@@ -51,17 +51,39 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: UIButton) {
         print("login button pressed")
-        accountsClient.login(WithUsername: usernameField.text!, AndPassword: passwordField.text!)
-        performSegue(withIdentifier: "LoginToWriteSegue", sender: self)
+        accountsClient.login(WithUsername: usernameField.text!, AndPassword: passwordField.text!) { response in
+            if let error = response.result.error {
+                let statusCode = response.response?.statusCode
+                
+                // If bad request error, tell user they entered the wrong credentials
+                if statusCode == 400 {
+                    let alert = UIAlertController(title: "Invalid Credentials", message: "Incorrect username or password, please try again", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                // Otherwise, we don't know what happened
+                else{
+                    let alert = UIAlertController(title: "Error", message: "Could not login: \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+            }
+            else {
+                self.performSegue(withIdentifier: "LoginToWriteSegue", sender: self)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LoginToWriteSegue" {
+            print("LoginToWriteSegue")
             let writePostViewController = segue.destination as! WritePostViewController
             writePostViewController.postText = writePostText
             writePostViewController.sendPostNow = true
         }
         if segue.identifier == "LoginToRegisterSegue" {
+            print("LoginToRegisterSegue")
             let registerViewController = segue.destination as! RegisterViewController
             registerViewController.writePostText = self.writePostText
         }

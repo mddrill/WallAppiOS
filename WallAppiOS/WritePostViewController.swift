@@ -15,16 +15,25 @@ class WritePostViewController: UIViewController {
     var sendPostNow = false
     var postText: String!
     
+    
     override func viewDidLoad(){
         if sendPostNow {
             self.post()
+            sendPostNow = false
         }
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WritePostViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        // If logged in create log out button
+        if AccountsServiceClient.loggedIn() {
+            let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
+            self.navigationItem.rightBarButtonItem = logOutButton
+        }
     }
     
     @IBOutlet weak var textView: UITextView!
     let postClient = PostServiceClient.sharedInstance
+    let accountsClient = AccountsServiceClient.sharedInstance
     
     @IBAction func sendPost(_ sender: UIButton) {
         postText = self.textView.text
@@ -32,7 +41,7 @@ class WritePostViewController: UIViewController {
     }
     
     func post(){
-        if BaseServiceClient.username == nil || BaseServiceClient.password == nil {
+        if BaseServiceClient.token == nil {
             // If the user is not logged in, make them log in
             performSegue(withIdentifier: "WriteToLoginSegue", sender: self)
         }
@@ -58,5 +67,10 @@ class WritePostViewController: UIViewController {
     
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func logOut(){
+        accountsClient.logOut()
+        self.navigationItem.rightBarButtonItem = nil
     }
 }

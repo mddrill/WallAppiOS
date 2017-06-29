@@ -15,8 +15,16 @@ class AccountsServiceClient: BaseServiceClient {
     
     static let sharedInstance: AccountsServiceClient = AccountsServiceClient()
     
+    static func loggedIn() -> Bool {
+        return BaseServiceClient.token != nil
+    }
+    
     func endpointForAccounts() -> String{
         return "https://127.0.0.1:8000/accounts/"
+    }
+    
+    func endpointForLogin() -> String {
+        return "https://127.0.0.1:8000/api-token-auth/"
     }
     
     // Method to register a new user
@@ -34,36 +42,56 @@ class AccountsServiceClient: BaseServiceClient {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON {response in
-                self.printResponse(response: response)
+//                self.printResponse(response: response)
                 completionHandler(response)
         }
     }
     
-    func endpointForLogin() -> String{
-        return "https://127.0.0.1:8000/api-auth/login/?next=/accounts/login/"
+    // Gets authentication token from login endpoint
+    func login(WithUsername username:String, AndPassword password:String, completionHandler:@escaping (DataResponse<Any>) -> Void) {
+        print("login called")
+        let parameters: [String: String] = [
+            "username": username,
+            "password": password,
+        ]
+        
+        // Send request to backend
+        self.sessionManager.request(self.endpointForLogin(), method: .post, parameters: parameters)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseJSON {response in
+                // make sure we got JSON and turn it into a dictionary
+                if let json = response.result.value as? [String: Any] {
+                    print(json)
+                    print(json["token"] as! String)
+                    BaseServiceClient.token = json["token"] as! String
+                }
+                else {
+                    print("Could not login error = \(response.result.error)")
+                }
+//                self.printResponse(response: response)
+                completionHandler(response)
+        }
+        
+        
     }
     
-    // Stores the username and password in global variables for authentication while the app is open
-    func login(WithUsername username:String, AndPassword password:String){
-        BaseServiceClient.username = username
-        BaseServiceClient.password = password
+    func logOut(){
+        BaseServiceClient.token = nil
     }
     
     // These three methods are for extra features which I did not have time to implement
 
     // Method to view Account info
     func viewAccount(id: Int, completionHandler: @escaping (DataResponse<Any>) -> Account){
-        let user = BaseServiceClient.username
-        let password = BaseServiceClient.password
-        let credentialData = "\(user!):\(password!)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let token = BaseServiceClient.token
+        let headers = ["Authorization": "Token \(token!)"]
         self.sessionManager.request("\(endpointForAccounts())/\(id)", method: .get, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
                 if response.result.error != nil {
-                    self.printResponse(response: response)
+//                    self.printResponse(response: response)
                     completionHandler(response)
                     return
                 }
@@ -72,17 +100,14 @@ class AccountsServiceClient: BaseServiceClient {
     
     // Method to delete Account
     func deleteAccount(id: Int, completionHandler: @escaping (DataResponse<Any>) -> Void){
-        let user = BaseServiceClient.username
-        let password = BaseServiceClient.password
-        let credentialData = "\(user!):\(password!)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let token = BaseServiceClient.token
+        let headers = ["Authorization": "Token \(token!)"]
         self.sessionManager.request("\(endpointForAccounts())/\(id)", method: .delete, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
                 if response.result.error != nil {
-                    self.printResponse(response: response)
+//                    self.printResponse(response: response)
                     completionHandler(response)
                     return
                 }
@@ -94,17 +119,14 @@ class AccountsServiceClient: BaseServiceClient {
         let parameters: [String: String] = [
             "email": newEmail,
             ]
-        let user = BaseServiceClient.username
-        let password = BaseServiceClient.password
-        let credentialData = "\(user!):\(password!)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        let token = BaseServiceClient.token
+        let headers = ["Authorization": "Token \(token!)"]
         self.sessionManager.request("\(endpointForAccounts())/\(id)", method: .patch, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
                 if response.result.error != nil {
-                    self.printResponse(response: response)
+//                    self.printResponse(response: response)
                     completionHandler(response)
                     return
                 }
