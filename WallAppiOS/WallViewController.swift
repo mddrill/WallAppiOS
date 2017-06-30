@@ -12,6 +12,8 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
 }
 
 class WallViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -23,6 +25,8 @@ class WallViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var posts: [Post]!
     var postsWrapper: PostWrapper!
     var isLoadingPosts = false
+    
+    var postToEdit: Post!
     
     let postClient = PostServiceClient.sharedInstance
     let accountsClient = AccountsServiceClient.sharedInstance
@@ -80,6 +84,19 @@ class WallViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let postToShow = posts[indexPath.row]
             cell.label.text = "\(postToShow.author!) posted this on \(postToShow.postedAt!)"
             cell.textView.text = postToShow.text
+            
+             // If the user is logged in and this post belongs to them, they see an edit and delete button on their posts
+            if AccountsServiceClient.loggedIn() && postToShow.belongsTo(author: BaseServiceClient.username){
+                cell.deleteButton.tag = postToShow.id
+                cell.deleteButton.addTarget(self, action: #selector(pressDeleteButton), for: .touchUpInside)
+                
+                cell.editButton.tag = indexPath.row
+                cell.editButton.addTarget(self, action: #selector(pressEditButton), for: .touchUpInside)
+            } else {
+            // Otherwise the delete and edit buttons are hidden
+                cell.deleteButton.isHidden = true
+                cell.editButton.isHidden = true
+            }
             
             // See if we need to load more posts
             let rowsToLoadFromBottom = 5;
@@ -165,11 +182,42 @@ class WallViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func logOut(){
         accountsClient.logOut()
+        self.reloadPosts()
+        self.navigationItem.rightBarButtonItem = nil
+    }
+    
+    func reloadPosts() {
         self.posts = nil
         self.postsWrapper = nil
-        self.tableView?.reloadData()
         self.loadFirstPosts()
-        self.navigationItem.rightBarButtonItem = nil
+    }
+    
+    func pressEditButton(sender: UIButton) {
+        // postIdx is the posts index number in the posts array, not the post's id on the backend
+        let postIdx = sender.tag
+        postToEdit = posts[postIdx]
+        performSegue(withIdentifier: "WallToEditSegue", sender: self)
+        self.reloadPosts()
+    }
+    
+    func pressDeleteButton(sender: UIButton) {
+        let postId = sender.tag
+        postClient.delete(postWithId: postId) { response in
+            if let error = response.result.error {
+                let alert = UIAlertController(title: "Error", message: "Could not delte this post: \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        self.reloadPosts()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "WallToEditSegue" {
+            let editPostViewController = segue.destination as! EditPostViewController
+            editPostViewController.postText = postToEdit.text
+            editPostViewController.postId = postToEdit.id
+        }
     }
 }
 

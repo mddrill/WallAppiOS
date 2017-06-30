@@ -42,4 +42,9 @@ public struct Post {
         dateFormatter2.dateFormat = "eee MMM dd, YYYY"
         self.postedAt = dateFormatter2.string(from: unformattedDate!)
     }
+    
+    // Checks if post belongs to author
+    func belongsTo(author: String) -> Bool {
+        return author == self.author
+    }
 }

@@ -21,7 +21,7 @@ public class PostServiceClient: BaseServiceClient {
     static let sharedInstance: PostServiceClient = PostServiceClient()
     
     // Method to post to the wall
-    func createPost(_ text: String, completionHandler: @escaping (DataResponse<Any>) -> Void){
+    func create(postWithText text: String, completionHandler: @escaping (DataResponse<Any>) -> Void){
         // Add parameters
         let parameters: [String: String] = [
             "text": text,
@@ -55,6 +55,9 @@ public class PostServiceClient: BaseServiceClient {
     
     func endpointForPost() -> String {
         return "https://127.0.0.1:8000/post/"
+    }
+    func endpointForPost(withId id: Int) -> String {
+        return "https://127.0.0.1:8000/post/\(id)/"
     }
     
     func postArrayFromResponse(_ response: DataResponse<Any>) -> Result<PostWrapper> {
@@ -120,10 +123,10 @@ public class PostServiceClient: BaseServiceClient {
     // These methods are for extra features which I did not have time to implement
     
     // Method to delete post
-    func deletePost(WithId id: Int, completionHandler: @escaping (DataResponse<Any>) -> Void){
+    func delete(postWithId id: Int, completionHandler: @escaping (DataResponse<Any>) -> Void){
         let token = BaseServiceClient.token
         let headers = ["Authorization": "Token \(token!)"]
-        self.sessionManager.request("\(endpointForPost())/\(id)", method: .delete, headers: headers)
+        self.sessionManager.request(endpointForPost(withId: id), method: .delete, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
@@ -136,14 +139,14 @@ public class PostServiceClient: BaseServiceClient {
     }
     
     // Method to edit post
-    func editPost(_ id:Int, post: Post, newText: String, completionHandler: @escaping (DataResponse<Any>) -> Void){
+    func edit(postWithId id:Int, withNewText newText: String, completionHandler: @escaping (DataResponse<Any>) -> Void){
         // Add parameters
         let parameters: [String: String] = [
             "text": newText,
             ]
         let token = BaseServiceClient.token
         let headers = ["Authorization": "Token \(token!)"]
-        self.sessionManager.request("\(endpointForPost())/\(id)", method: .patch, parameters: parameters, headers: headers)
+        self.sessionManager.request(endpointForPost(withId: id), method: .patch, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in

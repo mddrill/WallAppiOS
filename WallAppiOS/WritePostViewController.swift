@@ -59,7 +59,7 @@ class WritePostViewController: UIViewController {
         }
         else{
             // If they are logged in, post their message and go back to wall
-            self.postClient.createPost(textView.text!) { response in
+            self.postClient.create(postWithText: textView.text!) { response in
                 if let error = response.result.error {
                     let alert = UIAlertController(title: "Error", message: "Could not post: \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A2CD8D7804AE6E451511C5E /* Pods_WallAppiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A7DEEC469DF342BFED1046 /* Pods_WallAppiOS.framework */; };
+		BC90825C1F06DF8A004DCC4E /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90825B1F06DF8A004DCC4E /* EditPostViewController.swift */; };
 		BCC700611EFCD69B00C6DF88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700601EFCD69B00C6DF88 /* AppDelegate.swift */; };
 		BCC700631EFCD69B00C6DF88 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700621EFCD69B00C6DF88 /* WallViewController.swift */; };
 		BCC700681EFCD69B00C6DF88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCC700671EFCD69B00C6DF88 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		83B4A13CBF31EB9CAD9530A4 /* Pods-WallAppiOS-WallAppiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallAppiOS-WallAppiOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallAppiOS-WallAppiOSUITests/Pods-WallAppiOS-WallAppiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9B29E83F4CEF378E082ED6B2 /* Pods-WallAppiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallAppiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallAppiOS/Pods-WallAppiOS.release.xcconfig"; sourceTree = "<group>"; };
 		A7AB250DABD2416453D8E380 /* Pods-WallAppiOS-WallAppiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallAppiOS-WallAppiOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WallAppiOS-WallAppiOSUITests/Pods-WallAppiOS-WallAppiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BC90825B1F06DF8A004DCC4E /* EditPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		BCC7005D1EFCD69B00C6DF88 /* WallAppiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallAppiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC700601EFCD69B00C6DF88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCC700621EFCD69B00C6DF88 /* WallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				BCC7009B1EFCE09D00C6DF88 /* WritePostViewController.swift */,
 				BCC7009C1EFCE09D00C6DF88 /* LoginViewController.swift */,
 				BCC7009D1EFCE09D00C6DF88 /* RegisterViewController.swift */,
+				BC90825B1F06DF8A004DCC4E /* EditPostViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				BCC700A01EFCE09D00C6DF88 /* RegisterViewController.swift in Sources */,
 				BCC700A41EFCE0CB00C6DF88 /* Account.swift in Sources */,
 				BCC700961EFCDA4400C6DF88 /* PostServiceClient.swift in Sources */,
+				BC90825C1F06DF8A004DCC4E /* EditPostViewController.swift in Sources */,
 				BCC7009A1EFCDA8700C6DF88 /* BaseServiceClient.swift in Sources */,
 				BCC700611EFCD69B00C6DF88 /* AppDelegate.swift in Sources */,
 				BCC700981EFCDA4A00C6DF88 /* Post.swift in Sources */,

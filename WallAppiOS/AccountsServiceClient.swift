@@ -64,6 +64,7 @@ class AccountsServiceClient: BaseServiceClient {
                 // make sure we got JSON and turn it into a dictionary
                 if let json = response.result.value as? [String: Any] {
                     BaseServiceClient.token = json["token"] as! String
+                    BaseServiceClient.username = username
                 }
                 else {
                     print("Could not login error = \(String(describing: response.result.error))")
@@ -78,6 +79,7 @@ class AccountsServiceClient: BaseServiceClient {
     
     func logOut(){
         BaseServiceClient.token = nil
+        BaseServiceClient.username = nil
     }
     
     // These three methods are for extra features which I did not have time to implement

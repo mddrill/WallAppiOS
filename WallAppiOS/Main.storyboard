@@ -39,8 +39,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEy-Lb-5B2">
+                                                    <rect key="frame" x="8" y="53.5" width="30" height="30"/>
+                                                    <state key="normal" title="Edit"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2Y-qF-Qe9">
+                                                    <rect key="frame" x="322" y="53.5" width="45" height="38"/>
+                                                    <state key="normal" title="Delete"/>
+                                                </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gkT-ON-tAm">
-                                                    <rect key="frame" x="8" y="29" width="359" height="62.5"/>
+                                                    <rect key="frame" x="8" y="28.5" width="359" height="17"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -48,16 +56,23 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="gkT-ON-tAm" firstAttribute="leading" secondItem="qI0-Ou-RRm" secondAttribute="leadingMargin" id="4AK-HU-Y8v"/>
-                                                <constraint firstItem="gkT-ON-tAm" firstAttribute="top" secondItem="4QK-pd-dTs" secondAttribute="bottom" constant="8" id="5oS-cH-kSX"/>
+                                                <constraint firstItem="fEy-Lb-5B2" firstAttribute="top" secondItem="gkT-ON-tAm" secondAttribute="bottom" constant="8" id="0xX-oX-yYa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="fEy-Lb-5B2" secondAttribute="bottom" constant="8" id="D1A-0l-g8e"/>
+                                                <constraint firstItem="gkT-ON-tAm" firstAttribute="trailing" secondItem="qI0-Ou-RRm" secondAttribute="trailingMargin" id="G4x-19-vvl"/>
+                                                <constraint firstItem="gkT-ON-tAm" firstAttribute="top" secondItem="4QK-pd-dTs" secondAttribute="bottom" constant="8" id="Iwc-Mk-jKn"/>
+                                                <constraint firstItem="gkT-ON-tAm" firstAttribute="leading" secondItem="qI0-Ou-RRm" secondAttribute="leadingMargin" id="LaF-AT-VyX"/>
                                                 <constraint firstAttribute="trailing" secondItem="4QK-pd-dTs" secondAttribute="trailing" id="NGn-lS-GSc"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="gkT-ON-tAm" secondAttribute="trailing" id="fOi-h0-FMK"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="gkT-ON-tAm" secondAttribute="bottom" id="hoy-qw-JAU"/>
+                                                <constraint firstAttribute="bottom" secondItem="D2Y-qF-Qe9" secondAttribute="bottom" constant="8" id="Ra2-Kj-tRo"/>
+                                                <constraint firstItem="D2Y-qF-Qe9" firstAttribute="top" secondItem="gkT-ON-tAm" secondAttribute="bottom" constant="8" id="Ryd-1U-T2X"/>
+                                                <constraint firstItem="fEy-Lb-5B2" firstAttribute="leading" secondItem="qI0-Ou-RRm" secondAttribute="leadingMargin" id="Wkw-aE-fEm"/>
+                                                <constraint firstAttribute="trailing" secondItem="D2Y-qF-Qe9" secondAttribute="trailing" constant="8" id="cD9-Md-3Yz"/>
                                                 <constraint firstItem="4QK-pd-dTs" firstAttribute="leading" secondItem="qI0-Ou-RRm" secondAttribute="leading" constant="8" id="nuL-OM-2uB"/>
                                                 <constraint firstItem="4QK-pd-dTs" firstAttribute="top" secondItem="qI0-Ou-RRm" secondAttribute="top" id="r8k-uf-fyI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="deleteButton" destination="D2Y-qF-Qe9" id="4A3-4t-qK4"/>
+                                            <outlet property="editButton" destination="fEy-Lb-5B2" id="FEZ-WJ-gyy"/>
                                             <outlet property="label" destination="4QK-pd-dTs" id="FPa-go-cCU"/>
                                             <outlet property="textView" destination="gkT-ON-tAm" id="fP3-l7-OI8"/>
                                         </connections>
@@ -99,11 +114,12 @@
                     <connections>
                         <outlet property="tableView" destination="J7y-hz-R9K" id="Ik8-Yb-DCi"/>
                         <segue destination="K9b-vC-A9o" kind="show" identifier="WallToWriteSegue" id="ksk-Xe-cNm"/>
+                        <segue destination="mD6-mY-1FR" kind="show" identifier="WallToEditSegue" id="4q7-mw-QQF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055.625" y="123.59154929577466"/>
+            <point key="canvasLocation" x="1055.2" y="122.78860569715144"/>
         </scene>
         <!--Login-->
         <scene sceneID="MjC-Lf-E3h">
@@ -390,10 +406,64 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
+        <!--Edit-->
+        <scene sceneID="YDX-7B-dK6">
+            <objects>
+                <viewController id="mD6-mY-1FR" customClass="EditPostViewController" customModule="WallAppiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="177-mZ-rt3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eh7-Am-mUa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SP0-B2-G5e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Pc2-Fy-UJd">
+                                <rect key="frame" x="16" y="80" width="343" height="535"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zm-aG-vYh">
+                                <rect key="frame" x="112" y="22" width="150" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="cp6-wx-ICd"/>
+                                    <constraint firstAttribute="height" constant="50" id="hRp-Qi-amu"/>
+                                </constraints>
+                                <state key="normal" title="Confirm Edits">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmEdit:" destination="mD6-mY-1FR" eventType="touchUpInside" id="pb3-LH-zzL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pc2-Fy-UJd" firstAttribute="leading" secondItem="SP0-B2-G5e" secondAttribute="leadingMargin" id="Jm0-Jo-OiB"/>
+                            <constraint firstItem="Pc2-Fy-UJd" firstAttribute="top" secondItem="3Zm-aG-vYh" secondAttribute="bottom" constant="8" id="PHc-lJ-zgX"/>
+                            <constraint firstItem="Eh7-Am-mUa" firstAttribute="top" secondItem="Pc2-Fy-UJd" secondAttribute="bottom" constant="8" id="WMr-gj-UW7"/>
+                            <constraint firstItem="3Zm-aG-vYh" firstAttribute="top" secondItem="177-mZ-rt3" secondAttribute="bottom" constant="2" id="bsR-AP-dV0"/>
+                            <constraint firstItem="3Zm-aG-vYh" firstAttribute="centerX" secondItem="SP0-B2-G5e" secondAttribute="centerX" id="ltH-2f-VIM"/>
+                            <constraint firstItem="Pc2-Fy-UJd" firstAttribute="trailing" secondItem="SP0-B2-G5e" secondAttribute="trailingMargin" id="t7R-Am-kBV"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Edit" id="qTL-bY-udY"/>
+                    <connections>
+                        <outlet property="textView" destination="Pc2-Fy-UJd" id="kGN-tv-E9F"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="EditToWallSegue" id="haZ-aI-PZN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ix-RR-6wk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1055" y="-591"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Dsu-gR-XCn"/>
-        <segue reference="6u1-wI-3ME"/>
+        <segue reference="haZ-aI-PZN"/>
+        <segue reference="ksk-Xe-cNm"/>
         <segue reference="FuK-r2-N1N"/>
     </inferredMetricsTieBreakers>
 </document>

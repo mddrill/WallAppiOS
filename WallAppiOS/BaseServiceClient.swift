@@ -13,6 +13,7 @@ public class BaseServiceClient {
     */
     
     static var token: String!
+    static var username: String!
     
     var sessionManager : SessionManager!
     
