@@ -73,12 +73,13 @@ class RegisterViewController: BaseViewController {
         }
     }
     
-    override func handle(requestError error: Error) {
-        if (error as? AFError) != nil && (error as? AFError)?.responseCode == 400 {
-            popUpError(withMessage: "That username is already taken!")
+    override func handle(requestError: Error) {
+        if let error = requestError as? AFError,
+            error.responseCode! == 400 {
+            popUpError(withMessage: "Sorry! that username is already taken")
         }
         else{
-            super.handle(requestError: error)
+            super.handle(requestError: requestError)
         }
     }
 }

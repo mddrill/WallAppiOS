@@ -16,7 +16,7 @@ enum PostFields: String {
 }
 
 public struct PostWrapper {
-    var posts: [Post]!
+    var posts: [Post] = []
     var count: Int!
     var next: String!
     var previous: String!

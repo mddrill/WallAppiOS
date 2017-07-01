@@ -50,12 +50,13 @@ class LoginViewController: BaseViewController {
         }
     }
     
-    override func handle(requestError error: Error) {
-        if (error as? AFError) != nil && (error as? AFError)?.responseCode == 400 {
-            popUpError(withMessage: "Incorrect Username or Password!")
+    override func handle(requestError: Error) {
+        if let error = requestError as? AFError,
+            error.responseCode! == 400 {
+            popUpError(withMessage: "Incorrect username or password")
         }
         else{
-            super.handle(requestError: error)
+            super.handle(requestError: requestError)
         }
     }
 }

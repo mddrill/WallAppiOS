@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8D8DFDC3F97E4CF9641AE611D818C205"
-               BuildableName = "Pods_WallAppiOS.framework"
-               BlueprintName = "Pods-WallAppiOS"
+               BlueprintIdentifier = "BAC5B1AA3F92A82E0FDD3BF2DF82605C"
+               BuildableName = "Pods_WallAppiOS_WallAppiOSUITests.framework"
+               BlueprintName = "Pods-WallAppiOS-WallAppiOSUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8D8DFDC3F97E4CF9641AE611D818C205"
-            BuildableName = "Pods_WallAppiOS.framework"
-            BlueprintName = "Pods-WallAppiOS"
+            BlueprintIdentifier = "BAC5B1AA3F92A82E0FDD3BF2DF82605C"
+            BuildableName = "Pods_WallAppiOS_WallAppiOSUITests.framework"
+            BlueprintName = "Pods-WallAppiOS-WallAppiOSUITests"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

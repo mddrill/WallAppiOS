@@ -29,7 +29,7 @@ class AccountsServiceClientSpec: QuickSpec {
                     
                     let path = Bundle(for: type(of: self)).path(forResource: "RegisterUser", ofType: "json")!
                     let data = NSData(contentsOfFile: path)!
-                    self.stub(uri(self.accountsClient.endpointForAccounts()), jsonData(data as Data, status: 201))
+                    self.stub(uri(AccountsServiceClient.endpointForAccounts()), jsonData(data as Data, status: 201))
                     
                     expect { try self.accountsClient.register(username: username, password1: password,
                                                  password2: password, email: email) { response in
@@ -55,7 +55,7 @@ class AccountsServiceClientSpec: QuickSpec {
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 400, userInfo: nil)
-                    self.stub(uri(self.accountsClient.endpointForAccounts()), failure(error))
+                    self.stub(uri(AccountsServiceClient.endpointForAccounts()), failure(error))
                     
                     expect { try self.accountsClient.register(username: username, password1: password,
                                                               password2: password, email: email) { response in
@@ -70,7 +70,7 @@ class AccountsServiceClientSpec: QuickSpec {
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
-                    self.stub(uri(self.accountsClient.endpointForAccounts()), failure(error))
+                    self.stub(uri(AccountsServiceClient.endpointForAccounts()), failure(error))
                     
                     expect { try self.accountsClient.register(username: username, password1: password,
                                                               password2: password, email: email) { response in
@@ -90,7 +90,7 @@ class AccountsServiceClientSpec: QuickSpec {
                     
                     let path = Bundle(for: type(of: self)).path(forResource: "Login", ofType: "json")!
                     let data = NSData(contentsOfFile: path)!
-                    self.stub(uri(self.accountsClient.endpointForLogin()), jsonData(data as Data, status: 200))
+                    self.stub(uri(AccountsServiceClient.endpointForLogin()), jsonData(data as Data, status: 200))
                     
                     self.accountsClient.login(username: username, password: password){ response in
                         requestError = response.result.error
@@ -107,7 +107,7 @@ class AccountsServiceClientSpec: QuickSpec {
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 400, userInfo: nil)
-                    self.stub(uri(self.accountsClient.endpointForLogin()), failure(error))
+                    self.stub(uri(AccountsServiceClient.endpointForLogin()), failure(error))
                     
                     self.accountsClient.login(username: username, password: "Not the right password") { response in
                         requestError = response.result.error
@@ -120,7 +120,7 @@ class AccountsServiceClientSpec: QuickSpec {
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
-                    self.stub(uri(self.accountsClient.endpointForLogin()), failure(error))
+                    self.stub(uri(AccountsServiceClient.endpointForLogin()), failure(error))
                     
                     self.accountsClient.login(username: username, password: password) { response in
                         requestError = response.result.error

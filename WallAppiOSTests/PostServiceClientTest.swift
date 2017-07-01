@@ -27,7 +27,7 @@ class PostServiceClientSpec: QuickSpec {
                     
                     let path = Bundle(for: type(of: self)).path(forResource: "GetPosts", ofType: "json")!
                     let data = NSData(contentsOfFile: path)!
-                    self.stub(uri(self.postClient.endpointForPost()), jsonData(data as Data))
+                    self.stub(uri(PostServiceClient.endpointForPost()), jsonData(data as Data))
                     
                     self.postClient.getPosts{ result in
                         postsWrapper = result.value
@@ -72,7 +72,7 @@ class PostServiceClientSpec: QuickSpec {
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
-                    self.stub(uri(self.postClient.endpointForPost()), failure(error))
+                    self.stub(uri(PostServiceClient.endpointForPost()), failure(error))
                     
                      self.postClient.getPosts{ result in
                         postsWrapper = result.value
@@ -98,7 +98,7 @@ class PostServiceClientSpec: QuickSpec {
                 
                     let path = Bundle(for: type(of: self)).path(forResource: "CreatePost", ofType: "json")!
                     let data = NSData(contentsOfFile: path)!
-                    self.stub(uri(self.postClient.endpointForPost()), jsonData(data as Data, status: 201))
+                    self.stub(uri(PostServiceClient.endpointForPost()), jsonData(data as Data, status: 201))
                     
                     expect{ try self.postClient.create(postWithText: testText, completionHandler: {_ in}) }.toNot(throwError())
                     
@@ -114,7 +114,7 @@ class PostServiceClientSpec: QuickSpec {
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
-                    self.stub(uri(self.postClient.endpointForPost()), failure(error))
+                    self.stub(uri(PostServiceClient.endpointForPost()), failure(error))
                     
                     expect{ try self.postClient.create(postWithText: testText, completionHandler: {_ in}) }.toNot(throwError())
                     
@@ -142,7 +142,7 @@ class PostServiceClientSpec: QuickSpec {
                     
                     let path = Bundle(for: type(of: self)).path(forResource: "EditPost", ofType: "json")!
                     let data = NSData(contentsOfFile: path)!
-                    self.stub(uri(self.postClient.endpointForPost(withId: postId)), jsonData(data as Data))
+                    self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), jsonData(data as Data))
                     
                     expect { try self.postClient.edit(postWithId: postId, withNewText: testText, completionHandler: {_ in}) }.toNot(throwError(PostError.notLoggedIn))
                     
@@ -160,7 +160,7 @@ class PostServiceClientSpec: QuickSpec {
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 401, userInfo: nil)
-                    self.stub(uri(self.postClient.endpointForPost(withId: postId)), failure(error))
+                    self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), failure(error))
                     
                     expect{ try self.postClient.edit(postWithId: postId, withNewText: testText, completionHandler: {_ in}) }.toNot(throwError())
                     
@@ -178,7 +178,7 @@ class PostServiceClientSpec: QuickSpec {
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
-                    self.stub(uri(self.postClient.endpointForPost(withId: postId)), failure(error))
+                    self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), failure(error))
                     
                     expect{ try self.postClient.edit(postWithId: postId, withNewText: testText, completionHandler: {_ in}) }.toNot(throwError())
                     
@@ -205,7 +205,7 @@ class PostServiceClientSpec: QuickSpec {
                     
                     let path = Bundle(for: type(of: self)).path(forResource: "DeletePost", ofType: "json")!
                     let data = NSData(contentsOfFile: path)!
-                    self.stub(uri(self.postClient.endpointForPost(withId: postId)), jsonData(data as Data, status: 200))
+                    self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), jsonData(data as Data, status: 204))
                     
                     expect { try self.postClient.delete(postWithId: postId, completionHandler: {_ in}) }.toNot(throwError(PostError.notLoggedIn))
                     
@@ -223,7 +223,7 @@ class PostServiceClientSpec: QuickSpec {
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 401, userInfo: nil)
-                    self.stub(uri(self.postClient.endpointForPost(withId: postId)), failure(error))
+                    self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), failure(error))
                     
                     expect{ try self.postClient.delete(postWithId: postId, completionHandler: {_ in}) }.toNot(throwError())
                     
@@ -241,7 +241,7 @@ class PostServiceClientSpec: QuickSpec {
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
-                    self.stub(uri(self.postClient.endpointForPost(withId: postId)), failure(error))
+                    self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), failure(error))
                     
                     expect{ try self.postClient.delete(postWithId: postId, completionHandler: {_ in}) }.toNot(throwError())
                     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F51CC7A478309D7DED1E613 /* Pods_WallAppiOS_WallAppiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BD092C5DE02BD2FFF8E4E8 /* Pods_WallAppiOS_WallAppiOSUITests.framework */; };
 		9A2CD8D7804AE6E451511C5E /* Pods_WallAppiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A7DEEC469DF342BFED1046 /* Pods_WallAppiOS.framework */; };
 		BC7DBF8F1F077070007F1822 /* Fixtures in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBF8E1F077070007F1822 /* Fixtures */; };
 		BC7DBF911F077699007F1822 /* GetPosts.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBF901F077699007F1822 /* GetPosts.json */; };
@@ -15,6 +16,13 @@
 		BC7DBF971F078DDB007F1822 /* DeletePost.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBF961F078DDB007F1822 /* DeletePost.json */; };
 		BC7DBF991F07981C007F1822 /* Login.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBF981F07981C007F1822 /* Login.json */; };
 		BC7DBF9B1F079821007F1822 /* RegisterUser.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBF9A1F079821007F1822 /* RegisterUser.json */; };
+		BC7DBFBF1F07A5ED007F1822 /* WallAppiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7DBFBE1F07A5ED007F1822 /* WallAppiOSUITests.swift */; };
+		BC7DBFC81F07B780007F1822 /* CreatePost.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBFC71F07B780007F1822 /* CreatePost.json */; };
+		BC7DBFCA1F07B784007F1822 /* DeletePost.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBFC91F07B784007F1822 /* DeletePost.json */; };
+		BC7DBFCC1F07B788007F1822 /* EditPost.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBFCB1F07B788007F1822 /* EditPost.json */; };
+		BC7DBFCE1F07B78B007F1822 /* GetPosts.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBFCD1F07B78B007F1822 /* GetPosts.json */; };
+		BC7DBFD01F07B78F007F1822 /* Login.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBFCF1F07B78F007F1822 /* Login.json */; };
+		BC7DBFD21F07B793007F1822 /* RegisterUser.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBFD11F07B793007F1822 /* RegisterUser.json */; };
 		BC90825C1F06DF8A004DCC4E /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90825B1F06DF8A004DCC4E /* EditPostViewController.swift */; };
 		BC9082981F071AD3004DCC4E /* AccountsServiceClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9082971F071AD3004DCC4E /* AccountsServiceClientTest.swift */; };
 		BC90829A1F071C01004DCC4E /* PostServiceClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9082991F071C01004DCC4E /* PostServiceClientTest.swift */; };
@@ -36,6 +44,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BC7DBFC11F07A5ED007F1822 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCC700551EFCD69B00C6DF88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCC7005C1EFCD69B00C6DF88;
+			remoteInfo = WallAppiOS;
+		};
 		BCC700721EFCD69B00C6DF88 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BCC700551EFCD69B00C6DF88 /* Project object */;
@@ -61,6 +76,15 @@
 		BC7DBF961F078DDB007F1822 /* DeletePost.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = DeletePost.json; path = WallAppiOSTests/Fixtures/DeletePost.json; sourceTree = "<group>"; };
 		BC7DBF981F07981C007F1822 /* Login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Login.json; path = WallAppiOSTests/Fixtures/Login.json; sourceTree = "<group>"; };
 		BC7DBF9A1F079821007F1822 /* RegisterUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = RegisterUser.json; path = WallAppiOSTests/Fixtures/RegisterUser.json; sourceTree = "<group>"; };
+		BC7DBFBC1F07A5ED007F1822 /* WallAppiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallAppiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC7DBFBE1F07A5ED007F1822 /* WallAppiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAppiOSUITests.swift; sourceTree = "<group>"; };
+		BC7DBFC01F07A5ED007F1822 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC7DBFC71F07B780007F1822 /* CreatePost.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = CreatePost.json; path = WallAppiOSTests/Fixtures/CreatePost.json; sourceTree = "<group>"; };
+		BC7DBFC91F07B784007F1822 /* DeletePost.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = DeletePost.json; path = WallAppiOSTests/Fixtures/DeletePost.json; sourceTree = "<group>"; };
+		BC7DBFCB1F07B788007F1822 /* EditPost.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = EditPost.json; path = WallAppiOSTests/Fixtures/EditPost.json; sourceTree = "<group>"; };
+		BC7DBFCD1F07B78B007F1822 /* GetPosts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = GetPosts.json; path = WallAppiOSTests/Fixtures/GetPosts.json; sourceTree = "<group>"; };
+		BC7DBFCF1F07B78F007F1822 /* Login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Login.json; path = WallAppiOSTests/Fixtures/Login.json; sourceTree = "<group>"; };
+		BC7DBFD11F07B793007F1822 /* RegisterUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = RegisterUser.json; path = WallAppiOSTests/Fixtures/RegisterUser.json; sourceTree = "<group>"; };
 		BC90825B1F06DF8A004DCC4E /* EditPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		BC9082971F071AD3004DCC4E /* AccountsServiceClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsServiceClientTest.swift; sourceTree = "<group>"; };
 		BC9082991F071C01004DCC4E /* PostServiceClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostServiceClientTest.swift; sourceTree = "<group>"; };
@@ -86,6 +110,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BC7DBFB91F07A5ED007F1822 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F51CC7A478309D7DED1E613 /* Pods_WallAppiOS_WallAppiOSUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCC7005A1EFCD69B00C6DF88 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,7 +160,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BCC700541EFCD69B00C6DF88 = {
+		BC7DBFBD1F07A5ED007F1822 /* WallAppiOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BC7DBFBE1F07A5ED007F1822 /* WallAppiOSUITests.swift */,
+				BC7DBFC01F07A5ED007F1822 /* Info.plist */,
+			);
+			path = WallAppiOSUITests;
+			sourceTree = "<group>";
+		};
+		BC7DBFC61F07AB25007F1822 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
 				BC7DBF9A1F079821007F1822 /* RegisterUser.json */,
@@ -137,8 +178,23 @@
 				BC7DBF941F078D5D007F1822 /* EditPost.json */,
 				BC7DBF921F07854B007F1822 /* CreatePost.json */,
 				BC7DBF901F077699007F1822 /* GetPosts.json */,
+			);
+			name = Fixtures;
+			sourceTree = "<group>";
+		};
+		BCC700541EFCD69B00C6DF88 = {
+			isa = PBXGroup;
+			children = (
+				BC7DBFD11F07B793007F1822 /* RegisterUser.json */,
+				BC7DBFCF1F07B78F007F1822 /* Login.json */,
+				BC7DBFCD1F07B78B007F1822 /* GetPosts.json */,
+				BC7DBFCB1F07B788007F1822 /* EditPost.json */,
+				BC7DBFC91F07B784007F1822 /* DeletePost.json */,
+				BC7DBFC71F07B780007F1822 /* CreatePost.json */,
+				BC7DBFC61F07AB25007F1822 /* Fixtures */,
 				BCC7005F1EFCD69B00C6DF88 /* WallAppiOS */,
 				BCC700741EFCD69B00C6DF88 /* WallAppiOSTests */,
+				BC7DBFBD1F07A5ED007F1822 /* WallAppiOSUITests */,
 				BCC7005E1EFCD69B00C6DF88 /* Products */,
 				68BC226F205CD988CB3AFCCE /* Pods */,
 				743BCA78BFEA5838D407ADE4 /* Frameworks */,
@@ -150,6 +206,7 @@
 			children = (
 				BCC7005D1EFCD69B00C6DF88 /* WallAppiOS.app */,
 				BCC700711EFCD69B00C6DF88 /* WallAppiOSTests.xctest */,
+				BC7DBFBC1F07A5ED007F1822 /* WallAppiOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,6 +288,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BC7DBFBB1F07A5ED007F1822 /* WallAppiOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC7DBFC51F07A5ED007F1822 /* Build configuration list for PBXNativeTarget "WallAppiOSUITests" */;
+			buildPhases = (
+				293DD104FEDB6DD7AA3A2251 /* [CP] Check Pods Manifest.lock */,
+				BC7DBFB81F07A5ED007F1822 /* Sources */,
+				BC7DBFB91F07A5ED007F1822 /* Frameworks */,
+				BC7DBFBA1F07A5ED007F1822 /* Resources */,
+				A92796A43C1F5756D8E93920 /* [CP] Embed Pods Frameworks */,
+				D8E0734530938F406E97966D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC7DBFC21F07A5ED007F1822 /* PBXTargetDependency */,
+			);
+			name = WallAppiOSUITests;
+			productName = WallAppiOSUITests;
+			productReference = BC7DBFBC1F07A5ED007F1822 /* WallAppiOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		BCC7005C1EFCD69B00C6DF88 /* WallAppiOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCC700851EFCD69C00C6DF88 /* Build configuration list for PBXNativeTarget "WallAppiOS" */;
@@ -282,6 +360,12 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Matthew Drill";
 				TargetAttributes = {
+					BC7DBFBB1F07A5ED007F1822 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = S9799UHJFV;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BCC7005C1EFCD69B00C6DF88;
+					};
 					BCC7005C1EFCD69B00C6DF88 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = S9799UHJFV;
@@ -310,18 +394,32 @@
 			targets = (
 				BCC7005C1EFCD69B00C6DF88 /* WallAppiOS */,
 				BCC700701EFCD69B00C6DF88 /* WallAppiOSTests */,
+				BC7DBFBB1F07A5ED007F1822 /* WallAppiOSUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BC7DBFBA1F07A5ED007F1822 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCC7005B1EFCD69B00C6DF88 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7DBFCE1F07B78B007F1822 /* GetPosts.json in Resources */,
 				BCC700941EFCD73100C6DF88 /* Main.storyboard in Resources */,
 				BCC7006B1EFCD69B00C6DF88 /* LaunchScreen.storyboard in Resources */,
 				BCC700681EFCD69B00C6DF88 /* Assets.xcassets in Resources */,
+				BC7DBFC81F07B780007F1822 /* CreatePost.json in Resources */,
+				BC7DBFCA1F07B784007F1822 /* DeletePost.json in Resources */,
+				BC7DBFD01F07B78F007F1822 /* Login.json in Resources */,
+				BC7DBFCC1F07B788007F1822 /* EditPost.json in Resources */,
+				BC7DBFD21F07B793007F1822 /* RegisterUser.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +440,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		293DD104FEDB6DD7AA3A2251 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		561FE57AB65DD681EC03F304 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,6 +485,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WallAppiOS/Pods-WallAppiOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A92796A43C1F5756D8E93920 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WallAppiOS-WallAppiOSUITests/Pods-WallAppiOS-WallAppiOSUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C81428F125E370479BAB4629 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -400,6 +528,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WallAppiOS-WallAppiOSTests/Pods-WallAppiOS-WallAppiOSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8E0734530938F406E97966D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WallAppiOS-WallAppiOSUITests/Pods-WallAppiOS-WallAppiOSUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DF2DC790F979FF9D6260DC24 /* [CP] Check Pods Manifest.lock */ = {
@@ -435,6 +578,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BC7DBFB81F07A5ED007F1822 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC7DBFBF1F07A5ED007F1822 /* WallAppiOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCC700591EFCD69B00C6DF88 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,6 +617,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BC7DBFC21F07A5ED007F1822 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCC7005C1EFCD69B00C6DF88 /* WallAppiOS */;
+			targetProxy = BC7DBFC11F07A5ED007F1822 /* PBXContainerItemProxy */;
+		};
 		BCC700731EFCD69B00C6DF88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BCC7005C1EFCD69B00C6DF88 /* WallAppiOS */;
@@ -485,6 +641,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BC7DBFC31F07A5ED007F1822 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7AB250DABD2416453D8E380 /* Pods-WallAppiOS-WallAppiOSUITests.debug.xcconfig */;
+			buildSettings = {
+				DEVELOPMENT_TEAM = S9799UHJFV;
+				INFOPLIST_FILE = WallAppiOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.datastructures.WallAppiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = WallAppiOS;
+			};
+			name = Debug;
+		};
+		BC7DBFC41F07A5ED007F1822 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83B4A13CBF31EB9CAD9530A4 /* Pods-WallAppiOS-WallAppiOSUITests.release.xcconfig */;
+			buildSettings = {
+				DEVELOPMENT_TEAM = S9799UHJFV;
+				INFOPLIST_FILE = WallAppiOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.datastructures.WallAppiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = WallAppiOS;
+			};
+			name = Release;
+		};
 		BCC700831EFCD69C00C6DF88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -643,6 +827,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BC7DBFC51F07A5ED007F1822 /* Build configuration list for PBXNativeTarget "WallAppiOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC7DBFC31F07A5ED007F1822 /* Debug */,
+				BC7DBFC41F07A5ED007F1822 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BCC700581EFCD69B00C6DF88 /* Build configuration list for PBXProject "WallAppiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

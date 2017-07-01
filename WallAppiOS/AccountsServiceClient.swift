@@ -25,16 +25,20 @@ class AccountsServiceClient: BaseServiceClient {
         return BaseServiceClient.token != nil
     }
     
-    func endpointForAccounts() -> String{
+    static func endpointForAccounts() -> String{
         return "https://127.0.0.1:8000/accounts/"
     }
     
-    func endpointForLogin() -> String {
+    static func endpointForAccounts(withId id: Int) -> String{
+        return "https://127.0.0.1:8000/accounts/\(id)"
+    }
+    
+    static func endpointForLogin() -> String {
         return "https://127.0.0.1:8000/api-token-auth/"
     }
     
     // Method to register a new user
-    func register(username: String, password1: String, password2: String, email: String, completionHandler: @escaping RequestErrorCallback) throws {
+    func register(username: String, password1: String, password2: String, email: String, completionHandler: @escaping RequestCallback) throws {
         print("register called")
         
         guard password1 == password2 else {
@@ -51,7 +55,7 @@ class AccountsServiceClient: BaseServiceClient {
             "email": email
         ]
         // Send request to backend
-        self.sessionManager.request(self.endpointForAccounts(), method: .post, parameters: parameters)
+        self.sessionManager.request(AccountsServiceClient.endpointForAccounts(), method: .post, parameters: parameters)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON {response in
@@ -65,7 +69,7 @@ class AccountsServiceClient: BaseServiceClient {
     }
     
     // Gets authentication token from login endpoint
-    func login(username:String, password:String, completionHandler:@escaping RequestErrorCallback) {
+    func login(username:String, password:String, completionHandler:@escaping RequestCallback) {
         print("login called")
         let parameters: [String: String] = [
             "username": username,
@@ -73,7 +77,7 @@ class AccountsServiceClient: BaseServiceClient {
         ]
         
         // Send request to backend
-        self.sessionManager.request(self.endpointForLogin(), method: .post, parameters: parameters)
+        self.sessionManager.request(AccountsServiceClient.endpointForLogin(), method: .post, parameters: parameters)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON {response in
@@ -96,10 +100,10 @@ class AccountsServiceClient: BaseServiceClient {
     // These three methods are for extra features which I did not have time to implement
 
     // Method to view Account info
-    func viewAccount(id: Int, completionHandler: @escaping (DataResponse<Any>) -> Account?){
+    func viewAccount(id: Int, completionHandler: @escaping RequestCallback){
         let token = BaseServiceClient.token
         let headers = ["Authorization": "Token \(token!)"]
-        self.sessionManager.request("\(endpointForAccounts())/\(id)", method: .get, headers: headers)
+        self.sessionManager.request(AccountsServiceClient.endpointForAccounts(withId: id), method: .get, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
@@ -108,10 +112,10 @@ class AccountsServiceClient: BaseServiceClient {
     }
     
     // Method to delete Account
-    func deleteAccount(id: Int, completionHandler: @escaping (DataResponse<Any>) -> Void){
+    func deleteAccount(id: Int, completionHandler: @escaping RequestCallback){
         let token = BaseServiceClient.token
         let headers = ["Authorization": "Token \(token!)"]
-        self.sessionManager.request("\(endpointForAccounts())/\(id)", method: .delete, headers: headers)
+        self.sessionManager.request(AccountsServiceClient.endpointForAccounts(withId: id), method: .delete, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
@@ -121,13 +125,13 @@ class AccountsServiceClient: BaseServiceClient {
     }
     
     // Method to edit Account information
-    func editAccount(id: Int, newEmail: String, completionHandler: @escaping (DataResponse<Any>) -> Void){
+    func editAccount(id: Int, newEmail: String, completionHandler: @escaping RequestCallback){
         let parameters: [String: String] = [
             "email": newEmail,
             ]
         let token = BaseServiceClient.token
         let headers = ["Authorization": "Token \(token!)"]
-        self.sessionManager.request("\(endpointForAccounts())/\(id)", method: .patch, parameters: parameters, headers: headers)
+        self.sessionManager.request(AccountsServiceClient.endpointForAccounts(withId: id), method: .patch, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in

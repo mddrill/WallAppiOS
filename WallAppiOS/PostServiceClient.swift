@@ -25,8 +25,15 @@ public class PostServiceClient: BaseServiceClient {
     
     static let sharedInstance: PostServiceClient = PostServiceClient()
     
+    static func endpointForPost() -> String {
+        return "https://127.0.0.1:8000/post/"
+    }
+    static func endpointForPost(withId id: Int) -> String {
+        return "https://127.0.0.1:8000/post/\(id)/"
+    }
+    
     // Method to post to the wall
-    func create(postWithText text: String, completionHandler: @escaping (DataResponse<Any>) -> Void) throws {
+    func create(postWithText text: String, completionHandler: @escaping RequestCallback) throws {
         // Make sure user is logged in
         guard let token = BaseServiceClient.token else {
             throw PostError.notLoggedIn
@@ -36,7 +43,7 @@ public class PostServiceClient: BaseServiceClient {
             "text": text,
         ]
         let headers = ["Authorization": "Token \(token)"]
-        self.sessionManager.request(endpointForPost(), method: .post, parameters: parameters, headers: headers)
+        self.sessionManager.request(PostServiceClient.endpointForPost(), method: .post, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
@@ -48,7 +55,7 @@ public class PostServiceClient: BaseServiceClient {
     }
 
     public func getPosts(completionHandler: @escaping (Result<PostWrapper>)->Void){
-        self.getPosts(AtPath: self.endpointForPost(), completionHandler: completionHandler)
+        self.getPosts(AtPath: PostServiceClient.endpointForPost(), completionHandler: completionHandler)
     }
     
     func getMorePosts(WithWrapper wrapper: PostWrapper?, completionHandler: @escaping (Result<PostWrapper>) -> Void) {
@@ -58,13 +65,6 @@ public class PostServiceClient: BaseServiceClient {
             return
         }
         self.getPosts(AtPath: nextURL, completionHandler: completionHandler)
-    }
-    
-    func endpointForPost() -> String {
-        return "https://127.0.0.1:8000/post/"
-    }
-    func endpointForPost(withId id: Int) -> String {
-        return "https://127.0.0.1:8000/post/\(id)/"
     }
     
     func postArrayFromResponse(_ response: DataResponse<Any>) -> Result<PostWrapper> {
@@ -81,8 +81,10 @@ public class PostServiceClient: BaseServiceClient {
                 "Did not get JSON dictionary in response"))
         }
         
+        print(json)
+        
         // The response is in JSON format, parse it and put it in an array of Post objects
-        var wrapper:PostWrapper = PostWrapper()
+        var wrapper: PostWrapper = PostWrapper()
         wrapper.next = json["next"] as? String
         wrapper.previous = json["previous"] as? String
         wrapper.count = json["count"] as? Int
@@ -131,13 +133,13 @@ public class PostServiceClient: BaseServiceClient {
     }
     
     // Method to delete post
-    func delete(postWithId id: Int, completionHandler: @escaping (DataResponse<Any>) -> Void) throws{
+    func delete(postWithId id: Int, completionHandler: @escaping RequestCallback) throws{
         // Make sure user is logged in
         guard let token = BaseServiceClient.token else {
             throw PostError.notLoggedIn
         }
         let headers = ["Authorization": "Token \(token)"]
-        self.sessionManager.request(endpointForPost(withId: id), method: .delete, headers: headers)
+        self.sessionManager.request(PostServiceClient.endpointForPost(withId: id), method: .delete, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
@@ -149,7 +151,7 @@ public class PostServiceClient: BaseServiceClient {
     }
     
     // Method to edit post
-    func edit(postWithId id:Int, withNewText newText: String, completionHandler: @escaping (DataResponse<Any>) -> Void) throws{
+    func edit(postWithId id:Int, withNewText newText: String, completionHandler: @escaping RequestCallback) throws{
         // Make sure user is logged in
         guard let token = BaseServiceClient.token else {
             throw PostError.notLoggedIn
@@ -159,7 +161,7 @@ public class PostServiceClient: BaseServiceClient {
             "text": newText,
             ]
         let headers = ["Authorization": "Token \(token)"]
-        self.sessionManager.request(endpointForPost(withId: id), method: .patch, parameters: parameters, headers: headers)
+        self.sessionManager.request(PostServiceClient.endpointForPost(withId: id), method: .patch, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in

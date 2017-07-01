@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PostTableViewCell: UITableViewCell {
     
@@ -20,7 +21,7 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
-    var posts: [Post]!
+    var posts: [Post] = []
     var postsWrapper: PostWrapper!
     var isLoadingPosts = false
     
@@ -37,19 +38,14 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
-        if let posts = self.posts {
-            return posts.count
-        }
-        else {
-            return 0
-        }
+        return self.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postcell", for: indexPath) as! PostTableViewCell
         
-        if posts != nil && posts.count >= indexPath.row {
+        if posts.count >= indexPath.row {
             let postToShow = posts[indexPath.row]
             cell.label.text = "\(postToShow.author!) posted this on \(postToShow.postedAt!)"
             cell.textView.text = postToShow.text
@@ -72,7 +68,7 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
             let rowsToLoadFromBottom = 5;
             let rowsLoaded = posts.count
             if (!self.isLoadingPosts && (indexPath.row >= (rowsLoaded - rowsToLoadFromBottom))) {
-                let totalRows = self.postsWrapper?.count ?? 0
+                let totalRows = self.postsWrapper.count ?? 0
                 let remainingPostsToLoad = totalRows - rowsLoaded;
                 if (remainingPostsToLoad > 0) {
                     self.loadMorePosts()
@@ -89,19 +85,11 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
         postClient.getPosts{ result in
             if let error = result.error {
                 self.isLoadingPosts = false
-                let alert = UIAlertController(title: "Error", message: "Could not load first posts \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: self.exitApp))
-                self.present(alert, animated: true, completion: nil)
+                self.handle(requestError: error)
                 return
             }
-            let postsWrapper = result.value
-            if postsWrapper == nil || postsWrapper?.posts == nil {
-                let alert = UIAlertController(title: "Error", message: "Could not load posts, server may be down", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-            self.addPosts(FromWrapper: postsWrapper)
+            self.postsWrapper = result.value
+            self.posts += self.postsWrapper.posts
             self.isLoadingPosts = false
             self.tableView?.reloadData()
         }
@@ -110,39 +98,19 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
     func loadMorePosts() {
         print("Loading more posts")
         self.isLoadingPosts = true
-        if let posts = self.posts,
-            let wrapper = self.postsWrapper,
-            let totalPostsCount = wrapper.count,
-            posts.count < totalPostsCount {
+        if let wrapper = self.postsWrapper,
+            posts.count < wrapper.count {
             postClient.getMorePosts(WithWrapper: wrapper) { result in
                 if let error = result.error {
                     self.isLoadingPosts = false
-                    let alert = UIAlertController(title: "Error", message: "Could not load more posts \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: self.exitApp))
-                    self.present(alert, animated: true, completion: nil)
-                    
-                }
-                let moreWrapper = result.value
-                if moreWrapper == nil || moreWrapper?.posts == nil {
-                    let alert = UIAlertController(title: "Error", message: "Could not load posts, server may be down", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    self.handle(requestError: error)
                     return
                 }
-                self.addPosts(FromWrapper: moreWrapper)
+                self.postsWrapper = result.value
+                self.posts += self.postsWrapper.posts
                 self.isLoadingPosts = false
                 self.tableView?.reloadData()
             }
-        }
-    }
-    
-    func addPosts(FromWrapper wrapper: PostWrapper?) {
-        print("Adding posts from wrapper to instance variable posts")
-        self.postsWrapper = wrapper
-        if self.posts == nil {
-            self.posts = self.postsWrapper.posts
-        } else {
-            self.posts = self.posts + self.postsWrapper.posts
         }
     }
     
@@ -156,7 +124,7 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func reloadPosts() {
-        self.posts = nil
+        self.posts = []
         self.postsWrapper = nil
         self.loadFirstPosts()
     }
@@ -174,9 +142,7 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
         // If this throws an error, it means the user was able to delete a post without loging, in. Something is wrong, app needs to crash
         try! postClient.delete(postWithId: postId) { response in
             if let error = response.result.error {
-                let alert = UIAlertController(title: "Error", message: "Could not delte this post: \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.handle(requestError: error)
             }
         }
         self.reloadPosts()
@@ -187,6 +153,16 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
             let editPostViewController = segue.destination as! EditPostViewController
             editPostViewController.postText = postToEdit.text
             editPostViewController.postId = postToEdit.id
+        }
+    }
+    
+    override func handle(requestError: Error) {
+        if let error = requestError as? AFError,
+            error.responseCode! >= 500 {
+            popUpError(withMessage: "Could not connect to server")
+        }
+        else{
+            super.handle(requestError: requestError)
         }
     }
 }

@@ -7,7 +7,7 @@
 import Foundation
 import Alamofire
 
-typealias RequestErrorCallback = (DataResponse<Any>) -> Void
+typealias RequestCallback = (DataResponse<Any>) -> Void
 
 public class BaseServiceClient {
     /*

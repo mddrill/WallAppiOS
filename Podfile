@@ -6,10 +6,15 @@ target 'WallAppiOS' do
     use_frameworks!
 
     pod 'Alamofire', '~> 4.1.0'
+    pod 'Mockingjay'
     
     target 'WallAppiOSTests' do
-        pod 'Alamofire', '~> 4.1.0'
         pod 'Mockingjay'
+        pod 'Quick'
+        pod 'Nimble'
+    end
+    
+    target 'WallAppiOSUITests' do
         pod 'Quick'
         pod 'Nimble'
     end

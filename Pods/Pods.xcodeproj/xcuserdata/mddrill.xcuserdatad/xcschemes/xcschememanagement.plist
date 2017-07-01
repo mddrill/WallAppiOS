@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-WallAppiOS-WallAppiOSUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-WallAppiOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,11 +47,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>16D2DA545118CAC9DD013DFC7CCCAEC3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>5BAACC736A5215103E10E2DC0A74FDCD</key>
 		<dict>
 			<key>primary</key>
@@ -63,6 +63,16 @@
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8D8DFDC3F97E4CF9641AE611D818C205</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BAC5B1AA3F92A82E0FDD3BF2DF82605C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

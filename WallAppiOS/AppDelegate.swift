@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Mockingjay
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Override point for customization after application launch
+        if ProcessInfo.processInfo.arguments.contains("StubNetworkResponses") {
+            print("Using network stubbing")
+            setUpNetworkStubbing()
+        }
         return true
     }
 
@@ -41,6 +47,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+}
 
+fileprivate func setUpNetworkStubbing() {
+    var path = Bundle.main.path(forResource: "GetPosts", ofType: "json")
+    var data = NSData(contentsOfFile: path!)!
+    MockingjayProtocol.addStub(matcher: http(.get, uri: PostServiceClient.endpointForPost()), builder: jsonData(data as Data))
+    
+    path =  Bundle.main.path(forResource: "CreatePost", ofType: "json")
+    data = NSData(contentsOfFile: path!)!
+    MockingjayProtocol.addStub(matcher: http(.post, uri: PostServiceClient.endpointForPost()), builder: jsonData(data as Data, status: 201))
+    
+    path = Bundle.main.path(forResource: "EditPost", ofType: "json")
+    data = NSData(contentsOfFile: path!)!
+    MockingjayProtocol.addStub(matcher: http(.patch, uri: PostServiceClient.endpointForPost(withId: 1)), builder: jsonData(data as Data))
+    
+    path = Bundle.main.path(forResource: "DeletePost", ofType: "json")
+    data = NSData(contentsOfFile: path!)!
+    MockingjayProtocol.addStub(matcher: http(.delete, uri: PostServiceClient.endpointForPost(withId: 1)), builder: jsonData(data as Data, status: 204))
+    
+    path = Bundle.main.path(forResource: "RegisterUser", ofType: "json")
+    data = NSData(contentsOfFile: path!)!
+    MockingjayProtocol.addStub(matcher: uri(AccountsServiceClient.endpointForAccounts()), builder: jsonData(data as Data, status: 201))
+    
+    path = Bundle.main.path(forResource: "Login", ofType: "json")
+    data = NSData(contentsOfFile: path!)!
+    MockingjayProtocol.addStub(matcher: uri(AccountsServiceClient.endpointForLogin()), builder: jsonData(data as Data, status: 200))
+}
+
+public func changeStubAfterPosting() {
+    print("changed stub")
+    let path = Bundle.main.path(forResource: "GetPostsAfterCreatingPost", ofType: "json")
+    let data = NSData(contentsOfFile: path!)!
+    MockingjayProtocol.addStub(matcher: http(.get, uri: PostServiceClient.endpointForPost()), builder: jsonData(data as Data))
 }
 
