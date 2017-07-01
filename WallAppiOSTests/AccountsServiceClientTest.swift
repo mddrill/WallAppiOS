@@ -1,5 +1,5 @@
 //
-//  AccountsServiceClientTest.swift
+//  PostServiceClientTest.swift
 //  WallAppiOS
 //
 //  Created by Matthew Drill on 6/30/17.
@@ -7,47 +7,127 @@
 //
 
 import XCTest
+import Mockingjay
+import Quick
+import Nimble
 @testable import WallAppiOS
 
-class AccountsServiceClientTest: XCTestCase {
+class AccountsServiceClientSpec: QuickSpec {
+    let accountsClient = AccountsServiceClient.sharedInstance
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testRegistration() {
-        // Assert Error when email is invalid
+    override func spec() {
+        super.spec()
         
-        // Assert Error when passwords don't match
-        
-        // Assert Error when Username is taken
-        
-        // Assert Success when everything is right
-    }
-    
-    func testRegistrationTime() {
-        // Test time it takes to register
-        self.measure {
-            // Register user
+        describe("Register User") {
+            let username = "user1"
+            let password = "password"
+            let email = "email@email.com"
+            
+            context("Success"){
+                it("Doesn't return error") {
+                    var requestError: Error!
+                    
+                    let path = Bundle(for: type(of: self)).path(forResource: "RegisterUser", ofType: "json")!
+                    let data = NSData(contentsOfFile: path)!
+                    self.stub(uri(self.accountsClient.endpointForAccounts()), jsonData(data as Data, status: 201))
+                    
+                    expect { try self.accountsClient.register(username: username, password1: password,
+                                                 password2: password, email: email) { response in
+                        requestError = response.result.error
+                        }}.toNot(throwError())
+                    expect(requestError).toEventually(beNil())
+                }
+            }
+            context("Invalid Email") {
+                it("Throws an emailIsInvalid error"){
+                    expect { try self.accountsClient.register(username: username, password1: password,
+                                                              password2: password, email: "not valid") {_ in}}.to(throwError(RegistrationError.emailIsInvalid))
+                }
+            }
+            context("Passwords don't match") {
+                it("Throws a passwordsDontMatch error") {
+                    expect { try self.accountsClient.register(username: username, password1: password,
+                                                              password2: "not same password", email: email) {_ in}}.to(throwError(RegistrationError.passwordsDontMatch))
+                }
+            }
+            context("Username is taken") {
+                it("Returns an error") {
+                    var requestError: Error!
+                    
+                    let error = NSError(domain: "Server Error", code: 400, userInfo: nil)
+                    self.stub(uri(self.accountsClient.endpointForAccounts()), failure(error))
+                    
+                    expect { try self.accountsClient.register(username: username, password1: password,
+                                                              password2: password, email: email) { response in
+                                                                requestError = response.result.error
+                        }}.toNot(throwError())
+                    expect(requestError).toEventuallyNot(beNil())
+
+                }
+            }
+            context("Server error"){
+                it("Returns an error"){
+                    var requestError: Error!
+                    
+                    let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
+                    self.stub(uri(self.accountsClient.endpointForAccounts()), failure(error))
+                    
+                    expect { try self.accountsClient.register(username: username, password1: password,
+                                                              password2: password, email: email) { response in
+                                                                requestError = response.result.error
+                        }}.toNot(throwError())
+                    expect(requestError).toEventuallyNot(beNil())
+                }
+            }
         }
-    }
-    
-    func testLogin() {
-        // Assert error when credentials are invalid
-        
-        // Assert success when credentials are valid
-    }
-    
-    func testLoginTime() {
-        // Test time it takes to login
-        self.measure {
-            // Log user in
+        describe("Login"){
+            let username = "user1"
+            let password = "password"
+            context("Success") {
+                it("Returns token") {
+                    var requestError: Error!
+                    var token: String!
+                    
+                    let path = Bundle(for: type(of: self)).path(forResource: "Login", ofType: "json")!
+                    let data = NSData(contentsOfFile: path)!
+                    self.stub(uri(self.accountsClient.endpointForLogin()), jsonData(data as Data, status: 200))
+                    
+                    self.accountsClient.login(username: username, password: password){ response in
+                        requestError = response.result.error
+                        let json = response.result.value as? [String: Any]
+                        token = json?["token"] as? String
+                    }
+                    expect(requestError).toEventually(beNil())
+                    expect(token).toEventually(equal("6f6a7ff11a8c2ff44423a3982ff81623cc35ed87"))
+                }
+                
+            }
+            context("Credentials incorrect") {
+                it("Does not throw frontend error but returns a backend one") {
+                    var requestError: Error!
+                    
+                    let error = NSError(domain: "Server Error", code: 400, userInfo: nil)
+                    self.stub(uri(self.accountsClient.endpointForLogin()), failure(error))
+                    
+                    self.accountsClient.login(username: username, password: "Not the right password") { response in
+                        requestError = response.result.error
+                    }
+                    expect(requestError).toEventuallyNot(beNil())
+                }
+            }
+            context("Getting a server error") {
+                it("Does not throw frontend error but returns a backend one") {
+                    var requestError: Error!
+                    
+                    let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
+                    self.stub(uri(self.accountsClient.endpointForLogin()), failure(error))
+                    
+                    self.accountsClient.login(username: username, password: password) { response in
+                        requestError = response.result.error
+                    }
+                    expect(requestError).toEventuallyNot(beNil())
+                }
+            }
         }
     }
 }

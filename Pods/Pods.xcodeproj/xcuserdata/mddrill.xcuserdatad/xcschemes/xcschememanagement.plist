@@ -9,12 +9,32 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Mockingjay.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Nimble.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-WallAppiOS-WallAppiOSTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-WallAppiOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Quick.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>URITemplate.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,12 +47,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>24178A8B899CBF433467B9BA9108CF7D</key>
+		<key>5BAACC736A5215103E10E2DC0A74FDCD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5BAEE407D509A3F67350A21DD9179E25</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5EAD26FEFD7C04C3E2C7218C2145C13E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BB39806D87993DA9452A6B4D94E08F29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3AFB11DCAD27C00E1714B9BF1183890</key>
 		<dict>
 			<key>primary</key>
 			<true/>

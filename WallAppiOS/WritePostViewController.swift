@@ -43,10 +43,18 @@ class WritePostViewController: BaseViewController {
         }
         else{
             // If they are logged in, post their message and go back to wall
-            self.postClient.create(postWithText: textView.text!) { response in
-                if let error = response.result.error {
-                    self.handle(requestError: error)
+            do{
+                try self.postClient.create(postWithText: textView.text!) { response in
+                    if let error = response.result.error {
+                        self.handle(requestError: error)
+                    }
                 }
+            }
+            catch PostError.notLoggedIn {
+                popUpError(withMessage: "You can't post without logging in first!")
+            }
+            catch {
+                popUpError(withMessage: "Something went wrong when sending the post")
             }
             performSegue(withIdentifier: "WriteToWallSegue", sender: self)
         }

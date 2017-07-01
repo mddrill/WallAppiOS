@@ -171,7 +171,8 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
     
     func pressDeleteButton(sender: UIButton) {
         let postId = sender.tag
-        postClient.delete(postWithId: postId) { response in
+        // If this throws an error, it means the user was able to delete a post without loging, in. Something is wrong, app needs to crash
+        try! postClient.delete(postWithId: postId) { response in
             if let error = response.result.error {
                 let alert = UIAlertController(title: "Error", message: "Could not delte this post: \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))

@@ -15,11 +15,6 @@ enum RegistrationError: Error {
     case passwordsDontMatch
 }
 
-enum LoginError: Error {
-    case invalidCredentials
-    case serverIsDown
-}
-
 class AccountsServiceClient: BaseServiceClient {
     
     // This class connects to the accounts app in the backend

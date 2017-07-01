@@ -33,10 +33,12 @@ class EditPostViewController: BaseViewController {
             popUpError(withMessage: "You can't send an empty post!")
             return
         }
-        self.postClient.edit(postWithId: self.postId!, withNewText: textView.text!) { response in
-                if let error = response.result.error {
-                    self.handle(requestError: error)
-                }
+        // If this throws an error, it means the user was able to edit a post without loging, in. Something is wrong, app needs to crash
+        try! self.postClient.edit(postWithId: self.postId!, withNewText: textView.text!) { response in
+            if let error = response.result.error {
+                self.handle(requestError: error)
+            }
         }
+        
     }
 }

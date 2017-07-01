@@ -16,6 +16,7 @@ enum BackendError: Error {
 
 enum PostError: Error {
     case incorrectFields
+    case notLoggedIn
 }
 
 public class PostServiceClient: BaseServiceClient {
@@ -25,13 +26,16 @@ public class PostServiceClient: BaseServiceClient {
     static let sharedInstance: PostServiceClient = PostServiceClient()
     
     // Method to post to the wall
-    func create(postWithText text: String, completionHandler: @escaping (DataResponse<Any>) -> Void){
+    func create(postWithText text: String, completionHandler: @escaping (DataResponse<Any>) -> Void) throws {
+        // Make sure user is logged in
+        guard let token = BaseServiceClient.token else {
+            throw PostError.notLoggedIn
+        }
         // Add parameters
         let parameters: [String: String] = [
             "text": text,
         ]
-        let token = BaseServiceClient.token
-        let headers = ["Authorization": "Token \(token!)"]
+        let headers = ["Authorization": "Token \(token)"]
         self.sessionManager.request(endpointForPost(), method: .post, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
@@ -127,9 +131,12 @@ public class PostServiceClient: BaseServiceClient {
     }
     
     // Method to delete post
-    func delete(postWithId id: Int, completionHandler: @escaping (DataResponse<Any>) -> Void){
-        let token = BaseServiceClient.token
-        let headers = ["Authorization": "Token \(token!)"]
+    func delete(postWithId id: Int, completionHandler: @escaping (DataResponse<Any>) -> Void) throws{
+        // Make sure user is logged in
+        guard let token = BaseServiceClient.token else {
+            throw PostError.notLoggedIn
+        }
+        let headers = ["Authorization": "Token \(token)"]
         self.sessionManager.request(endpointForPost(withId: id), method: .delete, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
@@ -142,13 +149,16 @@ public class PostServiceClient: BaseServiceClient {
     }
     
     // Method to edit post
-    func edit(postWithId id:Int, withNewText newText: String, completionHandler: @escaping (DataResponse<Any>) -> Void){
+    func edit(postWithId id:Int, withNewText newText: String, completionHandler: @escaping (DataResponse<Any>) -> Void) throws{
+        // Make sure user is logged in
+        guard let token = BaseServiceClient.token else {
+            throw PostError.notLoggedIn
+        }
         // Add parameters
         let parameters: [String: String] = [
             "text": newText,
             ]
-        let token = BaseServiceClient.token
-        let headers = ["Authorization": "Token \(token!)"]
+        let headers = ["Authorization": "Token \(token)"]
         self.sessionManager.request(endpointForPost(withId: id), method: .patch, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
