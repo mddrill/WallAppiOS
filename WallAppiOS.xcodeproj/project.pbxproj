@@ -23,7 +23,6 @@
 		BCC700631EFCD69B00C6DF88 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700621EFCD69B00C6DF88 /* WallViewController.swift */; };
 		BCC700681EFCD69B00C6DF88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCC700671EFCD69B00C6DF88 /* Assets.xcassets */; };
 		BCC7006B1EFCD69B00C6DF88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCC700691EFCD69B00C6DF88 /* LaunchScreen.storyboard */; };
-		BCC700761EFCD69B00C6DF88 /* WallAppiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700751EFCD69B00C6DF88 /* WallAppiOSTests.swift */; };
 		BCC700941EFCD73100C6DF88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCC700931EFCD73100C6DF88 /* Main.storyboard */; };
 		BCC700961EFCDA4400C6DF88 /* PostServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700951EFCDA4400C6DF88 /* PostServiceClient.swift */; };
 		BCC700981EFCDA4A00C6DF88 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700971EFCDA4A00C6DF88 /* Post.swift */; };
@@ -73,7 +72,6 @@
 		BCC7006A1EFCD69B00C6DF88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCC7006C1EFCD69B00C6DF88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCC700711EFCD69B00C6DF88 /* WallAppiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallAppiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCC700751EFCD69B00C6DF88 /* WallAppiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAppiOSTests.swift; sourceTree = "<group>"; };
 		BCC700771EFCD69B00C6DF88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCC700931EFCD73100C6DF88 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BCC700951EFCDA4400C6DF88 /* PostServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostServiceClient.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 		BCC700741EFCD69B00C6DF88 /* WallAppiOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				BCC700751EFCD69B00C6DF88 /* WallAppiOSTests.swift */,
 				BCC700771EFCD69B00C6DF88 /* Info.plist */,
 				BC9082971F071AD3004DCC4E /* AccountsServiceClientTest.swift */,
 				BC9082991F071C01004DCC4E /* PostServiceClientTest.swift */,
@@ -462,7 +459,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC9082981F071AD3004DCC4E /* AccountsServiceClientTest.swift in Sources */,
-				BCC700761EFCD69B00C6DF88 /* WallAppiOSTests.swift in Sources */,
 				BC90829A1F071C01004DCC4E /* PostServiceClientTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
