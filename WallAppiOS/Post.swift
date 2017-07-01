@@ -28,11 +28,17 @@ public struct Post {
     var text: String!
     var postedAt: String!
     
-    init(json: [String: Any]) {
-        self.id = json[PostFields.Id.rawValue] as! Int
-        self.author = json[PostFields.Author.rawValue] as! String
-        self.text = json[PostFields.Text.rawValue] as! String
-        let dateAsString = json[PostFields.PostedAt.rawValue] as! String
+    init?(json: [String: Any]) {
+        guard let id = json[PostFields.Id.rawValue] as? Int,
+            let author = json[PostFields.Author.rawValue] as? String,
+            let text = json[PostFields.Text.rawValue] as? String,
+            let dateAsString = json[PostFields.PostedAt.rawValue] as? String
+        else {
+            return nil
+        }
+        self.id = id
+        self.author = author
+        self.text = text
         // First convert the django datetime field to a date object
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"

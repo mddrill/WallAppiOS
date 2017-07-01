@@ -16,9 +16,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var deleteButton: UIButton!
 }
 
-class WallViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    // Controller for view which views all posts
+class WallViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -28,72 +26,44 @@ class WallViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var postToEdit: Post!
     
-    let postClient = PostServiceClient.sharedInstance
-    let accountsClient = AccountsServiceClient.sharedInstance
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //IMPORTANT: This code allows me to test this app on my local machine by turning off certificate
-        //checking, I understand that it is not secure and would not put this code in production
-        postClient.sessionManager.delegate.sessionDidReceiveChallenge = { session, challenge in
-            var disposition: URLSession.AuthChallengeDisposition = .performDefaultHandling
-            var credential: URLCredential?
-            
-            if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust, let trust = challenge.protectionSpace.serverTrust {
-                disposition = URLSession.AuthChallengeDisposition.useCredential
-                credential = URLCredential(trust: trust)
-            } else {
-                if challenge.previousFailureCount > 0 {
-                    disposition = .cancelAuthenticationChallenge
-                } else {
-                    credential = self.postClient.sessionManager.session.configuration.urlCredentialStorage?.defaultCredential(for: challenge.protectionSpace)
-                    
-                    if credential != nil {
-                        disposition = .useCredential
-                    }
-                }
-            }
-            return (disposition, credential)
-        }
         
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // If logged in create log out button
-        if AccountsServiceClient.loggedIn() {
-            let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
-            self.navigationItem.rightBarButtonItem = logOutButton
-        }
         
         self.loadFirstPosts()
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
-        if self.posts == nil {
+        if let posts = self.posts {
+            return posts.count
+        }
+        else {
             return 0
         }
-        return self.posts!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "mycell", for: indexPath) as! PostTableViewCell
-        if let posts = posts, posts.count >= indexPath.row {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postcell", for: indexPath) as! PostTableViewCell
+        
+        if posts != nil && posts.count >= indexPath.row {
             let postToShow = posts[indexPath.row]
             cell.label.text = "\(postToShow.author!) posted this on \(postToShow.postedAt!)"
             cell.textView.text = postToShow.text
             
-             // If the user is logged in and this post belongs to them, they see an edit and delete button on their posts
+            // If the user is logged in and this post belongs to them, they see an edit and delete button on their posts
             if AccountsServiceClient.loggedIn() && postToShow.belongsTo(author: BaseServiceClient.username){
                 cell.deleteButton.tag = postToShow.id
                 cell.deleteButton.addTarget(self, action: #selector(pressDeleteButton), for: .touchUpInside)
                 
                 cell.editButton.tag = indexPath.row
                 cell.editButton.addTarget(self, action: #selector(pressEditButton), for: .touchUpInside)
-            } else {
+            }
             // Otherwise the delete and edit buttons are hidden
+            else {
                 cell.deleteButton.isHidden = true
                 cell.editButton.isHidden = true
             }
@@ -180,10 +150,9 @@ class WallViewController: UIViewController, UITableViewDataSource, UITableViewDe
         UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
     }
     
-    func logOut(){
-        accountsClient.logOut()
+    override func logOut(){
+        super.logOut()
         self.reloadPosts()
-        self.navigationItem.rightBarButtonItem = nil
     }
     
     func reloadPosts() {

@@ -7,6 +7,8 @@
 import Foundation
 import Alamofire
 
+typealias RequestErrorCallback = (DataResponse<Any>) -> Void
+
 public class BaseServiceClient {
     /*
      * Parent class for all service clients

@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mycell" id="Xha-gs-goA" customClass="PostTableViewCell" customModule="WallAppiOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postcell" id="Xha-gs-goA" customClass="PostTableViewCell" customModule="WallAppiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xha-gs-goA" id="qI0-Ou-RRm">
@@ -379,6 +379,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Write Something" id="ny2-qY-Bcj"/>
                     <connections>
+                        <outlet property="postButton" destination="ddr-eO-c9r" id="eno-XF-3Jz"/>
                         <outlet property="textView" destination="THy-UD-Jvw" id="EOr-hB-kTj"/>
                         <segue destination="yxT-3R-NqT" kind="show" identifier="WriteToLoginSegue" id="FuK-r2-N1N"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="WriteToWallSegue" id="Dsu-gR-XCn"/>
@@ -462,7 +463,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="haZ-aI-PZN"/>
+        <segue reference="Dsu-gR-XCn"/>
         <segue reference="ksk-Xe-cNm"/>
         <segue reference="FuK-r2-N1N"/>
     </inferredMetricsTieBreakers>

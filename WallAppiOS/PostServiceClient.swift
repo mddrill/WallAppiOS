@@ -14,6 +14,10 @@ enum BackendError: Error {
     case objectSerialization(reason: String)
 }
 
+enum PostError: Error {
+    case incorrectFields
+}
+
 public class PostServiceClient: BaseServiceClient {
     
     // This class connects to the post app on the backend
@@ -33,7 +37,6 @@ public class PostServiceClient: BaseServiceClient {
             .validate(contentType: ["application/json"])
             .responseJSON { response in
                 if response.result.error != nil {
-//                    self.printResponse(response: response)
                     completionHandler(response)
                     return
                 }
@@ -83,8 +86,12 @@ public class PostServiceClient: BaseServiceClient {
         var allPosts: [Post] = []
         if let results = json["results"] as? [[String: Any]] {
             for jsonPost in results {
-                let post = Post(json: jsonPost)
-                allPosts.append(post)
+                if let post = Post(json: jsonPost) {
+                    allPosts.append(post)
+                }
+                else {
+                    return .failure(PostError.incorrectFields)
+                }
             }
         }
         wrapper.posts = allPosts
@@ -112,15 +119,12 @@ public class PostServiceClient: BaseServiceClient {
             .responseJSON { response in
                 if let error = response.result.error {
                     completionHandler(.failure(error))
-//                    self.printResponse(response: response)
                     return
                 }
                 let postWrapperResult = self.postArrayFromResponse(response)
                 completionHandler(postWrapperResult)
         }
     }
-
-    // These methods are for extra features which I did not have time to implement
     
     // Method to delete post
     func delete(postWithId id: Int, completionHandler: @escaping (DataResponse<Any>) -> Void){
@@ -131,7 +135,6 @@ public class PostServiceClient: BaseServiceClient {
             .validate(contentType: ["application/json"])
             .responseJSON { response in
                 if response.result.error != nil {
-//                    self.printResponse(response: response)
                     completionHandler(response)
                     return
                 }
@@ -151,7 +154,6 @@ public class PostServiceClient: BaseServiceClient {
             .validate(contentType: ["application/json"])
             .responseJSON { response in
                 if response.result.error != nil {
-//                    self.printResponse(response: response)
                     completionHandler(response)
                     return
                 }

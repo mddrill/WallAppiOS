@@ -9,6 +9,17 @@
 import Foundation
 import Alamofire
 
+enum RegistrationError: Error {
+    case usernameAlreadyExists
+    case emailIsInvalid
+    case passwordsDontMatch
+}
+
+enum LoginError: Error {
+    case invalidCredentials
+    case serverIsDown
+}
+
 class AccountsServiceClient: BaseServiceClient {
     
     // This class connects to the accounts app in the backend
@@ -28,13 +39,20 @@ class AccountsServiceClient: BaseServiceClient {
     }
     
     // Method to register a new user
-    func register(User username: String, WithPassword password: String, AndEmail email: String, completionHandler:@escaping (DataResponse<Any>) -> Void) {
+    func register(username: String, password1: String, password2: String, email: String, completionHandler: @escaping RequestErrorCallback) throws {
         print("register called")
+        
+        guard password1 == password2 else {
+            throw RegistrationError.passwordsDontMatch
+        }
+        guard email.isValidEmail() else {
+            throw RegistrationError.emailIsInvalid
+        }
         
         // Add parameters
         let parameters: [String: String] = [
             "username": username,
-            "password": password,
+            "password": password1,
             "email": email
         ]
         // Send request to backend
@@ -42,14 +60,17 @@ class AccountsServiceClient: BaseServiceClient {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON {response in
-                print("Response from register user request:")
-                self.printResponse(response: response)
+                if let json = response.result.value as? [String: Any] {
+                    BaseServiceClient.token = json["token"] as! String
+                    BaseServiceClient.username = username
+                }
                 completionHandler(response)
-        }
+            }
+        
     }
     
     // Gets authentication token from login endpoint
-    func login(WithUsername username:String, AndPassword password:String, completionHandler:@escaping (DataResponse<Any>) -> Void) {
+    func login(username:String, password:String, completionHandler:@escaping RequestErrorCallback) {
         print("login called")
         let parameters: [String: String] = [
             "username": username,
@@ -66,11 +87,6 @@ class AccountsServiceClient: BaseServiceClient {
                     BaseServiceClient.token = json["token"] as! String
                     BaseServiceClient.username = username
                 }
-                else {
-                    print("Could not login error = \(String(describing: response.result.error))")
-                }
-                print("Response to login request")
-                self.printResponse(response: response)
                 completionHandler(response)
         }
         
@@ -85,18 +101,14 @@ class AccountsServiceClient: BaseServiceClient {
     // These three methods are for extra features which I did not have time to implement
 
     // Method to view Account info
-    func viewAccount(id: Int, completionHandler: @escaping (DataResponse<Any>) -> Account){
+    func viewAccount(id: Int, completionHandler: @escaping (DataResponse<Any>) -> Account?){
         let token = BaseServiceClient.token
         let headers = ["Authorization": "Token \(token!)"]
         self.sessionManager.request("\(endpointForAccounts())/\(id)", method: .get, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
-                if response.result.error != nil {
-//                    self.printResponse(response: response)
-                    completionHandler(response)
-                    return
-                }
+                completionHandler(response)
         }
     }
     
@@ -108,11 +120,8 @@ class AccountsServiceClient: BaseServiceClient {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
-                if response.result.error != nil {
-//                    self.printResponse(response: response)
-                    completionHandler(response)
-                    return
-                }
+                self.logOut()
+                completionHandler(response)
         }
     }
     
@@ -127,11 +136,16 @@ class AccountsServiceClient: BaseServiceClient {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
-                if response.result.error != nil {
-//                    self.printResponse(response: response)
-                    completionHandler(response)
-                    return
-                }
+                completionHandler(response)
         }
     }
 }
+
+extension String {
+    func isValidEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: self)
+    }
+}
+
