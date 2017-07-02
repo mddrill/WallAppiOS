@@ -7,6 +7,8 @@
 import Foundation
 import Alamofire
 
+typealias ErrorCallBack = (NSError) -> Void
+typealias VoidCallBack = (Void) -> Void
 typealias RequestCallback = (DataResponse<Any>) -> Void
 
 public class BaseServiceClient {
@@ -15,7 +17,6 @@ public class BaseServiceClient {
     */
     
     static var token: String!
-    static var username: String!
     
     var sessionManager : SessionManager!
     

@@ -19,20 +19,19 @@ class LoginViewController: BaseViewController {
     
     @IBAction func loginButton(_ sender: UIButton) {
         guard let username = usernameField.text,
-            let password = passwordField.text
+            let password = passwordField.text,
+            !username.isEmpty, !password.isEmpty
         else {
             popUpError(withTitle: "Empty Fields",withMessage: "You must enter a username and password")
             return
         }
-        accountsClient.login(username: username, password: password) { response in
-            if let error = response.result.error {
-                print("There were errors logging in")
-                self.handle(requestError: error)
-            }
-            else {
-                self.performSegue(withIdentifier: "LoginToWriteSegue", sender: self)
-            }
-        }
+        accountsClient.login(username: username, password: password,
+                             onSuccess: self.handleLoginResponse, onError: self.handle)
+    }
+    func handleLoginResponse(token: Token, username: String){
+        CurrentUser.username = username
+        CurrentUser.token = token.value
+        self.performSegue(withIdentifier: "LoginToWriteSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,13 +48,14 @@ class LoginViewController: BaseViewController {
         }
     }
     
-    override func handle(requestError: Error) {
-        if let error = requestError as? AFError,
-            error.responseCode! == 400 {
+    override func handle(error: NSError) {
+        let statusCode = error.code
+        print("Here: \(statusCode)")
+        if statusCode == 400 {
             popUpError(withTitle: "Invalid Credentials",withMessage: "Incorrect username or password, please try again")
         }
         else{
-            super.handle(requestError: requestError)
+            super.handle(error: error)
         }
     }
 }

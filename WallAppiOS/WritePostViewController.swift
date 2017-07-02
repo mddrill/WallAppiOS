@@ -34,10 +34,10 @@ class WritePostViewController: BaseViewController {
     
     @IBAction func sendPost(_ sender: UIButton) {
         guard self.validate(textView: textView) else {
-            popUpError(withTitle: "Empty Fields", withMessage: "You have to enter text first before you can post!")
+            popUpError(withTitle: "Empty Post", withMessage: "You have to enter text first before you can post!")
             return
         }
-        if BaseServiceClient.token == nil {
+        if !CurrentUser.loggedIn() {
             // If the user is not logged in, make them log in
             performSegue(withIdentifier: "WriteToLoginSegue", sender: self)
         }
@@ -46,7 +46,7 @@ class WritePostViewController: BaseViewController {
             do{
                 try self.postClient.create(postWithText: textView.text!) { response in
                     if let error = response.result.error {
-                        self.handle(requestError: error)
+                        self.handle(error: error as NSError)
                     }
                 }
             }

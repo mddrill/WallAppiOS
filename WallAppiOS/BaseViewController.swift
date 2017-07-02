@@ -64,7 +64,7 @@ class BaseViewController: UIViewController {
         }
         
         // If logged in create log out button
-        if AccountsServiceClient.loggedIn() {
+        if CurrentUser.loggedIn() {
             let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
             self.navigationItem.rightBarButtonItem = logOutButton
         }
@@ -74,7 +74,11 @@ class BaseViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func handle(requestError error: Error) {
+    func handle(error: NSError) {
+        popUpError(withTitle: "\(error.code) Error", withMessage: "An Error Occured")
+    }
+    
+    /*func handle(error: NSError) {
         print("Hander request error called")
         if let error = error as? AFError {
             switch error {
@@ -100,11 +104,11 @@ class BaseViewController: UIViewController {
                 popUpError(withTitle: "\(String(describing: error.responseCode))", withMessage: "Response serialization failed because \(reason)")
             }
         } else if let error = error as? URLError {
-            popUpError(withTitle: "\(String(describing: error.errorCode))URLError", withMessage: "URLError occurred: \(error)")
+            popUpError(withTitle: "\(String(describing: error.errorCode)) URLError", withMessage: "URLError occurred: \(error)")
         } else {
             popUpError(withTitle: "Unkown Error", withMessage: "Unknown error occured: \(String(describing: error))")
         }
-    }
+    }*/
     
     func popUpError(withTitle title: String, withMessage message: String, withAction action: ((UIAlertAction)->())? = nil){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -113,7 +117,7 @@ class BaseViewController: UIViewController {
     }
     
     func logOut(){
-        accountsClient.logOut()
+        CurrentUser.logOut()
         self.navigationItem.rightBarButtonItem = nil
     }
     

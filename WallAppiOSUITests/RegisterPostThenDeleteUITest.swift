@@ -1,8 +1,8 @@
 //
-//  WallAppiOSUITests.swift
-//  WallAppiOSUITests
+//  RegisterPostThenDelete.swift
+//  WallAppiOS
 //
-//  Created by Matthew Drill on 7/1/17.
+//  Created by Matthew Drill on 7/2/17.
 //  Copyright © 2017 Matthew Drill. All rights reserved.
 //
 
@@ -11,20 +11,21 @@ import Quick
 import Nimble
 @testable import WallAppiOS
 
-class WallAppiOSUISpec: QuickSpec {
-    override func spec(){
-        super.spec()
+class RegisterPostThenDeleteUITest: QuickSpec {
     
-        describe("Login Then Post") {
+    override func spec() {
+        
+        describe("Register, post, then delete a post"){
             let testText = "Post Something"
             let username = "user1"
             let password = "password"
+            let email = "email@email.com"
             
             context("Success"){
-                it("Does not show any alert messages and shows views in right order") {
+                it("Doesn't show an alert"){
                     let app = XCUIApplication()
                     self.continueAfterFailure = false
-                    app.launchArguments = ["StubNetworkResponses", "Success"]
+                    app.launchArguments = ["StubNetworkResponses"]
                     app.launch()
                     
                     let table = app.tables.element
@@ -35,25 +36,44 @@ class WallAppiOSUISpec: QuickSpec {
                     textView.tap()
                     textView.typeText(testText)
                     app.buttons["Post To Wall"].tap()
+                    app.buttons["Register"].tap()
                     
                     let enterUsernameTextField = app.textFields["Enter Username"]
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText(username)
-            
+                    
                     let enterPasswordTextField = app.textFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
-                    app.buttons["Login"].tap()
+                    let enterPassword2TextField = app.textFields["Re-enter Password"]
+                    enterPassword2TextField.tap()
+                    enterPassword2TextField.typeText(password)
+                    
+                    let enterEmailTextField = app.textFields["Enter Email Address"]
+                    enterEmailTextField.tap()
+                    enterEmailTextField.typeText(email)
+                    
+                    app.buttons["Register"].tap()
+                    
+                    expect(table.exists).toEventually(beTrue())
+                    
+                    let cell = table.cells.element(boundBy: 0)
+                    expect(cell.staticTexts["user1 posted this on Fri Jun 30, 2017"].exists).to(beTrue())
+                    
+                    let deleteButton = cell.buttons["Delete"]
+                    expect(deleteButton.exists).to(beTrue())
+                    
+                    deleteButton.tap()
                     
                     expect(table.exists).toEventually(beTrue())
                 }
             }
-            context("Incorrect username or password"){
-                it("Shows an alert"){
+            context("Logging out before pressing delete button"){
+                it("Asserts that the delete button is not there"){
                     let app = XCUIApplication()
                     self.continueAfterFailure = false
-                    app.launchArguments = ["StubNetworkResponses", "400_ERRORS"]
+                    app.launchArguments = ["StubNetworkResponses"]
                     app.launch()
                     
                     let table = app.tables.element
@@ -64,6 +84,7 @@ class WallAppiOSUISpec: QuickSpec {
                     textView.tap()
                     textView.typeText(testText)
                     app.buttons["Post To Wall"].tap()
+                    app.buttons["Register"].tap()
                     
                     let enterUsernameTextField = app.textFields["Enter Username"]
                     enterUsernameTextField.tap()
@@ -73,14 +94,29 @@ class WallAppiOSUISpec: QuickSpec {
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
-                    app.buttons["Login"].tap()
+                    let enterPassword2TextField = app.textFields["Re-enter Password"]
+                    enterPassword2TextField.tap()
+                    enterPassword2TextField.typeText(password)
                     
-                    let errorAlert = app.alerts["Error"]
+                    let enterEmailTextField = app.textFields["Enter Email Address"]
+                    enterEmailTextField.tap()
+                    enterEmailTextField.typeText(email)
                     
-                    expect(errorAlert.)
+                    app.buttons["Register"].tap()
                     
+                    expect(table.exists).toEventually(beTrue())
+                    
+                    let cell = table.cells.element(boundBy: 0)
+                    expect(cell.staticTexts["user1 posted this on Fri Jun 30, 2017"].exists).to(beTrue())
+                    
+                    let logoutButton = app.buttons["Log Out"]
+                    logoutButton.tap()
+                    
+                    let deleteButton = cell.buttons["Delete"]
+                    expect(deleteButton.exists).toNot(beTrue())
                 }
             }
         }
+        
     }
 }

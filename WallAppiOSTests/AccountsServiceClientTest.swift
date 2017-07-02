@@ -85,47 +85,75 @@ class AccountsServiceClientSpec: QuickSpec {
             let password = "password"
             context("Success") {
                 it("Returns token") {
-                    var requestError: Error!
-                    var token: String!
-                    
                     let path = Bundle(for: type(of: self)).path(forResource: "Login", ofType: "json")!
                     let data = NSData(contentsOfFile: path)!
                     self.stub(uri(AccountsServiceClient.endpointForLogin()), jsonData(data as Data, status: 200))
                     
-                    self.accountsClient.login(username: username, password: password){ response in
-                        requestError = response.result.error
-                        let json = response.result.value as? [String: Any]
-                        token = json?["token"] as? String
-                    }
-                    expect(requestError).toEventually(beNil())
-                    expect(token).toEventually(equal("6f6a7ff11a8c2ff44423a3982ff81623cc35ed87"))
+                    var wasSuccess = false
+                    var wasFailure = false
+                    var userToken: String!
+                    var user: String!
+                    self.accountsClient.login(username: username, password: password,
+                                              onSuccess: { token, username in
+                                                wasSuccess = true
+                                                userToken = token.value
+                                                user = username
+                                                },
+                                              onError: { _ in
+                                                    wasFailure = true
+                                                })
+                    expect(wasSuccess).toEventually(beTrue())
+                    expect(wasFailure).toEventually(beFalse())
+                    expect(userToken).toEventually(equal("6f6a7ff11a8c2ff44423a3982ff81623cc35ed87"))
+                    expect(user).toEventually(equal(username))
                 }
                 
             }
             context("Credentials incorrect") {
                 it("Does not throw frontend error but returns a backend one") {
-                    var requestError: Error!
+                    var requestError: NSError!
                     
                     let error = NSError(domain: "Server Error", code: 400, userInfo: nil)
                     self.stub(uri(AccountsServiceClient.endpointForLogin()), failure(error))
                     
-                    self.accountsClient.login(username: username, password: "Not the right password") { response in
-                        requestError = response.result.error
-                    }
+                    
+                    var wasSuccess = false
+                    var wasFailure = false
+                    self.accountsClient.login(username: username, password: "Not the right password",
+                                              onSuccess: {_ in
+                                                wasSuccess = true
+                                                },
+                                              onError: { error in
+                                                wasFailure = true
+                                                requestError = error
+                                                })
+                    expect(wasSuccess).toEventually(beFalse())
+                    expect(wasFailure).toEventually(beTrue())
                     expect(requestError).toEventuallyNot(beNil())
+                    expect(requestError.code).toEventually(equal(400))
                 }
             }
             context("Getting a server error") {
                 it("Does not throw frontend error but returns a backend one") {
-                    var requestError: Error!
+                    var requestError: NSError!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
                     self.stub(uri(AccountsServiceClient.endpointForLogin()), failure(error))
                     
-                    self.accountsClient.login(username: username, password: password) { response in
-                        requestError = response.result.error
-                    }
+                    var wasSuccess = false
+                    var wasFailure = false
+                    self.accountsClient.login(username: username, password: "Not the right password",
+                                              onSuccess: {_ in
+                                                wasSuccess = true
+                    },
+                                              onError: { error in
+                                                wasFailure = true
+                                                requestError = error
+                    })
+                    expect(wasSuccess).toEventually(beFalse())
+                    expect(wasFailure).toEventually(beTrue())
                     expect(requestError).toEventuallyNot(beNil())
+                    expect(requestError.code).toEventually(equal(500))
                 }
             }
         }

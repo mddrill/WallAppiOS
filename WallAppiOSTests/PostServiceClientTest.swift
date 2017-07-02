@@ -21,7 +21,7 @@ class PostServiceClientSpec: QuickSpec {
         describe("GetPosts") {
             context("Success"){
                 it("Returns All The Posts"){
-                    BaseServiceClient.token = nil
+                    CurrentUser.token = nil
                     var postsWrapper: PostWrapper!
                     var requestError: Error!
                     
@@ -87,13 +87,13 @@ class PostServiceClientSpec: QuickSpec {
             let testText = "Test Text"
             context("Without Logging In") {
                 it("Throws a frontend error") {
-                    BaseServiceClient.token = nil
+                    CurrentUser.token = nil
                     expect{ try self.postClient.create(postWithText: testText, completionHandler: {_ in}) }.to(throwError(PostError.notLoggedIn))
                 }
             }
             context("After Logging In") {
                 it("Does not throw or return an error") {
-                    BaseServiceClient.token = "dummytoken"
+                    CurrentUser.token = "dummytoken"
                     var requestError: Error!
                 
                     let path = Bundle(for: type(of: self)).path(forResource: "CreatePost", ofType: "json")!
@@ -101,7 +101,7 @@ class PostServiceClientSpec: QuickSpec {
                     self.stub(uri(PostServiceClient.endpointForPost()), jsonData(data as Data, status: 201))
                     
                     expect{ try self.postClient.create(postWithText: testText, completionHandler: {_ in}) }.toNot(throwError())
-                    
+
                     try! self.postClient.create(postWithText: testText) { response in
                         requestError = response.result.error
                     }
@@ -110,7 +110,7 @@ class PostServiceClientSpec: QuickSpec {
             }
             context("Getting a server error") {
                 it("Does not throw frontend errror but returns a backend one") {
-                    BaseServiceClient.token = "dummytoken"
+                    CurrentUser.token = "dummytoken"
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
@@ -130,14 +130,14 @@ class PostServiceClientSpec: QuickSpec {
             let postId = 1
             context("Not Logged In"){
                 it("Throws a frontend error"){
-                    BaseServiceClient.token = nil
+                    CurrentUser.token = nil
                     
                     expect { try self.postClient.edit(postWithId: postId, withNewText: testText, completionHandler: {_ in}) }.to(throwError(PostError.notLoggedIn))
                 }
             }
             context("Logged In"){
                 it("Does not throw or return an error"){
-                    BaseServiceClient.token = "dummytoken"
+                    CurrentUser.token = "dummytoken"
                     var requestError: Error!
                     
                     let path = Bundle(for: type(of: self)).path(forResource: "EditPost", ofType: "json")!
@@ -156,7 +156,7 @@ class PostServiceClientSpec: QuickSpec {
             }
             context("Logged In as wrong user"){
                 it("Returns a backend error"){
-                    BaseServiceClient.token = "dummytoken"
+                    CurrentUser.token = "dummytoken"
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 401, userInfo: nil)
@@ -174,7 +174,7 @@ class PostServiceClientSpec: QuickSpec {
             }
             context("Server error") {
                 it("Returns a backend error"){
-                    BaseServiceClient.token = "dummytoken"
+                    CurrentUser.token = "dummytoken"
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
@@ -193,14 +193,14 @@ class PostServiceClientSpec: QuickSpec {
             let postId = 1
             context("Not Logged In"){
                 it("Throws a frontend error"){
-                    BaseServiceClient.token = nil
-                    
+                    CurrentUser.token = nil
+
                     expect { try self.postClient.delete(postWithId: postId, completionHandler: {_ in}) }.to(throwError(PostError.notLoggedIn))
                 }
             }
             context("Logged In"){
                 it("Does not throw or return an error"){
-                    BaseServiceClient.token = "dummytoken"
+                    CurrentUser.token = "dummytoken"
                     var requestError: Error!
                     
                     let path = Bundle(for: type(of: self)).path(forResource: "DeletePost", ofType: "json")!
@@ -219,7 +219,7 @@ class PostServiceClientSpec: QuickSpec {
             }
             context("Logged In as wrong user"){
                 it("Returns a backend error"){
-                    BaseServiceClient.token = "dummytoken"
+                    CurrentUser.token = "dummytoken"
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 401, userInfo: nil)
@@ -237,9 +237,9 @@ class PostServiceClientSpec: QuickSpec {
             }
             context("Server error") {
                 it("Returns a backend error"){
-                    BaseServiceClient.token = "dummytoken"
+                    CurrentUser.token = "dummytoken"
                     var requestError: Error!
-                    
+
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
                     self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), failure(error))
                     
@@ -251,5 +251,6 @@ class PostServiceClientSpec: QuickSpec {
                     expect(requestError).toEventuallyNot(beNil())
                 }
             }
-        }    }
+        }
+    }
 }

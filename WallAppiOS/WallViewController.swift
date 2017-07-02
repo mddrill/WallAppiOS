@@ -51,7 +51,7 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
             cell.textView.text = postToShow.text
             
             // If the user is logged in and this post belongs to them, they see an edit and delete button on their posts
-            if AccountsServiceClient.loggedIn() && postToShow.belongsTo(author: BaseServiceClient.username){
+            if CurrentUser.loggedIn() && postToShow.belongsTo(author: CurrentUser.username){
                 cell.deleteButton.tag = postToShow.id
                 cell.deleteButton.addTarget(self, action: #selector(pressDeleteButton), for: .touchUpInside)
                 
@@ -85,7 +85,7 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
         postClient.getPosts{ result in
             if let error = result.error {
                 self.isLoadingPosts = false
-                self.handle(requestError: error)
+                self.handle(error: error as NSError)
                 return
             }
             self.postsWrapper = result.value
@@ -103,7 +103,7 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
             postClient.getMorePosts(WithWrapper: wrapper) { result in
                 if let error = result.error {
                     self.isLoadingPosts = false
-                    self.handle(requestError: error)
+                    self.handle(error: error as NSError)
                     return
                 }
                 self.postsWrapper = result.value
@@ -142,7 +142,7 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
         // If this throws an error, it means the user was able to delete a post without loging, in. Something is wrong, app needs to crash
         try! postClient.delete(postWithId: postId) { response in
             if let error = response.result.error {
-                self.handle(requestError: error)
+                self.handle(error: error as NSError)
             }
         }
         self.reloadPosts()
@@ -156,12 +156,13 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
         }
     }
     
-    override func handle(requestError: Error) {
-        if let error = requestError as? URLError {
-            popUpError(withTitle: "\(error.errorCode) URLError", withMessage: "Could not connect to server", withAction: self.exitApp)
+    override func handle(error: NSError) {
+        let statusCode = error.code
+        if 500...599 ~= statusCode  {
+            popUpError(withTitle: "Server Error", withMessage: "Could not connect to server", withAction: self.exitApp)
         }
         else{
-            super.handle(requestError: requestError)
+            super.handle(error: error)
         }
     }
 }

@@ -35,7 +35,8 @@ public class PostServiceClient: BaseServiceClient {
     // Method to post to the wall
     func create(postWithText text: String, completionHandler: @escaping RequestCallback) throws {
         // Make sure user is logged in
-        guard let token = BaseServiceClient.token else {
+        print("here2 \(CurrentUser.token)")
+        guard let token = CurrentUser.token else {
             throw PostError.notLoggedIn
         }
         // Add parameters
@@ -135,7 +136,7 @@ public class PostServiceClient: BaseServiceClient {
     // Method to delete post
     func delete(postWithId id: Int, completionHandler: @escaping RequestCallback) throws{
         // Make sure user is logged in
-        guard let token = BaseServiceClient.token else {
+        guard let token = CurrentUser.token else {
             throw PostError.notLoggedIn
         }
         let headers = ["Authorization": "Token \(token)"]
@@ -153,7 +154,7 @@ public class PostServiceClient: BaseServiceClient {
     // Method to edit post
     func edit(postWithId id:Int, withNewText newText: String, completionHandler: @escaping RequestCallback) throws{
         // Make sure user is logged in
-        guard let token = BaseServiceClient.token else {
+        guard let token = CurrentUser.token else {
             throw PostError.notLoggedIn
         }
         // Add parameters

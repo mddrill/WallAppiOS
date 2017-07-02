@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 
+typealias TokenUsernameCallBack = (Token, String) -> Void
+
 enum RegistrationError: Error {
     case usernameAlreadyExists
     case emailIsInvalid
@@ -20,10 +22,6 @@ class AccountsServiceClient: BaseServiceClient {
     // This class connects to the accounts app in the backend
     
     static let sharedInstance: AccountsServiceClient = AccountsServiceClient()
-    
-    static func loggedIn() -> Bool {
-        return BaseServiceClient.token != nil
-    }
     
     static func endpointForAccounts() -> String{
         return "https://127.0.0.1:8000/accounts/"
@@ -59,49 +57,40 @@ class AccountsServiceClient: BaseServiceClient {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON {response in
-                if let json = response.result.value as? [String: Any] {
-                    BaseServiceClient.token = json["token"] as! String
-                    BaseServiceClient.username = username
-                }
                 completionHandler(response)
             }
         
     }
     
     // Gets authentication token from login endpoint
-    func login(username:String, password:String, completionHandler:@escaping RequestCallback) {
+    func login(username:String, password:String, onSuccess: @escaping TokenUsernameCallBack, onError:  @escaping ErrorCallBack) {
         print("login called")
         let parameters: [String: String] = [
             "username": username,
             "password": password,
         ]
-        
+
         // Send request to backend
         self.sessionManager.request(AccountsServiceClient.endpointForLogin(), method: .post, parameters: parameters)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON {response in
-                // make sure we got JSON and turn it into a dictionary
-                if let json = response.result.value as? [String: Any] {
-                    BaseServiceClient.token = json["token"] as! String
-                    BaseServiceClient.username = username
+                switch response.result {
+                case .success:
+                    // If case is success and response is not json, something is wrong, app should crash
+                    let json = response.result.value as! [String: Any]
+                    onSuccess(Token(json: json)!, username)
+                case .failure(let error):
+                    onError(error as NSError)
                 }
-                completionHandler(response)
         }
-        
-        
-    }
-    
-    func logOut(){
-        BaseServiceClient.token = nil
-        BaseServiceClient.username = nil
     }
     
     // These three methods are for extra features which I did not have time to implement
 
     // Method to view Account info
     func viewAccount(id: Int, completionHandler: @escaping RequestCallback){
-        let token = BaseServiceClient.token
+        let token = CurrentUser.token
         let headers = ["Authorization": "Token \(token!)"]
         self.sessionManager.request(AccountsServiceClient.endpointForAccounts(withId: id), method: .get, headers: headers)
             .validate(statusCode: 200..<300)
@@ -113,13 +102,13 @@ class AccountsServiceClient: BaseServiceClient {
     
     // Method to delete Account
     func deleteAccount(id: Int, completionHandler: @escaping RequestCallback){
-        let token = BaseServiceClient.token
+        let token = CurrentUser.token
         let headers = ["Authorization": "Token \(token!)"]
         self.sessionManager.request(AccountsServiceClient.endpointForAccounts(withId: id), method: .delete, headers: headers)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
-                self.logOut()
+                CurrentUser.logOut()
                 completionHandler(response)
         }
     }
@@ -129,7 +118,7 @@ class AccountsServiceClient: BaseServiceClient {
         let parameters: [String: String] = [
             "email": newEmail,
             ]
-        let token = BaseServiceClient.token
+        let token = CurrentUser.token
         let headers = ["Authorization": "Token \(token!)"]
         self.sessionManager.request(AccountsServiceClient.endpointForAccounts(withId: id), method: .patch, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)

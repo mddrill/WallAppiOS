@@ -36,7 +36,7 @@ class EditPostViewController: BaseViewController {
         // If this throws an error, it means the user was able to edit a post without logging, in. Something is wrong, app needs to crash
         try! self.postClient.edit(postWithId: self.postId!, withNewText: textView.text!) { response in
             if let error = response.result.error {
-                self.handle(requestError: error)
+                self.handle(error: error as NSError)
             }
         }
         

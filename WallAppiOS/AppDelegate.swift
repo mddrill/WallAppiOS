@@ -18,9 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch
+        
         if ProcessInfo.processInfo.arguments.contains("StubNetworkResponses") {
-            print("Using network stubbing")
-            setUpNetworkStubbing()
+            var urlsToExclude: [String] = []
+            for (url, errorCode) in ProcessInfo.processInfo.environment {
+                if let code = Int(errorCode) {
+                    print(url)
+                    print(code)
+                    urlsToExclude += [url]
+                    let error = NSError(domain: "\(errorCode) Error", code: code, userInfo: nil)
+                    MockingjayProtocol.addStub(matcher: uri(url), builder: failure(error))
+                }
+            }
+            stubEndpointsIntoFixtures(exclude: urlsToExclude)
         }
         return true
     }
@@ -49,36 +59,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-fileprivate func setUpNetworkStubbing() {
+fileprivate func stubEndpointsIntoFixtures(exclude urlsToExclude: [String]) {
     var path = Bundle.main.path(forResource: "GetPosts", ofType: "json")
     var data = NSData(contentsOfFile: path!)!
-    MockingjayProtocol.addStub(matcher: http(.get, uri: PostServiceClient.endpointForPost()), builder: jsonData(data as Data))
+    if !urlsToExclude.contains(PostServiceClient.endpointForPost()){
+        MockingjayProtocol.addStub(matcher: http(.get, uri: PostServiceClient.endpointForPost()), builder: jsonData(data as Data))
+    }
     
     path =  Bundle.main.path(forResource: "CreatePost", ofType: "json")
     data = NSData(contentsOfFile: path!)!
-    MockingjayProtocol.addStub(matcher: http(.post, uri: PostServiceClient.endpointForPost()), builder: jsonData(data as Data, status: 201))
+    if !urlsToExclude.contains(PostServiceClient.endpointForPost()){
+        MockingjayProtocol.addStub(matcher: http(.post, uri: PostServiceClient.endpointForPost()), builder: jsonData(data as Data, status: 201))
+    }
+    let samplePostIds = [1, 3, 17, 42, 3190]
     
     path = Bundle.main.path(forResource: "EditPost", ofType: "json")
     data = NSData(contentsOfFile: path!)!
-    MockingjayProtocol.addStub(matcher: http(.patch, uri: PostServiceClient.endpointForPost(withId: 1)), builder: jsonData(data as Data))
+    for id in samplePostIds {
+        if !urlsToExclude.contains(PostServiceClient.endpointForPost(withId: id)){
+            MockingjayProtocol.addStub(matcher: http(.patch, uri: PostServiceClient.endpointForPost(withId: id)), builder: jsonData(data as Data))
+        }
+    }
+    
     
     path = Bundle.main.path(forResource: "DeletePost", ofType: "json")
     data = NSData(contentsOfFile: path!)!
-    MockingjayProtocol.addStub(matcher: http(.delete, uri: PostServiceClient.endpointForPost(withId: 1)), builder: jsonData(data as Data, status: 204))
+    for id in samplePostIds {
+        if !urlsToExclude.contains(PostServiceClient.endpointForPost(withId: id)){
+            MockingjayProtocol.addStub(matcher: http(.delete, uri: PostServiceClient.endpointForPost(withId: id)), builder: jsonData(data as Data))
+        }
+    }
     
     path = Bundle.main.path(forResource: "RegisterUser", ofType: "json")
     data = NSData(contentsOfFile: path!)!
-    MockingjayProtocol.addStub(matcher: uri(AccountsServiceClient.endpointForAccounts()), builder: jsonData(data as Data, status: 201))
+    if !urlsToExclude.contains(AccountsServiceClient.endpointForAccounts()){
+        MockingjayProtocol.addStub(matcher: uri(AccountsServiceClient.endpointForAccounts()), builder: jsonData(data as Data, status: 201))
+    }
     
     path = Bundle.main.path(forResource: "Login", ofType: "json")
     data = NSData(contentsOfFile: path!)!
-    MockingjayProtocol.addStub(matcher: uri(AccountsServiceClient.endpointForLogin()), builder: jsonData(data as Data, status: 200))
-}
-
-public func changeStubAfterPosting() {
-    print("changed stub")
-    let path = Bundle.main.path(forResource: "GetPostsAfterCreatingPost", ofType: "json")
-    let data = NSData(contentsOfFile: path!)!
-    MockingjayProtocol.addStub(matcher: http(.get, uri: PostServiceClient.endpointForPost()), builder: jsonData(data as Data))
+    if !urlsToExclude.contains(AccountsServiceClient.endpointForLogin()){
+        MockingjayProtocol.addStub(matcher: uri(AccountsServiceClient.endpointForLogin()), builder: jsonData(data as Data, status: 200))
+    }
 }
 

@@ -24,9 +24,10 @@ class RegisterViewController: BaseViewController {
         guard let username = usernameField.text,
             let password1 = passwordField.text,
             let password2 = reenterPaswordField.text,
-            let email = emailField.text
+            let email = emailField.text,
+            !username.isEmpty, !password1.isEmpty, !password2.isEmpty, !email.isEmpty
         else {
-            popUpError(withTitle: "Fields Empty", withMessage: "Must enter all fields")
+            popUpError(withTitle: "Empty Fields", withMessage: "Must enter all fields")
             return
         }
         do{
@@ -36,15 +37,14 @@ class RegisterViewController: BaseViewController {
                           password2: password2,
                           email: email){ response in
                             if let error = response.result.error {
-                                self.handle(requestError: error)
+                                self.handle(error: error as NSError)
                             }
                             else {
-                                self.accountsClient.login(username: username, password: password1) { response in
-                                    if let error = response.result.error {
-                                        self.handle(requestError: error)
-                                    }
-                                    self.performSegue(withIdentifier: "RegisterToWriteSegue", sender: self)
-                                }
+                                self.accountsClient
+                                    .login(username: username,
+                                           password: password1,
+                                           onSuccess: self.handleLoginResponse,
+                                           onError: self.handle)
                             }
                           }
         }
@@ -57,6 +57,12 @@ class RegisterViewController: BaseViewController {
         catch {
             popUpError(withTitle: "Unkown Registration Error", withMessage: "Something went wrong when registering")
         }
+    }
+    
+    func handleLoginResponse(token: Token, username: String){
+        CurrentUser.username = username
+        CurrentUser.token = token.value
+        self.performSegue(withIdentifier: "RegisterToWriteSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -73,13 +79,13 @@ class RegisterViewController: BaseViewController {
         }
     }
     
-    override func handle(requestError: Error) {
-        if let error = requestError as? AFError,
-            error.responseCode! == 400 {
+    override func handle(error: NSError) {
+        let statusCode = error.code
+        if statusCode == 400 {
             popUpError(withTitle: "Username Taken", withMessage: "Sorry! that username is already taken")
         }
         else{
-            super.handle(requestError: requestError)
+            super.handle(error: error)
         }
     }
 }

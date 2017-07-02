@@ -42,9 +42,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BCC7007B1EFCD69C00C6DF88"
+               BlueprintIdentifier = "BC7DBFBB1F07A5ED007F1822"
                BuildableName = "WallAppiOSUITests.xctest"
                BlueprintName = "WallAppiOSUITests"
+               ReferencedContainer = "container:WallAppiOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BC6DC2461F08B3820061726A"
+               BuildableName = "LoginThenPostUITest.xctest"
+               BlueprintName = "LoginThenPostUITest"
                ReferencedContainer = "container:WallAppiOS.xcodeproj">
             </BuildableReference>
          </TestableReference>
