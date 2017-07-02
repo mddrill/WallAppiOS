@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8F51CC7A478309D7DED1E613 /* Pods_WallAppiOS_WallAppiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BD092C5DE02BD2FFF8E4E8 /* Pods_WallAppiOS_WallAppiOSUITests.framework */; };
 		9A2CD8D7804AE6E451511C5E /* Pods_WallAppiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A7DEEC469DF342BFED1046 /* Pods_WallAppiOS.framework */; };
+		BC6DC2401F086D960061726A /* UITESTING.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6DC23F1F086D960061726A /* UITESTING.swift */; };
 		BC7DBF8F1F077070007F1822 /* Fixtures in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBF8E1F077070007F1822 /* Fixtures */; };
 		BC7DBF911F077699007F1822 /* GetPosts.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBF901F077699007F1822 /* GetPosts.json */; };
 		BC7DBF931F07854B007F1822 /* CreatePost.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBF921F07854B007F1822 /* CreatePost.json */; };
@@ -69,6 +70,7 @@
 		83B4A13CBF31EB9CAD9530A4 /* Pods-WallAppiOS-WallAppiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallAppiOS-WallAppiOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallAppiOS-WallAppiOSUITests/Pods-WallAppiOS-WallAppiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9B29E83F4CEF378E082ED6B2 /* Pods-WallAppiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallAppiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallAppiOS/Pods-WallAppiOS.release.xcconfig"; sourceTree = "<group>"; };
 		A7AB250DABD2416453D8E380 /* Pods-WallAppiOS-WallAppiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallAppiOS-WallAppiOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WallAppiOS-WallAppiOSUITests/Pods-WallAppiOS-WallAppiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BC6DC23F1F086D960061726A /* UITESTING.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITESTING.swift; path = ../WallAppiOSTests/UITESTING.swift; sourceTree = "<group>"; };
 		BC7DBF8E1F077070007F1822 /* Fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fixtures; sourceTree = "<group>"; };
 		BC7DBF901F077699007F1822 /* GetPosts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = GetPosts.json; path = WallAppiOSTests/Fixtures/GetPosts.json; sourceTree = "<group>"; };
 		BC7DBF921F07854B007F1822 /* CreatePost.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = CreatePost.json; path = WallAppiOSTests/Fixtures/CreatePost.json; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		BC7DBFBD1F07A5ED007F1822 /* WallAppiOSUITests */ = {
 			isa = PBXGroup;
 			children = (
+				BC6DC23F1F086D960061726A /* UITESTING.swift */,
 				BC7DBFBE1F07A5ED007F1822 /* WallAppiOSUITests.swift */,
 				BC7DBFC01F07A5ED007F1822 /* Info.plist */,
 			);
@@ -582,6 +585,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6DC2401F086D960061726A /* UITESTING.swift in Sources */,
 				BC7DBFBF1F07A5ED007F1822 /* WallAppiOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

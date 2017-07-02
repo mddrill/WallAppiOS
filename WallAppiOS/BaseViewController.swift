@@ -79,36 +79,36 @@ class BaseViewController: UIViewController {
         if let error = error as? AFError {
             switch error {
             case .invalidURL(let url):
-                popUpError(withMessage: "This URL: \(url) is invalid")
+                popUpError(withTitle: "\(String(describing: error.responseCode)) Error", withMessage: "This URL: \(url) is invalid")
             case .parameterEncodingFailed(let reason):
-                popUpError(withMessage: "The parameters could not be encoded because: \(reason)")
+                popUpError(withTitle: "\(String(describing: error.responseCode)) Error", withMessage: "The parameters could not be encoded because: \(reason)")
             case .multipartEncodingFailed(let reason):
-                popUpError(withMessage: "Multipart encoding failed because: \(reason)")
+                popUpError(withTitle: "\(String(describing: error.responseCode)) Error",
+                    withMessage: "Multipart encoding failed because: \(reason)")
             case .responseValidationFailed(let reason):
                 switch reason {
                 case .dataFileNil, .dataFileReadFailed:
-                    popUpError(withMessage: "Downloaded file could not be read")
+                    popUpError(withTitle: "\(String(describing: error.responseCode))", withMessage: "Downloaded file could not be read")
                 case .missingContentType(let acceptableContentTypes):
-                    popUpError(withMessage: "Content Type Missing: \(acceptableContentTypes)")
+                    popUpError(withTitle: "\(String(describing: error.responseCode))", withMessage: "Content Type Missing: \(acceptableContentTypes)")
                 case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
-                    popUpError(withMessage: "Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
+                    popUpError(withTitle: "\(String(describing: error.responseCode))", withMessage: "Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
                 case .unacceptableStatusCode(let code):
-                    popUpError(withMessage: "Response status code was unacceptable: \(code)")
+                    popUpError(withTitle: "\(String(describing: error.responseCode))", withMessage: "Response status code was unacceptable: \(code)")
                 }
             case .responseSerializationFailed(let reason):
-                popUpError(withMessage: "Response serialization failed because \(reason)")
+                popUpError(withTitle: "\(String(describing: error.responseCode))", withMessage: "Response serialization failed because \(reason)")
             }
         } else if let error = error as? URLError {
-            popUpError(withMessage: "URLError occurred: \(error)")
+            popUpError(withTitle: "\(String(describing: error.errorCode))URLError", withMessage: "URLError occurred: \(error)")
         } else {
-            popUpError(withMessage: "Unknown error occured: \(String(describing: error))")
+            popUpError(withTitle: "Unkown Error", withMessage: "Unknown error occured: \(String(describing: error))")
         }
     }
     
-    func popUpError(withMessage message: String){
-        print(message)
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+    func popUpError(withTitle title: String, withMessage message: String, withAction action: ((UIAlertAction)->())? = nil){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: action))
         self.present(alert, animated: true, completion: nil)
     }
     

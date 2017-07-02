@@ -21,8 +21,7 @@ class LoginViewController: BaseViewController {
         guard let username = usernameField.text,
             let password = passwordField.text
         else {
-            print("Incorrect Username or Password")
-            popUpError(withMessage: "You must enter a username and password")
+            popUpError(withTitle: "Empty Fields",withMessage: "You must enter a username and password")
             return
         }
         accountsClient.login(username: username, password: password) { response in
@@ -53,7 +52,7 @@ class LoginViewController: BaseViewController {
     override func handle(requestError: Error) {
         if let error = requestError as? AFError,
             error.responseCode! == 400 {
-            popUpError(withMessage: "Incorrect username or password")
+            popUpError(withTitle: "Invalid Credentials",withMessage: "Incorrect username or password, please try again")
         }
         else{
             super.handle(requestError: requestError)

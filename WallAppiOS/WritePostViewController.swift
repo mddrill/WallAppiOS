@@ -34,7 +34,7 @@ class WritePostViewController: BaseViewController {
     
     @IBAction func sendPost(_ sender: UIButton) {
         guard self.validate(textView: textView) else {
-            popUpError(withMessage: "You have to enter text first before you can post!")
+            popUpError(withTitle: "Empty Fields", withMessage: "You have to enter text first before you can post!")
             return
         }
         if BaseServiceClient.token == nil {
@@ -51,10 +51,10 @@ class WritePostViewController: BaseViewController {
                 }
             }
             catch PostError.notLoggedIn {
-                popUpError(withMessage: "You can't post without logging in first!")
+                popUpError(withTitle: "Not Logged In", withMessage: "You can't post without logging in first!")
             }
             catch {
-                popUpError(withMessage: "Something went wrong when sending the post")
+                popUpError(withTitle: "Unknown Post Error", withMessage: "Something went wrong when sending the post")
             }
             performSegue(withIdentifier: "WriteToWallSegue", sender: self)
         }

@@ -157,9 +157,8 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     override func handle(requestError: Error) {
-        if let error = requestError as? AFError,
-            error.responseCode! >= 500 {
-            popUpError(withMessage: "Could not connect to server")
+        if let error = requestError as? URLError {
+            popUpError(withTitle: "\(error.errorCode) URLError", withMessage: "Could not connect to server", withAction: self.exitApp)
         }
         else{
             super.handle(requestError: requestError)

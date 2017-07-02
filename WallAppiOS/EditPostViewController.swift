@@ -30,7 +30,7 @@ class EditPostViewController: BaseViewController {
     
     func editPost(){
         guard self.validate(textView: textView) else {
-            popUpError(withMessage: "You can't send an empty post!")
+            popUpError(withTitle: "Empty Post", withMessage: "You can't send an empty post!")
             return
         }
         // If this throws an error, it means the user was able to edit a post without logging, in. Something is wrong, app needs to crash

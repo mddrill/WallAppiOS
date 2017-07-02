@@ -26,7 +26,7 @@ class RegisterViewController: BaseViewController {
             let password2 = reenterPaswordField.text,
             let email = emailField.text
         else {
-            popUpError(withMessage: "Must enter all fields")
+            popUpError(withTitle: "Fields Empty", withMessage: "Must enter all fields")
             return
         }
         do{
@@ -49,13 +49,13 @@ class RegisterViewController: BaseViewController {
                           }
         }
         catch RegistrationError.emailIsInvalid {
-            popUpError(withMessage: "Must enter a valid email")
+            popUpError(withTitle: "Invalid Email", withMessage: "Must enter a valid email")
         }
         catch RegistrationError.passwordsDontMatch {
-            popUpError(withMessage: "Passwords must match")
+            popUpError(withTitle: "Passwords don't match", withMessage: "Passwords must match")
         }
         catch {
-            popUpError(withMessage: "Something Went Wrong When Registering")
+            popUpError(withTitle: "Unkown Registration Error", withMessage: "Something went wrong when registering")
         }
     }
     
@@ -76,7 +76,7 @@ class RegisterViewController: BaseViewController {
     override func handle(requestError: Error) {
         if let error = requestError as? AFError,
             error.responseCode! == 400 {
-            popUpError(withMessage: "Sorry! that username is already taken")
+            popUpError(withTitle: "Username Taken", withMessage: "Sorry! that username is already taken")
         }
         else{
             super.handle(requestError: requestError)
