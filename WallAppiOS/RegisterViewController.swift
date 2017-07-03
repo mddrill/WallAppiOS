@@ -35,18 +35,9 @@ class RegisterViewController: BaseViewController {
                 .register(username: username,
                           password1: password1,
                           password2: password2,
-                          email: email){ response in
-                            if let error = response.result.error {
-                                self.handle(error: error as NSError)
-                            }
-                            else {
-                                self.accountsClient
-                                    .login(username: username,
-                                           password: password1,
-                                           onSuccess: self.handleLoginResponse,
-                                           onError: self.handle)
-                            }
-                          }
+                          email: email,
+                          onSuccess: self.handleRegistrationSuccess,
+                          onError: self.handleError)
         }
         catch RegistrationError.emailIsInvalid {
             popUpError(withTitle: "Invalid Email", withMessage: "Must enter a valid email")
@@ -58,8 +49,15 @@ class RegisterViewController: BaseViewController {
             popUpError(withTitle: "Unkown Registration Error", withMessage: "Something went wrong when registering")
         }
     }
+    func handleRegistrationSuccess(username: String, password: String){
+        self.accountsClient
+            .login(username: username,
+                   password: password,
+                   onSuccess: self.handleLoginSuccess,
+                   onError: self.handleError)
+    }
     
-    func handleLoginResponse(token: Token, username: String){
+    func handleLoginSuccess(token: Token, username: String){
         CurrentUser.username = username
         CurrentUser.token = token.value
         self.performSegue(withIdentifier: "RegisterToWriteSegue", sender: self)
@@ -79,13 +77,13 @@ class RegisterViewController: BaseViewController {
         }
     }
     
-    override func handle(error: NSError) {
+    override func handleError(error: NSError) {
         let statusCode = error.code
         if statusCode == 400 {
             popUpError(withTitle: "Username Taken", withMessage: "Sorry! that username is already taken")
         }
         else{
-            super.handle(error: error)
+            super.handleError(error: error)
         }
     }
 }

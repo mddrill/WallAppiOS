@@ -26,7 +26,7 @@ class LoginViewController: BaseViewController {
             return
         }
         accountsClient.login(username: username, password: password,
-                             onSuccess: self.handleLoginResponse, onError: self.handle)
+                             onSuccess: self.handleLoginResponse, onError: self.handleError)
     }
     func handleLoginResponse(token: Token, username: String){
         CurrentUser.username = username
@@ -48,14 +48,14 @@ class LoginViewController: BaseViewController {
         }
     }
     
-    override func handle(error: NSError) {
+    override func handleError(error: NSError) {
         let statusCode = error.code
         print("Here: \(statusCode)")
         if statusCode == 400 {
             popUpError(withTitle: "Invalid Credentials",withMessage: "Incorrect username or password, please try again")
         }
         else{
-            super.handle(error: error)
+            super.handleError(error: error)
         }
     }
 }

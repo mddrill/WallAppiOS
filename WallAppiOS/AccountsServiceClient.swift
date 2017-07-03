@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 typealias TokenUsernameCallBack = (Token, String) -> Void
+typealias UsernamePasswordCallBack = (String, String) -> Void
 
 enum RegistrationError: Error {
     case usernameAlreadyExists
@@ -36,8 +37,10 @@ class AccountsServiceClient: BaseServiceClient {
     }
     
     // Method to register a new user
-    func register(username: String, password1: String, password2: String, email: String, completionHandler: @escaping RequestCallback) throws {
-        print("register called")
+    func register(username: String, password1: String,
+                  password2: String, email: String,
+                  onSuccess: @escaping UsernamePasswordCallBack,
+                  onError: @escaping ErrorCallBack) throws {
         
         guard password1 == password2 else {
             throw RegistrationError.passwordsDontMatch
@@ -56,14 +59,22 @@ class AccountsServiceClient: BaseServiceClient {
         self.sessionManager.request(AccountsServiceClient.endpointForAccounts(), method: .post, parameters: parameters)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
-            .responseJSON {response in
-                completionHandler(response)
+            .responseJSON { response in
+                switch response.result{
+                case .success:
+                    onSuccess(username, password1)
+                case .failure(let error):
+                    onError(error as NSError)
+                }
             }
-        
+    
     }
     
     // Gets authentication token from login endpoint
-    func login(username:String, password:String, onSuccess: @escaping TokenUsernameCallBack, onError:  @escaping ErrorCallBack) {
+    func login(username:String,
+               password:String,
+               onSuccess: @escaping TokenUsernameCallBack,
+               onError:  @escaping ErrorCallBack) {
         print("login called")
         let parameters: [String: String] = [
             "username": username,
@@ -76,9 +87,9 @@ class AccountsServiceClient: BaseServiceClient {
             .validate(contentType: ["application/json"])
             .responseJSON {response in
                 switch response.result {
-                case .success:
+                case .success(let value):
                     // If case is success and response is not json, something is wrong, app should crash
-                    let json = response.result.value as! [String: Any]
+                    let json = value as! [String: Any]
                     onSuccess(Token(json: json)!, username)
                 case .failure(let error):
                     onError(error as NSError)

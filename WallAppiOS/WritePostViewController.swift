@@ -46,7 +46,7 @@ class WritePostViewController: BaseViewController {
             do{
                 try self.postClient.create(postWithText: textView.text!) { response in
                     if let error = response.result.error {
-                        self.handle(error: error as NSError)
+                        self.handleError(error: error as NSError)
                     }
                 }
             }

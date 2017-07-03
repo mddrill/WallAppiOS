@@ -24,59 +24,113 @@ class AccountsServiceClientSpec: QuickSpec {
             let email = "email@email.com"
             
             context("Success"){
-                it("Doesn't return error") {
-                    var requestError: Error!
-                    
+                it("Runs success block and not run error block, sends usernam and password to callback") {
                     let path = Bundle(for: type(of: self)).path(forResource: "RegisterUser", ofType: "json")!
                     let data = NSData(contentsOfFile: path)!
                     self.stub(uri(AccountsServiceClient.endpointForAccounts()), jsonData(data as Data, status: 201))
                     
-                    expect { try self.accountsClient.register(username: username, password1: password,
-                                                 password2: password, email: email) { response in
-                        requestError = response.result.error
-                        }}.toNot(throwError())
-                    expect(requestError).toEventually(beNil())
+                    var wasSuccess = false
+                    var wasFailure = false
+                    var user: String!
+                    var pass: String!
+                    expect { try self.accountsClient
+                                    .register(username: username,
+                                              password1: password,
+                                              password2: password,
+                                              email: email,
+                                              onSuccess: { username, password in
+                                                wasSuccess = true
+                                                user = username
+                                                pass = password
+                                                },
+                                              onError: { error in
+                                                wasFailure = true
+                                                })
+                        }.toNot(throwError())
+                    expect(wasSuccess).toEventually(beTrue())
+                    expect(wasFailure).toEventually(beFalse())
+                    expect(user).toEventually(equal(username))
+                    expect(pass).toEventually(equal(pass))
                 }
             }
             context("Invalid Email") {
                 it("Throws an emailIsInvalid error"){
-                    expect { try self.accountsClient.register(username: username, password1: password,
-                                                              password2: password, email: "not valid") {_ in}}.to(throwError(RegistrationError.emailIsInvalid))
+                    expect { try self.accountsClient
+                                    .register(username: username,
+                                              password1: password,
+                                              password2: password,
+                                              email: "not valid",
+                                              onSuccess: {_ in},
+                                              onError: {_ in})
+                        }.to(throwError(RegistrationError.emailIsInvalid))
                 }
             }
             context("Passwords don't match") {
                 it("Throws a passwordsDontMatch error") {
-                    expect { try self.accountsClient.register(username: username, password1: password,
-                                                              password2: "not same password", email: email) {_ in}}.to(throwError(RegistrationError.passwordsDontMatch))
+                    expect { try self.accountsClient
+                                    .register(username: username,
+                                              password1: password,
+                                              password2: "not same password",
+                                              email: email,
+                                              onSuccess: {_ in},
+                                              onError: {_ in})
+                        }.to(throwError(RegistrationError.passwordsDontMatch))
                 }
             }
             context("Username is taken") {
-                it("Returns an error") {
-                    var requestError: Error!
+                it("Returns an error, failure block is run, success block is not") {
+                    var requestError: NSError!
                     
                     let error = NSError(domain: "Server Error", code: 400, userInfo: nil)
                     self.stub(uri(AccountsServiceClient.endpointForAccounts()), failure(error))
                     
-                    expect { try self.accountsClient.register(username: username, password1: password,
-                                                              password2: password, email: email) { response in
-                                                                requestError = response.result.error
-                        }}.toNot(throwError())
+                    var wasSuccess = false
+                    var wasFailure = false
+                    expect { try self.accountsClient
+                                    .register(username: username,
+                                              password1: password,
+                                              password2: password,
+                                              email: email,
+                                              onSuccess: {_ in
+                                                wasSuccess = true
+                                                },
+                                              onError: {error in
+                                                wasFailure = true
+                                                requestError = error
+                                                })
+                            }.toNot(throwError())
+                    expect(wasSuccess).toEventually(beFalse())
+                    expect(wasFailure).toEventually(beTrue())
                     expect(requestError).toEventuallyNot(beNil())
-
+                    expect(requestError.code).toEventually(equal(400))
                 }
             }
             context("Server error"){
-                it("Returns an error"){
-                    var requestError: Error!
+                it("Returns an error, failure block is run, success block is not"){
+                    var requestError: NSError!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
                     self.stub(uri(AccountsServiceClient.endpointForAccounts()), failure(error))
                     
-                    expect { try self.accountsClient.register(username: username, password1: password,
-                                                              password2: password, email: email) { response in
-                                                                requestError = response.result.error
-                        }}.toNot(throwError())
+                    var wasSuccess = false
+                    var wasFailure = false
+                    expect { try self.accountsClient
+                                    .register(username: username,
+                                              password1: password,
+                                              password2: password,
+                                              email: email,
+                                              onSuccess: {_ in
+                                                wasSuccess = true
+                                    },
+                                              onError: {error in
+                                                wasFailure = true
+                                                requestError = error
+                                    })
+                            }.toNot(throwError())
+                    expect(wasSuccess).toEventually(beFalse())
+                    expect(wasFailure).toEventually(beTrue())
                     expect(requestError).toEventuallyNot(beNil())
+                    expect(requestError.code).toEventually(equal(500))
                 }
             }
         }
