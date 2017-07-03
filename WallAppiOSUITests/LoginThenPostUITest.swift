@@ -32,7 +32,7 @@ class LoginThenPostUITest: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText(username)
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
@@ -61,7 +61,7 @@ class LoginThenPostUITest: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText("not real username")
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText("not real password")
                     
@@ -89,7 +89,7 @@ class LoginThenPostUITest: QuickSpec {
                     textView.typeText(testText)
                     app.buttons["Post To Wall"].tap()
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     

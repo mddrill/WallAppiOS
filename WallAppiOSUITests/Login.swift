@@ -41,7 +41,7 @@ class Login: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText(username)
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
@@ -75,7 +75,7 @@ class Login: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText("not real username")
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText("not real password")
                     
@@ -106,7 +106,7 @@ class Login: QuickSpec {
                     let loginButton = app.buttons["Log In"]
                     loginButton.tap()
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     

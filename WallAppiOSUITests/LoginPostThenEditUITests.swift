@@ -41,7 +41,7 @@ class LoginPostThenEditUISpec: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText(username)
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
@@ -88,7 +88,7 @@ class LoginPostThenEditUISpec: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText(username)
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
@@ -139,7 +139,7 @@ class LoginPostThenEditUISpec: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText(username)
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     

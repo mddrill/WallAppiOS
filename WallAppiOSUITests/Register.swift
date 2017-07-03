@@ -44,11 +44,11 @@ class Register: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText(username)
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
-                    let enterPassword2TextField = app.textFields["Re-enter Password"]
+                    let enterPassword2TextField = app.secureTextFields["Re-enter Password"]
                     enterPassword2TextField.tap()
                     enterPassword2TextField.typeText(password)
                     
@@ -83,11 +83,11 @@ class Register: QuickSpec {
                     
                     app.buttons["Register"].tap()
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
-                    let enterPassword2TextField = app.textFields["Re-enter Password"]
+                    let enterPassword2TextField = app.secureTextFields["Re-enter Password"]
                     enterPassword2TextField.tap()
                     enterPassword2TextField.typeText(password)
                     
@@ -162,11 +162,11 @@ class Register: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText(username)
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
-                    let enterPassword2TextField = app.textFields["Re-enter Password"]
+                    let enterPassword2TextField = app.secureTextFields["Re-enter Password"]
                     enterPassword2TextField.tap()
                     enterPassword2TextField.typeText(password)
                     
@@ -201,11 +201,11 @@ class Register: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText(username)
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
-                    let enterPassword2TextField = app.textFields["Re-enter Password"]
+                    let enterPassword2TextField = app.secureTextFields["Re-enter Password"]
                     enterPassword2TextField.tap()
                     enterPassword2TextField.typeText("Doesn't match first password")
                     
@@ -244,11 +244,11 @@ class Register: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText(username)
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
-                    let enterPassword2TextField = app.textFields["Re-enter Password"]
+                    let enterPassword2TextField = app.secureTextFields["Re-enter Password"]
                     enterPassword2TextField.tap()
                     enterPassword2TextField.typeText(password)
                     
@@ -288,11 +288,11 @@ class Register: QuickSpec {
                     enterUsernameTextField.tap()
                     enterUsernameTextField.typeText(username)
                     
-                    let enterPasswordTextField = app.textFields["Enter Password"]
+                    let enterPasswordTextField = app.secureTextFields["Enter Password"]
                     enterPasswordTextField.tap()
                     enterPasswordTextField.typeText(password)
                     
-                    let enterPassword2TextField = app.textFields["Re-enter Password"]
+                    let enterPassword2TextField = app.secureTextFields["Re-enter Password"]
                     enterPassword2TextField.tap()
                     enterPassword2TextField.typeText(password)
                     
