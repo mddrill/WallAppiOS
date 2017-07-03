@@ -34,6 +34,12 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
         tableView.rowHeight = UITableViewAutomaticDimension
         
         self.loadFirstPosts()
+        
+        // If logged in create log out button
+        if CurrentUser.loggedIn() {
+            let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
+            self.navigationItem.rightBarButtonItem = logOutButton
+        }
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int
@@ -128,8 +134,9 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
         UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
     }
     
-    override func logOut(){
-        super.logOut()
+    func logOut(){
+        self.navigationItem.rightBarButtonItem = nil
+        CurrentUser.logOut()
         self.reloadPosts()
     }
     
@@ -172,7 +179,7 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
             popUpError(withTitle: "Server Error", withMessage: "Could not connect to server", withAction: self.exitApp)
         }
         else{
-            super.handleError(error: error)
+            popUpError(withTitle: "Server Error", withMessage: "Did you remember to run the server on localhost?", withAction: self.exitApp)
         }
     }
 }

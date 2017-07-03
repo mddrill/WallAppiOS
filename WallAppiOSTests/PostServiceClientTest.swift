@@ -93,8 +93,9 @@ class PostServiceClientSpec: QuickSpec {
                                     requestError = error
                                     wasFailure = true
                                 })
+                    expect(wasSuccess).toEventually(beFalse())
+                    expect(wasFailure).toEventually(beTrue())
                     expect(requestError).toEventuallyNot(beNil())
-                    expect(postsWrapper).toEventually(beNil())
                 }
             }
         }

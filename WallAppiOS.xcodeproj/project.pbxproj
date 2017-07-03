@@ -33,7 +33,7 @@
 		BC90825C1F06DF8A004DCC4E /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90825B1F06DF8A004DCC4E /* EditPostViewController.swift */; };
 		BC9082981F071AD3004DCC4E /* AccountsServiceClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9082971F071AD3004DCC4E /* AccountsServiceClientTest.swift */; };
 		BC90829A1F071C01004DCC4E /* PostServiceClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9082991F071C01004DCC4E /* PostServiceClientTest.swift */; };
-		BC90829C1F073860004DCC4E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90829B1F073860004DCC4E /* BaseViewController.swift */; };
+		BC90829C1F073860004DCC4E /*  BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90829B1F073860004DCC4E /*  BaseViewController.swift */; };
 		BCC700611EFCD69B00C6DF88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700601EFCD69B00C6DF88 /* AppDelegate.swift */; };
 		BCC700631EFCD69B00C6DF88 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700621EFCD69B00C6DF88 /* WallViewController.swift */; };
 		BCC700681EFCD69B00C6DF88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCC700671EFCD69B00C6DF88 /* Assets.xcassets */; };
@@ -102,7 +102,7 @@
 		BC90825B1F06DF8A004DCC4E /* EditPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		BC9082971F071AD3004DCC4E /* AccountsServiceClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsServiceClientTest.swift; sourceTree = "<group>"; };
 		BC9082991F071C01004DCC4E /* PostServiceClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostServiceClientTest.swift; sourceTree = "<group>"; };
-		BC90829B1F073860004DCC4E /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		BC90829B1F073860004DCC4E /*  BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " BaseViewController.swift"; sourceTree = "<group>"; };
 		BCC7005D1EFCD69B00C6DF88 /* WallAppiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallAppiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC700601EFCD69B00C6DF88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCC700621EFCD69B00C6DF88 /* WallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewController.swift; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 				BCC7009C1EFCE09D00C6DF88 /* LoginViewController.swift */,
 				BCC7009D1EFCE09D00C6DF88 /* RegisterViewController.swift */,
 				BC90825B1F06DF8A004DCC4E /* EditPostViewController.swift */,
-				BC90829B1F073860004DCC4E /* BaseViewController.swift */,
+				BC90829B1F073860004DCC4E /*  BaseViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -622,7 +622,7 @@
 				BCC7009E1EFCE09D00C6DF88 /* WritePostViewController.swift in Sources */,
 				BCC700631EFCD69B00C6DF88 /* WallViewController.swift in Sources */,
 				BCC700A01EFCE09D00C6DF88 /* RegisterViewController.swift in Sources */,
-				BC90829C1F073860004DCC4E /* BaseViewController.swift in Sources */,
+				BC90829C1F073860004DCC4E /*  BaseViewController.swift in Sources */,
 				BCC700A41EFCE0CB00C6DF88 /* Account.swift in Sources */,
 				BCC700961EFCDA4400C6DF88 /* PostServiceClient.swift in Sources */,
 				BC90825C1F06DF8A004DCC4E /* EditPostViewController.swift in Sources */,

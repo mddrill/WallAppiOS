@@ -114,6 +114,7 @@ class RegisterPostThenDeleteUITest: QuickSpec {
                     
                     let deleteButton = cell.buttons["Delete"]
                     expect(deleteButton.exists).toNot(beTrue())
+                    expect(logoutButton.exists).toNot(beTrue())
                 }
             }
         }

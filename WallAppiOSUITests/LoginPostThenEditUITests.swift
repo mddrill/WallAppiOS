@@ -11,6 +11,7 @@ import Quick
 import Nimble
 @testable import WallAppiOS
 
+
 class LoginPostThenEditUISpec: QuickSpec {
     
     override func spec() {
@@ -153,6 +154,7 @@ class LoginPostThenEditUISpec: QuickSpec {
                     logoutButton.tap()
                     
                     expect(cell.buttons["Edit"].exists).toNot(beTrue())
+                    expect(logoutButton.exists).toNot(beTrue())
                 }
             }
         }

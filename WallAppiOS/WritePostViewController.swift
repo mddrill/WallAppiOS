@@ -23,6 +23,7 @@ class WritePostViewController: BaseViewController {
     @IBOutlet weak var postButton: UIButton!
     
     override func viewDidLoad(){
+        super.viewDidLoad()
         textView.text = postText
         postText = nil
         

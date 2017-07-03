@@ -62,12 +62,6 @@ class BaseViewController: UIViewController {
             }
             return (disposition, credential)
         }
-        
-        // If logged in create log out button
-        if CurrentUser.loggedIn() {
-            let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
-            self.navigationItem.rightBarButtonItem = logOutButton
-        }
     }
 
     func dismissKeyboard() {
@@ -83,11 +77,6 @@ class BaseViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: action))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func logOut(){
-        CurrentUser.logOut()
-        self.navigationItem.rightBarButtonItem = nil
     }
     
     func validate(textView: UITextView) -> Bool {

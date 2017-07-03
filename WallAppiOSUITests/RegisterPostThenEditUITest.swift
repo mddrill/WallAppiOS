@@ -179,6 +179,7 @@ class RegisterPostThenEditUITest: QuickSpec {
                     logoutButton.tap()
                     
                     expect(cell.buttons["Edit"].exists).toNot(beTrue())
+                    expect(logoutButton.exists).toNot(beTrue())
                 }
             }
         }

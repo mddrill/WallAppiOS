@@ -15,6 +15,7 @@ class EditPostViewController: BaseViewController {
     var postId: Int!
     
     override func viewDidLoad(){
+        super.viewDidLoad()
         if postText != nil {
             textView.text = postText
             postText = nil
