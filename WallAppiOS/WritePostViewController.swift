@@ -44,11 +44,13 @@ class WritePostViewController: BaseViewController {
         else{
             // If they are logged in, post their message and go back to wall
             do{
-                try self.postClient.create(postWithText: textView.text!) { response in
-                    if let error = response.result.error {
-                        self.handleError(error: error as NSError)
-                    }
-                }
+                try self.postClient.create(postWithText: textView.text!,
+                                           onSuccess: { _ in
+                                            self.performSegue(withIdentifier: "WriteToWallSegue", sender: self)
+                                            },
+                                           onError: { error in
+                                            self.handleError(error: error)
+                                            })
             }
             catch PostError.notLoggedIn {
                 popUpError(withTitle: "Not Logged In", withMessage: "You can't post without logging in first!")
@@ -56,7 +58,6 @@ class WritePostViewController: BaseViewController {
             catch {
                 popUpError(withTitle: "Unknown Post Error", withMessage: "Something went wrong when sending the post")
             }
-            performSegue(withIdentifier: "WriteToWallSegue", sender: self)
         }
     }
     

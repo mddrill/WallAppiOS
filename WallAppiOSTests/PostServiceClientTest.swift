@@ -20,20 +20,30 @@ class PostServiceClientSpec: QuickSpec {
         
         describe("GetPosts") {
             context("Success"){
-                it("Returns All The Posts"){
+                it("Returns All The Posts, runs success block, not failure block"){
                     CurrentUser.token = nil
                     var postsWrapper: PostWrapper!
-                    var requestError: Error!
+                    var backendError: Error!
+                    var requestError: NSError!
                     
                     let path = Bundle(for: type(of: self)).path(forResource: "GetPosts", ofType: "json")!
                     let data = NSData(contentsOfFile: path)!
                     self.stub(uri(PostServiceClient.endpointForPost()), jsonData(data as Data))
                     
-                    self.postClient.getPosts{ result in
-                        postsWrapper = result.value
-                        requestError = result.error
-                    }
+                    var wasSuccess = false
+                    var wasFailure = false
+                    self.postClient
+                        .getPosts( onSuccess: { result in
+                                    postsWrapper = result.value
+                                    backendError = result.error
+                                    wasSuccess = true
+                                    },
+                                   onError: { error in
+                                    requestError = error
+                                    wasFailure = true
+                                })
                     expect(requestError).toEventually(beNil())
+                    expect(backendError).toEventually(beNil())
                     expect(postsWrapper).toEventuallyNot(beNil())
                     expect(postsWrapper.posts).toEventuallyNot(beNil())
                     expect(postsWrapper.count).to(equal(5))
@@ -68,16 +78,21 @@ class PostServiceClientSpec: QuickSpec {
             }
             context("Error"){
                 it("Returns an error"){
-                    var postsWrapper: PostWrapper!
                     var requestError: Error!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
                     self.stub(uri(PostServiceClient.endpointForPost()), failure(error))
                     
-                     self.postClient.getPosts{ result in
-                        postsWrapper = result.value
-                        requestError = result.error
-                    }
+                    var wasSuccess = false
+                    var wasFailure = false
+                    self.postClient
+                        .getPosts( onSuccess: { result in
+                                    wasSuccess = true
+                                    },
+                                   onError: { error in
+                                    requestError = error
+                                    wasFailure = true
+                                })
                     expect(requestError).toEventuallyNot(beNil())
                     expect(postsWrapper).toEventually(beNil())
                 }
@@ -88,40 +103,62 @@ class PostServiceClientSpec: QuickSpec {
             context("Without Logging In") {
                 it("Throws a frontend error") {
                     CurrentUser.token = nil
-                    expect{ try self.postClient.create(postWithText: testText, completionHandler: {_ in}) }.to(throwError(PostError.notLoggedIn))
+                    expect{ try self.postClient.create(postWithText: testText,
+                                                       onSuccess: {_ in},
+                                                       onError: {_ in})
+                        }.to(throwError(PostError.notLoggedIn))
                 }
             }
             context("After Logging In") {
-                it("Does not throw or return an error") {
+                it("Does not throw or return an error, run success block, not failure block") {
                     CurrentUser.token = "dummytoken"
-                    var requestError: Error!
+                    var requestError: NSError!
                 
                     let path = Bundle(for: type(of: self)).path(forResource: "CreatePost", ofType: "json")!
                     let data = NSData(contentsOfFile: path)!
                     self.stub(uri(PostServiceClient.endpointForPost()), jsonData(data as Data, status: 201))
                     
-                    expect{ try self.postClient.create(postWithText: testText, completionHandler: {_ in}) }.toNot(throwError())
-
-                    try! self.postClient.create(postWithText: testText) { response in
-                        requestError = response.result.error
-                    }
+                    var wasSuccess = false
+                    var wasFailure = false
+                    expect{ try self.postClient
+                                    .create(postWithText: testText,
+                                           onSuccess: {_ in
+                                            wasSuccess = true
+                                            },
+                                           onError:{ error in
+                                            wasFailure = true
+                                            requestError = error
+                                        })
+                        }.toNot(throwError())
+                    expect(wasSuccess).toEventually(beTrue())
+                    expect(wasFailure).toEventually(beFalse())
                     expect(requestError).toEventually(beNil())
                 }
             }
             context("Getting a server error") {
-                it("Does not throw frontend errror but returns a backend one") {
+                it("Does not throw frontend errror but returns a backend one, runs failure block, not success block") {
                     CurrentUser.token = "dummytoken"
-                    var requestError: Error!
+                    var requestError: NSError!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
                     self.stub(uri(PostServiceClient.endpointForPost()), failure(error))
                     
-                    expect{ try self.postClient.create(postWithText: testText, completionHandler: {_ in}) }.toNot(throwError())
-                    
-                    try! self.postClient.create(postWithText: testText) { response in
-                        requestError = response.result.error
-                    }
+                    var wasSuccess = false
+                    var wasFailure = false
+                    expect{ try self.postClient
+                                    .create(postWithText: testText,
+                                            onSuccess: {_ in
+                                                wasSuccess = true
+                                    },
+                                            onError:{ error in
+                                                wasFailure = true
+                                                requestError = error
+                                    })
+                                    }.toNot(throwError())
+                    expect(wasSuccess).toEventually(beFalse())
+                    expect(wasFailure).toEventually(beTrue())
                     expect(requestError).toEventuallyNot(beNil())
+                    expect(requestError.code).toEventually(equal(500))
                 }
             }
         }
@@ -132,60 +169,89 @@ class PostServiceClientSpec: QuickSpec {
                 it("Throws a frontend error"){
                     CurrentUser.token = nil
                     
-                    expect { try self.postClient.edit(postWithId: postId, withNewText: testText, completionHandler: {_ in}) }.to(throwError(PostError.notLoggedIn))
+                    expect { try self.postClient.edit(postWithId: postId,
+                                                      withNewText: testText,
+                                                      onSuccess: {_ in},
+                                                      onError: {_ in}
+                        ) }.to(throwError(PostError.notLoggedIn))
                 }
             }
             context("Logged In"){
-                it("Does not throw or return an error"){
+                it("Runs success block, not failure block"){
                     CurrentUser.token = "dummytoken"
-                    var requestError: Error!
-                    
                     let path = Bundle(for: type(of: self)).path(forResource: "EditPost", ofType: "json")!
                     let data = NSData(contentsOfFile: path)!
                     self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), jsonData(data as Data))
                     
-                    expect { try self.postClient.edit(postWithId: postId, withNewText: testText, completionHandler: {_ in}) }.toNot(throwError(PostError.notLoggedIn))
+                    var wasSuccess = false
+                    var wasFailure = false
+                    expect { try self.postClient.edit(postWithId: postId,
+                                                      withNewText: testText,
+                                                      onSuccess: {_ in
+                                                        wasSuccess = true
+                                                    },
+                                                      onError: {error in
+                                                        wasFailure = true
+                                                    })
+                        }.toNot(throwError(PostError.notLoggedIn))
                     
-                    try! self.postClient.edit(postWithId: postId, withNewText: testText) { response in
-                        requestError = response.result.error
-                    }
-                    expect(requestError).toEventually(beNil())
-
+                    expect(wasSuccess).toEventually(beTrue())
+                    expect(wasFailure).toEventually(beFalse())
                 }
                 
             }
             context("Logged In as wrong user"){
-                it("Returns a backend error"){
+                it("Returns a backend error, failure block runs"){
                     CurrentUser.token = "dummytoken"
-                    var requestError: Error!
+                    var requestError: NSError!
                     
                     let error = NSError(domain: "Server Error", code: 401, userInfo: nil)
                     self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), failure(error))
                     
-                    expect{ try self.postClient.edit(postWithId: postId, withNewText: testText, completionHandler: {_ in}) }.toNot(throwError())
+                    var wasSuccess = false
+                    var wasFailure = false
+                    expect { try self.postClient.edit(postWithId: postId,
+                                                      withNewText: testText,
+                                                      onSuccess: {_ in
+                                                        wasSuccess = true
+                                                        },
+                                                      onError: {error in
+                                                        wasFailure = true
+                                                        requestError = error
+                                                    })
+                        }.toNot(throwError(PostError.notLoggedIn))
                     
-                    try! self.postClient.edit(postWithId: postId, withNewText: testText) { response in
-                        requestError = response.result.error
-                    }
+                    expect(wasSuccess).toEventually(beFalse())
+                    expect(wasFailure).toEventually(beTrue())
                     expect(requestError).toEventuallyNot(beNil())
-                    
-                    
+                    expect(requestError.code).toEventually(equal(401))
                 }
             }
             context("Server error") {
-                it("Returns a backend error"){
+                it("Returns a backend error, failure block runs"){
                     CurrentUser.token = "dummytoken"
-                    var requestError: Error!
+                    var requestError: NSError!
                     
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
                     self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), failure(error))
                     
-                    expect{ try self.postClient.edit(postWithId: postId, withNewText: testText, completionHandler: {_ in}) }.toNot(throwError())
+                    var wasSuccess = false
+                    var wasFailure = false
+                    expect { try self.postClient.edit(postWithId: postId,
+                                                      withNewText: testText,
+                                                      onSuccess: {_ in
+                                                        wasSuccess = true
+                                                    },
+                                                      onError: {error in
+                                                        wasFailure = true
+                                                        requestError = error
+                                                    })
+                        }.toNot(throwError(PostError.notLoggedIn))
                     
-                    try! self.postClient.edit(postWithId: postId, withNewText: testText) { response in
-                        requestError = response.result.error
-                    }
+                    expect(wasSuccess).toEventually(beFalse())
+                    expect(wasFailure).toEventually(beTrue())
                     expect(requestError).toEventuallyNot(beNil())
+                    expect(requestError.code).toEventually(equal(500))
                 }
             }
         }
@@ -195,7 +261,11 @@ class PostServiceClientSpec: QuickSpec {
                 it("Throws a frontend error"){
                     CurrentUser.token = nil
 
-                    expect { try self.postClient.delete(postWithId: postId, completionHandler: {_ in}) }.to(throwError(PostError.notLoggedIn))
+                    expect { try self.postClient.delete(postWithId: postId,
+                                                      onSuccess: {_ in},
+                                                      onError: {_ in}
+                        )
+                        }.to(throwError(PostError.notLoggedIn))
                 }
             }
             context("Logged In"){
@@ -207,11 +277,19 @@ class PostServiceClientSpec: QuickSpec {
                     let data = NSData(contentsOfFile: path)!
                     self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), jsonData(data as Data, status: 204))
                     
-                    expect { try self.postClient.delete(postWithId: postId, completionHandler: {_ in}) }.toNot(throwError(PostError.notLoggedIn))
+                    var wasSuccess = false
+                    var wasFailure = false
+                    expect { try self.postClient.delete(postWithId: postId,
+                                                      onSuccess: {_ in
+                                                        wasSuccess = true
+                                                    },
+                                                      onError: {error in
+                                                        wasFailure = true
+                                                    })
+                        }.toNot(throwError(PostError.notLoggedIn))
                     
-                    try! self.postClient.delete(postWithId: postId) { response in
-                        requestError = response.result.error
-                    }
+                    expect(wasSuccess).toEventually(beTrue())
+                    expect(wasFailure).toEventually(beFalse())
                     expect(requestError).toEventually(beNil())
                     
                 }
@@ -220,35 +298,53 @@ class PostServiceClientSpec: QuickSpec {
             context("Logged In as wrong user"){
                 it("Returns a backend error"){
                     CurrentUser.token = "dummytoken"
-                    var requestError: Error!
+                    var requestError: NSError!
                     
                     let error = NSError(domain: "Server Error", code: 401, userInfo: nil)
                     self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), failure(error))
                     
-                    expect{ try self.postClient.delete(postWithId: postId, completionHandler: {_ in}) }.toNot(throwError())
+                    var wasSuccess = false
+                    var wasFailure = false
+                    expect { try self.postClient.delete(postWithId: postId,
+                                                      onSuccess: {_ in
+                                                        wasSuccess = true
+                    },
+                                                      onError: {error in
+                                                        wasFailure = true
+                                                        requestError = error
+                    })
+                        }.toNot(throwError(PostError.notLoggedIn))
                     
-                    try! self.postClient.delete(postWithId: postId) { response in
-                        requestError = response.result.error
-                    }
+                    expect(wasSuccess).toEventually(beFalse())
+                    expect(wasFailure).toEventually(beTrue())
                     expect(requestError).toEventuallyNot(beNil())
-                    
-                    
+                    expect(requestError.code).toEventually(equal(401))
                 }
             }
             context("Server error") {
                 it("Returns a backend error"){
                     CurrentUser.token = "dummytoken"
-                    var requestError: Error!
+                    var requestError: NSError!
 
                     let error = NSError(domain: "Server Error", code: 500, userInfo: nil)
                     self.stub(uri(PostServiceClient.endpointForPost(withId: postId)), failure(error))
                     
-                    expect{ try self.postClient.delete(postWithId: postId, completionHandler: {_ in}) }.toNot(throwError())
+                    var wasSuccess = false
+                    var wasFailure = false
+                    expect { try self.postClient.delete(postWithId: postId,
+                                                      onSuccess: {_ in
+                                                        wasSuccess = true
+                                                    },
+                                                      onError: {error in
+                                                        wasFailure = true
+                                                        requestError = error
+                                                    })
+                        }.toNot(throwError(PostError.notLoggedIn))
                     
-                    try! self.postClient.delete(postWithId: postId) { response in
-                        requestError = response.result.error
-                    }
+                    expect(wasSuccess).toEventually(beFalse())
+                    expect(wasFailure).toEventually(beTrue())
                     expect(requestError).toEventuallyNot(beNil())
+                    expect(requestError.code).toEventually(equal(500))
                 }
             }
         }

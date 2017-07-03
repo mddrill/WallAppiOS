@@ -24,21 +24,18 @@ class EditPostViewController: BaseViewController {
     @IBOutlet weak var textView: UITextView!
     
     @IBAction func confirmEdit(_ sender: UIButton) {
-        self.editPost()
-        performSegue(withIdentifier: "EditToWallSegue", sender: self)
-    }
-    
-    func editPost(){
         guard self.validate(textView: textView) else {
             popUpError(withTitle: "Empty Post", withMessage: "You can't send an empty post!")
             return
         }
-        // If this throws an error, it means the user was able to edit a post without logging, in. Something is wrong, app needs to crash
-        try! self.postClient.edit(postWithId: self.postId!, withNewText: textView.text!) { response in
-            if let error = response.result.error {
-                self.handleError(error: error as NSError)
-            }
-        }
-        
+        // If this throws an error, it means the user was able to get to this view without logging, in. 
+        // Something is wrong, app needs to crash
+        try! self.postClient.edit(postWithId: self.postId!,
+                                  withNewText: textView.text!,
+                                  onSuccess:  {_ in
+                                    self.performSegue(withIdentifier: "EditToWallSegue", sender: self)},
+                                  onError:  { error in
+                                    self.handleError(error: error)
+                                    })
     }
 }

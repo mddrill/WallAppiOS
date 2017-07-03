@@ -82,17 +82,20 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
     func loadFirstPosts() {
         print("Loading first page of posts")
         self.isLoadingPosts = true
-        postClient.getPosts{ result in
-            if let error = result.error {
+        postClient.getPosts(onSuccess: { result in
+            if result.error is BackendError {
                 self.isLoadingPosts = false
-                self.handleError(error: error as NSError)
-                return
+                self.popUpError(withTitle: "Server Error", withMessage: "The server gave an invalid response")
             }
-            self.postsWrapper = result.value
-            self.posts += self.postsWrapper.posts
-            self.isLoadingPosts = false
-            self.tableView?.reloadData()
-        }
+            else {
+                self.postsWrapper = result.value
+                self.posts += self.postsWrapper.posts
+                self.isLoadingPosts = false
+                self.tableView?.reloadData()
+            }
+        }, onError: { error in
+            self.handleError(error: error)
+        })
     }
     
     func loadMorePosts() {
@@ -100,20 +103,27 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
         self.isLoadingPosts = true
         if let wrapper = self.postsWrapper,
             posts.count < wrapper.count {
-            postClient.getMorePosts(WithWrapper: wrapper) { result in
-                if let error = result.error {
-                    self.isLoadingPosts = false
-                    self.handleError(error: error as NSError)
-                    return
-                }
-                self.postsWrapper = result.value
-                self.posts += self.postsWrapper.posts
-                self.isLoadingPosts = false
-                self.tableView?.reloadData()
-            }
+            // If this throws an error, loadMorePosts was called while postsWrapper.next is nil,
+            // Something is wrong, app should crash
+            try! postClient
+                .getMorePosts(withWrapper: wrapper,
+                              onSuccess: { result in
+                                if result.error is BackendError {
+                                    self.isLoadingPosts = false
+                                    self.popUpError(withTitle: "Server Error", withMessage: "The server gave an invalid response")
+                                }
+                                else {
+                                    self.postsWrapper = result.value
+                                    self.posts += self.postsWrapper.posts
+                                    self.isLoadingPosts = false
+                                    self.tableView?.reloadData()
+                                }
+                }, onError: { error in
+                    self.handleError(error: error)
+                })
         }
     }
-    
+
     func exitApp(action: UIAlertAction){
         UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
     }
@@ -140,12 +150,12 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
     func pressDeleteButton(sender: UIButton) {
         let postId = sender.tag
         // If this throws an error, it means the user was able to delete a post without loging, in. Something is wrong, app needs to crash
-        try! postClient.delete(postWithId: postId) { response in
-            if let error = response.result.error {
-                self.handleError(error: error as NSError)
-            }
-        }
-        self.reloadPosts()
+        try! postClient.delete(postWithId: postId,
+                                onSuccess: { _ in
+                                    self.reloadPosts()},
+                                onError: { error in
+                                    self.handleError(error: error)
+                                    })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
