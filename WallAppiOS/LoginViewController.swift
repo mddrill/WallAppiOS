@@ -16,6 +16,7 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var passwordField: UITextField!
     
     var writePostText : String!
+    var sendPostAfter = false
     
     @IBAction func loginButton(_ sender: UIButton) {
         guard let username = usernameField.text,
@@ -31,7 +32,12 @@ class LoginViewController: BaseViewController {
     func handleLoginResponse(token: Token, username: String){
         CurrentUser.username = username
         CurrentUser.token = token.value
-        self.performSegue(withIdentifier: "LoginToWriteSegue", sender: self)
+        if sendPostAfter {
+            self.performSegue(withIdentifier: "LoginToWriteSegue", sender: self)
+        }
+        else {
+            self.performSegue(withIdentifier: "LoginToWallSegue", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,6 +51,7 @@ class LoginViewController: BaseViewController {
             print("LoginToRegisterSegue")
             let registerViewController = segue.destination as! RegisterViewController
             registerViewController.writePostText = self.writePostText
+            registerViewController.sendPostAfter = self.sendPostAfter
         }
     }
     

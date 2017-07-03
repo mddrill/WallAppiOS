@@ -115,6 +115,7 @@
                         <outlet property="tableView" destination="J7y-hz-R9K" id="Ik8-Yb-DCi"/>
                         <segue destination="K9b-vC-A9o" kind="show" identifier="WallToWriteSegue" id="ksk-Xe-cNm"/>
                         <segue destination="mD6-mY-1FR" kind="show" identifier="WallToEditSegue" id="4q7-mw-QQF"/>
+                        <segue destination="yxT-3R-NqT" kind="show" identifier="WallToLoginSegue" id="9lf-Yg-8L1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -215,6 +216,7 @@
                         <outlet property="passwordField" destination="yvY-aq-dAp" id="0zB-pm-gjD"/>
                         <outlet property="usernameField" destination="0QB-1l-hZe" id="l2I-Fq-D31"/>
                         <segue destination="K9b-vC-A9o" kind="show" identifier="LoginToWriteSegue" id="6u1-wI-3ME"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="LoginToWallSegue" id="4Jv-4s-CRL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ku5-wm-aJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -347,6 +349,7 @@
                         <outlet property="reenterPaswordField" destination="ZGO-jZ-Vkc" id="sGd-Dz-V9G"/>
                         <outlet property="usernameField" destination="E3w-Ya-wkY" id="RfJ-Ko-Yfp"/>
                         <segue destination="K9b-vC-A9o" kind="show" identifier="RegisterToWriteSegue" id="ykI-vJ-FXX"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="RegisterToWallSegue" id="C3V-du-m65"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z95-LL-sep" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -484,7 +487,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="mz4-jK-HNO"/>
-        <segue reference="6u1-wI-3ME"/>
-        <segue reference="haZ-aI-PZN"/>
+        <segue reference="C3V-du-m65"/>
+        <segue reference="ykI-vJ-FXX"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -66,6 +66,7 @@ class WritePostViewController: BaseViewController {
         if segue.identifier == "WriteToLoginSegue" {
             let loginViewController = segue.destination as! LoginViewController
             loginViewController.writePostText = textView.text
+            loginViewController.sendPostAfter = true
         }
     }
 }

@@ -18,7 +18,8 @@ class RegisterViewController: BaseViewController {
     @IBOutlet weak var reenterPaswordField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     
-    var writePostText : String!
+    var writePostText: String!
+    var sendPostAfter = false
     
     @IBAction func registerButton(_ sender: UIButton) {
         guard let username = usernameField.text,
@@ -60,7 +61,12 @@ class RegisterViewController: BaseViewController {
     func handleLoginSuccess(token: Token, username: String){
         CurrentUser.username = username
         CurrentUser.token = token.value
-        self.performSegue(withIdentifier: "RegisterToWriteSegue", sender: self)
+        if sendPostAfter {
+            self.performSegue(withIdentifier: "RegisterToWriteSegue", sender: self)
+        }
+        else {
+            self.performSegue(withIdentifier: "RegisterToWallSegue", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,6 +80,7 @@ class RegisterViewController: BaseViewController {
             print("RegisterToLoginSegue")
             let loginViewController = segue.destination as! LoginViewController
             loginViewController.writePostText = writePostText
+            loginViewController.sendPostAfter = self.sendPostAfter
         }
     }
     

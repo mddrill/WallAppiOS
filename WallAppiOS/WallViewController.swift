@@ -40,6 +40,10 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
             let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
             self.navigationItem.rightBarButtonItem = logOutButton
         }
+        else {
+            let logInButton = UIBarButtonItem(title: "Log In",  style: .plain, target: self, action: #selector(self.logIn))
+            self.navigationItem.rightBarButtonItem = logInButton
+        }
     }
     
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int
@@ -135,9 +139,13 @@ class WallViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func logOut(){
-        self.navigationItem.rightBarButtonItem = nil
+        let logInButton = UIBarButtonItem(title: "Log In",  style: .plain, target: self, action: #selector(self.logIn))
+        self.navigationItem.rightBarButtonItem = logInButton
         CurrentUser.logOut()
         self.reloadPosts()
+    }
+    func logIn(){
+        performSegue(withIdentifier: "WallToLoginSegue", sender: self)
     }
     
     func reloadPosts() {
