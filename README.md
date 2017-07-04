@@ -3,12 +3,14 @@
 Front end for TSL Hiring assignment
 
 Uses 
+```
 iOS 10
 Swift 3
 Almofire
 MockingJay
 Quick
 Nimble
+```
 
 Download the repository
 ```
