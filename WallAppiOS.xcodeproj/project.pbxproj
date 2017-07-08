@@ -14,8 +14,6 @@
 		BC6DC2561F08BB2D0061726A /* LoginPostThenDeleteUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6DC2551F08BB2D0061726A /* LoginPostThenDeleteUITest.swift */; };
 		BC6DC2581F08BB5C0061726A /* RegisterPostThenEditUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6DC2571F08BB5C0061726A /* RegisterPostThenEditUITest.swift */; };
 		BC6DC25A1F08BBAB0061726A /* RegisterPostThenDeleteUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6DC2591F08BBAB0061726A /* RegisterPostThenDeleteUITest.swift */; };
-		BC6DC25F1F090BBB0061726A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6DC25E1F090BBB0061726A /* Token.swift */; };
-		BC6DC2611F090EED0061726A /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6DC2601F090EED0061726A /* CurrentUser.swift */; };
 		BC7DBF8F1F077070007F1822 /* Fixtures in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBF8E1F077070007F1822 /* Fixtures */; };
 		BC7DBF911F077699007F1822 /* GetPosts.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBF901F077699007F1822 /* GetPosts.json */; };
 		BC7DBF931F07854B007F1822 /* CreatePost.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBF921F07854B007F1822 /* CreatePost.json */; };
@@ -30,23 +28,25 @@
 		BC7DBFCE1F07B78B007F1822 /* GetPosts.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBFCD1F07B78B007F1822 /* GetPosts.json */; };
 		BC7DBFD01F07B78F007F1822 /* Login.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBFCF1F07B78F007F1822 /* Login.json */; };
 		BC7DBFD21F07B793007F1822 /* RegisterUser.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7DBFD11F07B793007F1822 /* RegisterUser.json */; };
-		BC90825C1F06DF8A004DCC4E /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90825B1F06DF8A004DCC4E /* EditPostViewController.swift */; };
 		BC9082981F071AD3004DCC4E /* AccountsServiceClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9082971F071AD3004DCC4E /* AccountsServiceClientTest.swift */; };
 		BC90829A1F071C01004DCC4E /* PostServiceClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9082991F071C01004DCC4E /* PostServiceClientTest.swift */; };
-		BC90829C1F073860004DCC4E /*  BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90829B1F073860004DCC4E /*  BaseViewController.swift */; };
+		BCA87DCB1F11595A00EAF21D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA87DC91F11595A00EAF21D /* Main.storyboard */; };
+		BCA87DD21F11597200EAF21D /*  BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DCC1F11597200EAF21D /*  BaseViewController.swift */; };
+		BCA87DD31F11597200EAF21D /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DCD1F11597200EAF21D /* EditPostViewController.swift */; };
+		BCA87DD41F11597200EAF21D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DCE1F11597200EAF21D /* LoginViewController.swift */; };
+		BCA87DD51F11597200EAF21D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DCF1F11597200EAF21D /* RegisterViewController.swift */; };
+		BCA87DD61F11597200EAF21D /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DD01F11597200EAF21D /* WallViewController.swift */; };
+		BCA87DD71F11597200EAF21D /* WritePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DD11F11597200EAF21D /* WritePostViewController.swift */; };
+		BCA87DDB1F11598400EAF21D /* AccountsServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DD81F11598400EAF21D /* AccountsServiceClient.swift */; };
+		BCA87DDC1F11598400EAF21D /* BaseServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DD91F11598400EAF21D /* BaseServiceClient.swift */; };
+		BCA87DDD1F11598400EAF21D /* PostServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DDA1F11598400EAF21D /* PostServiceClient.swift */; };
+		BCA87DE21F11599700EAF21D /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DDE1F11599700EAF21D /* Account.swift */; };
+		BCA87DE31F11599700EAF21D /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DDF1F11599700EAF21D /* CurrentUser.swift */; };
+		BCA87DE41F11599700EAF21D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DE01F11599700EAF21D /* Post.swift */; };
+		BCA87DE51F11599700EAF21D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA87DE11F11599700EAF21D /* Token.swift */; };
 		BCC700611EFCD69B00C6DF88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700601EFCD69B00C6DF88 /* AppDelegate.swift */; };
-		BCC700631EFCD69B00C6DF88 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700621EFCD69B00C6DF88 /* WallViewController.swift */; };
 		BCC700681EFCD69B00C6DF88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCC700671EFCD69B00C6DF88 /* Assets.xcassets */; };
 		BCC7006B1EFCD69B00C6DF88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCC700691EFCD69B00C6DF88 /* LaunchScreen.storyboard */; };
-		BCC700941EFCD73100C6DF88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCC700931EFCD73100C6DF88 /* Main.storyboard */; };
-		BCC700961EFCDA4400C6DF88 /* PostServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700951EFCDA4400C6DF88 /* PostServiceClient.swift */; };
-		BCC700981EFCDA4A00C6DF88 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700971EFCDA4A00C6DF88 /* Post.swift */; };
-		BCC7009A1EFCDA8700C6DF88 /* BaseServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700991EFCDA8700C6DF88 /* BaseServiceClient.swift */; };
-		BCC7009E1EFCE09D00C6DF88 /* WritePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7009B1EFCE09D00C6DF88 /* WritePostViewController.swift */; };
-		BCC7009F1EFCE09D00C6DF88 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7009C1EFCE09D00C6DF88 /* LoginViewController.swift */; };
-		BCC700A01EFCE09D00C6DF88 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7009D1EFCE09D00C6DF88 /* RegisterViewController.swift */; };
-		BCC700A21EFCE0BD00C6DF88 /* AccountsServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700A11EFCE0BD00C6DF88 /* AccountsServiceClient.swift */; };
-		BCC700A41EFCE0CB00C6DF88 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC700A31EFCE0CB00C6DF88 /* Account.swift */; };
 		BCE6C5E61F0A430600A4F3F3 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6C5E51F0A430600A4F3F3 /* Login.swift */; };
 		BCE6C5E81F0A431600A4F3F3 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6C5E71F0A431600A4F3F3 /* Register.swift */; };
 		EC0265640F7CCDF3248B7BCA /* Pods_WallAppiOS_WallAppiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FE8801E24D5C0B50238C78 /* Pods_WallAppiOS_WallAppiOSTests.framework */; };
@@ -83,8 +83,6 @@
 		BC6DC2551F08BB2D0061726A /* LoginPostThenDeleteUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPostThenDeleteUITest.swift; sourceTree = "<group>"; };
 		BC6DC2571F08BB5C0061726A /* RegisterPostThenEditUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPostThenEditUITest.swift; sourceTree = "<group>"; };
 		BC6DC2591F08BBAB0061726A /* RegisterPostThenDeleteUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPostThenDeleteUITest.swift; sourceTree = "<group>"; };
-		BC6DC25E1F090BBB0061726A /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		BC6DC2601F090EED0061726A /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		BC7DBF8E1F077070007F1822 /* Fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fixtures; sourceTree = "<group>"; };
 		BC7DBF901F077699007F1822 /* GetPosts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = GetPosts.json; path = WallAppiOSTests/Fixtures/GetPosts.json; sourceTree = "<group>"; };
 		BC7DBF921F07854B007F1822 /* CreatePost.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = CreatePost.json; path = WallAppiOSTests/Fixtures/CreatePost.json; sourceTree = "<group>"; };
@@ -101,27 +99,29 @@
 		BC7DBFCD1F07B78B007F1822 /* GetPosts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = GetPosts.json; path = WallAppiOSTests/Fixtures/GetPosts.json; sourceTree = "<group>"; };
 		BC7DBFCF1F07B78F007F1822 /* Login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Login.json; path = WallAppiOSTests/Fixtures/Login.json; sourceTree = "<group>"; };
 		BC7DBFD11F07B793007F1822 /* RegisterUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = RegisterUser.json; path = WallAppiOSTests/Fixtures/RegisterUser.json; sourceTree = "<group>"; };
-		BC90825B1F06DF8A004DCC4E /* EditPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		BC9082971F071AD3004DCC4E /* AccountsServiceClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsServiceClientTest.swift; sourceTree = "<group>"; };
 		BC9082991F071C01004DCC4E /* PostServiceClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostServiceClientTest.swift; sourceTree = "<group>"; };
-		BC90829B1F073860004DCC4E /*  BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " BaseViewController.swift"; sourceTree = "<group>"; };
+		BCA87DCA1F11595A00EAF21D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BCA87DCC1F11597200EAF21D /*  BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = " BaseViewController.swift"; path = "ViewControllers/ BaseViewController.swift"; sourceTree = "<group>"; };
+		BCA87DCD1F11597200EAF21D /* EditPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditPostViewController.swift; path = ViewControllers/EditPostViewController.swift; sourceTree = "<group>"; };
+		BCA87DCE1F11597200EAF21D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
+		BCA87DCF1F11597200EAF21D /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = ViewControllers/RegisterViewController.swift; sourceTree = "<group>"; };
+		BCA87DD01F11597200EAF21D /* WallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WallViewController.swift; path = ViewControllers/WallViewController.swift; sourceTree = "<group>"; };
+		BCA87DD11F11597200EAF21D /* WritePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WritePostViewController.swift; path = ViewControllers/WritePostViewController.swift; sourceTree = "<group>"; };
+		BCA87DD81F11598400EAF21D /* AccountsServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsServiceClient.swift; path = ServiceClients/AccountsServiceClient.swift; sourceTree = "<group>"; };
+		BCA87DD91F11598400EAF21D /* BaseServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseServiceClient.swift; path = ServiceClients/BaseServiceClient.swift; sourceTree = "<group>"; };
+		BCA87DDA1F11598400EAF21D /* PostServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostServiceClient.swift; path = ServiceClients/PostServiceClient.swift; sourceTree = "<group>"; };
+		BCA87DDE1F11599700EAF21D /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Models/Account.swift; sourceTree = "<group>"; };
+		BCA87DDF1F11599700EAF21D /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentUser.swift; path = Models/CurrentUser.swift; sourceTree = "<group>"; };
+		BCA87DE01F11599700EAF21D /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Models/Post.swift; sourceTree = "<group>"; };
+		BCA87DE11F11599700EAF21D /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Token.swift; path = Models/Token.swift; sourceTree = "<group>"; };
 		BCC7005D1EFCD69B00C6DF88 /* WallAppiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallAppiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC700601EFCD69B00C6DF88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BCC700621EFCD69B00C6DF88 /* WallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewController.swift; sourceTree = "<group>"; };
 		BCC700671EFCD69B00C6DF88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCC7006A1EFCD69B00C6DF88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCC7006C1EFCD69B00C6DF88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCC700711EFCD69B00C6DF88 /* WallAppiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallAppiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC700771EFCD69B00C6DF88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BCC700931EFCD73100C6DF88 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		BCC700951EFCDA4400C6DF88 /* PostServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostServiceClient.swift; sourceTree = "<group>"; };
-		BCC700971EFCDA4A00C6DF88 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		BCC700991EFCDA8700C6DF88 /* BaseServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseServiceClient.swift; sourceTree = "<group>"; };
-		BCC7009B1EFCE09D00C6DF88 /* WritePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WritePostViewController.swift; sourceTree = "<group>"; };
-		BCC7009C1EFCE09D00C6DF88 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		BCC7009D1EFCE09D00C6DF88 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		BCC700A11EFCE0BD00C6DF88 /* AccountsServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsServiceClient.swift; sourceTree = "<group>"; };
-		BCC700A31EFCE0CB00C6DF88 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		BCE6C5E51F0A430600A4F3F3 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		BCE6C5E71F0A431600A4F3F3 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		F7BD092C5DE02BD2FFF8E4E8 /* Pods_WallAppiOS_WallAppiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallAppiOS_WallAppiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,7 +272,7 @@
 		BCC7008F1EFCD6C000C6DF88 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				BCC700931EFCD73100C6DF88 /* Main.storyboard */,
+				BCA87DC91F11595A00EAF21D /* Main.storyboard */,
 				BCC700691EFCD69B00C6DF88 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -281,12 +281,12 @@
 		BCC700901EFCD6CB00C6DF88 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				BCC700621EFCD69B00C6DF88 /* WallViewController.swift */,
-				BCC7009B1EFCE09D00C6DF88 /* WritePostViewController.swift */,
-				BCC7009C1EFCE09D00C6DF88 /* LoginViewController.swift */,
-				BCC7009D1EFCE09D00C6DF88 /* RegisterViewController.swift */,
-				BC90825B1F06DF8A004DCC4E /* EditPostViewController.swift */,
-				BC90829B1F073860004DCC4E /*  BaseViewController.swift */,
+				BCA87DCC1F11597200EAF21D /*  BaseViewController.swift */,
+				BCA87DCD1F11597200EAF21D /* EditPostViewController.swift */,
+				BCA87DCE1F11597200EAF21D /* LoginViewController.swift */,
+				BCA87DCF1F11597200EAF21D /* RegisterViewController.swift */,
+				BCA87DD01F11597200EAF21D /* WallViewController.swift */,
+				BCA87DD11F11597200EAF21D /* WritePostViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -294,9 +294,9 @@
 		BCC700911EFCD6DE00C6DF88 /* ServiceClients */ = {
 			isa = PBXGroup;
 			children = (
-				BCC700A11EFCE0BD00C6DF88 /* AccountsServiceClient.swift */,
-				BCC700991EFCDA8700C6DF88 /* BaseServiceClient.swift */,
-				BCC700951EFCDA4400C6DF88 /* PostServiceClient.swift */,
+				BCA87DD81F11598400EAF21D /* AccountsServiceClient.swift */,
+				BCA87DD91F11598400EAF21D /* BaseServiceClient.swift */,
+				BCA87DDA1F11598400EAF21D /* PostServiceClient.swift */,
 			);
 			name = ServiceClients;
 			sourceTree = "<group>";
@@ -304,10 +304,10 @@
 		BCC700921EFCD6F100C6DF88 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BCC700A31EFCE0CB00C6DF88 /* Account.swift */,
-				BCC700971EFCDA4A00C6DF88 /* Post.swift */,
-				BC6DC25E1F090BBB0061726A /* Token.swift */,
-				BC6DC2601F090EED0061726A /* CurrentUser.swift */,
+				BCA87DDE1F11599700EAF21D /* Account.swift */,
+				BCA87DDF1F11599700EAF21D /* CurrentUser.swift */,
+				BCA87DE01F11599700EAF21D /* Post.swift */,
+				BCA87DE11F11599700EAF21D /* Token.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -439,7 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC7DBFCE1F07B78B007F1822 /* GetPosts.json in Resources */,
-				BCC700941EFCD73100C6DF88 /* Main.storyboard in Resources */,
+				BCA87DCB1F11595A00EAF21D /* Main.storyboard in Resources */,
 				BCC7006B1EFCD69B00C6DF88 /* LaunchScreen.storyboard in Resources */,
 				BCC700681EFCD69B00C6DF88 /* Assets.xcassets in Resources */,
 				BC7DBFC81F07B780007F1822 /* CreatePost.json in Resources */,
@@ -624,20 +624,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC6DC2611F090EED0061726A /* CurrentUser.swift in Sources */,
-				BCC7009F1EFCE09D00C6DF88 /* LoginViewController.swift in Sources */,
-				BCC700A21EFCE0BD00C6DF88 /* AccountsServiceClient.swift in Sources */,
-				BCC7009E1EFCE09D00C6DF88 /* WritePostViewController.swift in Sources */,
-				BCC700631EFCD69B00C6DF88 /* WallViewController.swift in Sources */,
-				BCC700A01EFCE09D00C6DF88 /* RegisterViewController.swift in Sources */,
-				BC90829C1F073860004DCC4E /*  BaseViewController.swift in Sources */,
-				BCC700A41EFCE0CB00C6DF88 /* Account.swift in Sources */,
-				BCC700961EFCDA4400C6DF88 /* PostServiceClient.swift in Sources */,
-				BC90825C1F06DF8A004DCC4E /* EditPostViewController.swift in Sources */,
-				BCC7009A1EFCDA8700C6DF88 /* BaseServiceClient.swift in Sources */,
+				BCA87DD31F11597200EAF21D /* EditPostViewController.swift in Sources */,
+				BCA87DD61F11597200EAF21D /* WallViewController.swift in Sources */,
+				BCA87DDD1F11598400EAF21D /* PostServiceClient.swift in Sources */,
+				BCA87DE41F11599700EAF21D /* Post.swift in Sources */,
+				BCA87DD71F11597200EAF21D /* WritePostViewController.swift in Sources */,
+				BCA87DE21F11599700EAF21D /* Account.swift in Sources */,
+				BCA87DD51F11597200EAF21D /* RegisterViewController.swift in Sources */,
+				BCA87DE51F11599700EAF21D /* Token.swift in Sources */,
 				BCC700611EFCD69B00C6DF88 /* AppDelegate.swift in Sources */,
-				BC6DC25F1F090BBB0061726A /* Token.swift in Sources */,
-				BCC700981EFCDA4A00C6DF88 /* Post.swift in Sources */,
+				BCA87DD41F11597200EAF21D /* LoginViewController.swift in Sources */,
+				BCA87DD21F11597200EAF21D /*  BaseViewController.swift in Sources */,
+				BCA87DDC1F11598400EAF21D /* BaseServiceClient.swift in Sources */,
+				BCA87DDB1F11598400EAF21D /* AccountsServiceClient.swift in Sources */,
+				BCA87DE31F11599700EAF21D /* CurrentUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,6 +666,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		BCA87DC91F11595A00EAF21D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCA87DCA1F11595A00EAF21D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		BCC700691EFCD69B00C6DF88 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
