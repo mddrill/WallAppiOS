@@ -1,6 +1,6 @@
 # WallAppiOS
 
-Front end for TSL Hiring assignment
+Front end for Wall App
 
 Uses 
 ```
